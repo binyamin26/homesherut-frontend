@@ -1,0 +1,84 @@
+/* ====================================
+   RESET ET STYLES DE BASE - HOMESHERUT
+   ==================================== */
+
+/* Import de polices modernes */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Reset universel */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--neutral-800);
+  background-color: var(--neutral-50);
+  direction: rtl;
+  text-align: right;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Éléments HTML de base */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Classes utilitaires de base */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.text-center { 
+  text-align: center; 
+}
+
+.text-right { 
+  text-align: right; 
+}
+
+.text-left { 
+  text-align: left; 
+}
+
+.w-full { 
+  width: 100%; 
+}
+
+.max-w-2xl {
+  max-width: 42rem;
+  margin: 0 auto;
+}

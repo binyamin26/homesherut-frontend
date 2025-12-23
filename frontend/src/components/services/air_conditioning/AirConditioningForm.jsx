@@ -1,0 +1,253 @@
+import React from 'react';
+import { useLanguage } from '../../../context/LanguageContext';
+const AirConditioningForm = ({ serviceDetails, errors, handleServiceDetailsChange, handleExclusiveCheckbox }) => {
+  const { t } = useLanguage();
+  
+  return (
+    <div className="service-details-form">
+    {t('serviceForm.airConditioning.title')}
+      
+      <div className="form-section">
+      {t('serviceForm.common.requiredFields')}
+        
+        <div className="input-group">
+         {t('serviceForm.common.age')}
+          <input
+           type="text"
+ inputMode="numeric"
+ autoComplete="off"
+            value={serviceDetails.age || ''}
+        onChange={(e) => {
+  const numericValue = e.target.value.replace(/\D/g, '');  // ← AJOUTE CETTE LIGNE
+  handleServiceDetailsChange('age', numericValue);  // (ou 'experience', ou 'hourlyRate')
+}}
+            className={`standard-input ${errors['serviceDetails.age'] ? 'error' : ''}`}
+            data-field="age"
+            min="18"
+          />
+          {errors['serviceDetails.age'] && <span className="error-text">{errors['serviceDetails.age']}</span>}
+        </div>
+
+        <div className="input-group">
+         {t('serviceForm.common.experience')}
+          <input
+           type="text"
+ inputMode="numeric"
+ autoComplete="off"
+            value={serviceDetails.experience || ''}
+          onChange={(e) => {
+  const numericValue = e.target.value.replace(/\D/g, '');
+  handleServiceDetailsChange('experience', numericValue);  // ← 'experience' ici !
+}}
+            className={`standard-input ${errors['serviceDetails.experience'] ? 'error' : ''}`}
+            data-field="experience"
+          />
+          {errors['serviceDetails.experience'] && <span className="error-text">{errors['serviceDetails.experience']}</span>}
+        </div>
+
+        <div className="input-group">
+       {t('serviceForm.common.availabilityDays')}
+          <div className="checkbox-group" data-field="availability_days">
+         {[
+  { value: 'ראשון', label: t('days.sunday') },
+  { value: 'שני', label: t('days.monday') },
+  { value: 'שלישי', label: t('days.tuesday') },
+  { value: 'רביעי', label: t('days.wednesday') },
+  { value: 'חמישי', label: t('days.thursday') },
+  { value: 'שישי', label: t('days.friday') },
+  { value: 'כל השבוע', label: t('days.allWeek') }
+].map(day => (
+  <label key={day.value} className="checkbox-item">
+    <input
+      type="checkbox"
+      checked={serviceDetails.availability_days?.includes(day.value) || false}
+      onChange={() => handleExclusiveCheckbox('availability_days', day.value, 'כל השבוע', ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי'])}
+    />
+    {day.label}
+  </label>
+))} 
+          
+          </div>
+          {errors['serviceDetails.availability_days'] && <span className="error-text">{errors['serviceDetails.availability_days']}</span>}
+        </div>
+
+        <div className="input-group">
+         {t('serviceForm.common.availabilityDays')}
+          <div className="checkbox-group" data-field="availability_hours">
+          {[
+  { value: 'בוקר', label: t('hours.morning') },
+  { value: 'אחר הצהריים', label: t('hours.afternoon') },
+  { value: 'ערב', label: t('hours.evening') },
+  { value: 'הכל', label: t('hours.all') }
+].map(hour => (
+  <label key={hour.value} className="checkbox-item">
+    <input
+      type="checkbox"
+      checked={serviceDetails.availability_hours?.includes(hour.value) || false}
+      onChange={() => handleExclusiveCheckbox('availability_hours', hour.value, 'הכל', ['בוקר', 'אחר הצהריים', 'ערב'])}
+    />
+    {hour.label}
+  </label>
+))}
+          </div>
+          {errors['serviceDetails.availability_hours'] && <span className="error-text">{errors['serviceDetails.availability_hours']}</span>}
+        </div>
+
+        <div className="input-group">
+       {t('serviceForm.common.workTypes')}
+          
+          <div style={{marginBottom: '20px'}}>
+            <label className="checkbox-item" style={{fontWeight: 'bold'}}>
+              <input
+                type="checkbox"
+                checked={serviceDetails.work_types?.includes('התקנת מזגנים') || false}
+                onChange={(e) => {
+                  const current = serviceDetails.work_types || [];
+                  const newTypes = e.target.checked 
+                    ? [...current, 'התקנת מזגנים']
+                    : current.filter(t => t !== 'התקנת מזגנים');
+                  handleServiceDetailsChange('work_types', newTypes);
+                }}
+              />
+  {t('serviceForm.airConditioning.installation')}
+            </label>
+            
+            {serviceDetails.work_types?.includes('התקנת מזגנים') && (
+              <div style={{marginRight: '30px', marginTop: '10px'}}>
+                <div className="checkbox-group" data-field="installation_types">
+               {[
+  { value: 'תיקון מזגן', label: t('serviceForm.airConditioning.repairAC') },
+  { value: 'מילוי גז', label: t('serviceForm.airConditioning.gasRefill') },
+  { value: 'תיקון מזגן מעובש', label: t('serviceForm.airConditioning.repairMoldy') },
+  { value: 'תיקון מיזוג מיני מרכזי', label: t('serviceForm.airConditioning.repairMiniCentral') },
+  { value: 'תיקון דליפת גז במזגן', label: t('serviceForm.airConditioning.repairGasLeak') },
+  { value: 'תיקון מיזוג מרכזי', label: t('serviceForm.airConditioning.repairCentral') },
+  { value: 'תיקון מזגן אינוורטר', label: t('serviceForm.airConditioning.repairInverter') },
+  { value: 'תיקון מזגן VRF', label: t('serviceForm.airConditioning.repairVRF') },
+  { value: 'ניקוי פילטרים', label: t('serviceForm.airConditioning.filterCleaning') },
+  { value: 'תיקון צ\'ילרים', label: t('serviceForm.airConditioning.repairChillers') },
+  { value: 'טכנאי חדרי קירור', label: t('serviceForm.airConditioning.coldRoomTech') }
+].map(type => (
+  <label key={type.value} className="checkbox-item">
+    <input
+      type="checkbox"
+      checked={serviceDetails.repair_types?.includes(type.value) || false}
+      onChange={(e) => {
+        const current = serviceDetails.repair_types || [];
+        const newTypes = e.target.checked 
+          ? [...current, type.value]
+          : current.filter(t => t !== type.value);
+        handleServiceDetailsChange('repair_types', newTypes);
+      }}
+    />
+    {type.label}
+  </label>
+))}
+                </div>
+                {errors['serviceDetails.installation_types'] && <span className="error-text">{errors['serviceDetails.installation_types']}</span>}
+              </div>
+            )}
+          </div>
+
+          <div style={{marginBottom: '20px'}}>
+            <label className="checkbox-item" style={{fontWeight: 'bold'}}>
+              <input
+                type="checkbox"
+                checked={serviceDetails.work_types?.includes('תיקון מזגנים') || false}
+                onChange={(e) => {
+                  const current = serviceDetails.work_types || [];
+                  const newTypes = e.target.checked 
+                    ? [...current, 'תיקון מזגנים']
+                    : current.filter(t => t !== 'תיקון מזגנים');
+                  handleServiceDetailsChange('work_types', newTypes);
+                }}
+              />
+ {t('serviceForm.airConditioning.repair')}
+            </label>
+            
+            {serviceDetails.work_types?.includes('תיקון מזגנים') && (
+              <div style={{marginRight: '30px', marginTop: '10px'}}>
+                <div className="checkbox-group" data-field="repair_types">
+                  {['תיקון מזגן','מילוי גז', 'תיקון מזגן מעובש', 'תיקון מיזוג מיני מרכזי', 'תיקון דליפת גז במזגן', 'תיקון מיזוג מרכזי', 'תיקון מזגן אינוורטר', 'תיקון מזגן VRF', 'ניקוי פילטרים', 'תיקון צ\'ילרים', 'טכנאי חדרי קירור'].map(type => (
+                    <label key={type} className="checkbox-item">
+                      <input
+                        type="checkbox"
+                        checked={serviceDetails.repair_types?.includes(type) || false}
+                        onChange={(e) => {
+                          const current = serviceDetails.repair_types || [];
+                          const newTypes = e.target.checked 
+                            ? [...current, type]
+                            : current.filter(t => t !== type);
+                          handleServiceDetailsChange('repair_types', newTypes);
+                        }}
+                      />
+                      {type}
+                    </label>
+                  ))}
+                </div>
+                {errors['serviceDetails.repair_types'] && <span className="error-text">{errors['serviceDetails.repair_types']}</span>}
+              </div>
+            )}
+          </div>
+
+          <div style={{marginBottom: '20px'}}>
+            <label className="checkbox-item" style={{fontWeight: 'bold'}}>
+              <input
+                type="checkbox"
+                checked={serviceDetails.work_types?.includes('פירוק והרכבת מזגנים') || false}
+                onChange={(e) => {
+                  const current = serviceDetails.work_types || [];
+                  const newTypes = e.target.checked 
+                    ? [...current, 'פירוק והרכבת מזגנים']
+                    : current.filter(t => t !== 'פירוק והרכבת מזגנים');
+                  handleServiceDetailsChange('work_types', newTypes);
+                }}
+              />
+  {t('serviceForm.airConditioning.disassembly')}
+            </label>
+            
+            {serviceDetails.work_types?.includes('פירוק והרכבת מזגנים') && (
+              <div style={{marginRight: '30px', marginTop: '10px'}}>
+                <div className="checkbox-group" data-field="disassembly_types">
+                {[
+  { value: 'תיקון מזגן', label: t('serviceForm.airConditioning.repairAC') },
+  { value: 'מילוי גז', label: t('serviceForm.airConditioning.gasRefill') },
+  { value: 'תיקון מזגן מעובש', label: t('serviceForm.airConditioning.repairMoldy') },
+  { value: 'תיקון מיזוג מיני מרכזי', label: t('serviceForm.airConditioning.repairMiniCentral') },
+  { value: 'תיקון דליפת גז במזגן', label: t('serviceForm.airConditioning.repairGasLeak') },
+  { value: 'תיקון מיזוג מרכזי', label: t('serviceForm.airConditioning.repairCentral') },
+  { value: 'תיקון מזגן אינוורטר', label: t('serviceForm.airConditioning.repairInverter') },
+  { value: 'תיקון מזגן VRF', label: t('serviceForm.airConditioning.repairVRF') },
+  { value: 'ניקוי פילטרים', label: t('serviceForm.airConditioning.filterCleaning') },
+  { value: 'תיקון צ\'ילרים', label: t('serviceForm.airConditioning.repairChillers') },
+  { value: 'טכנאי חדרי קירור', label: t('serviceForm.airConditioning.coldRoomTech') }
+].map(type => (
+  <label key={type.value} className="checkbox-item">
+    <input
+      type="checkbox"
+      checked={serviceDetails.repair_types?.includes(type.value) || false}
+      onChange={(e) => {
+        const current = serviceDetails.repair_types || [];
+        const newTypes = e.target.checked 
+          ? [...current, type.value]
+          : current.filter(t => t !== type.value);
+        handleServiceDetailsChange('repair_types', newTypes);
+      }}
+    />
+    {type.label}
+  </label>
+))}
+                </div>
+                {errors['serviceDetails.disassembly_types'] && <span className="error-text">{errors['serviceDetails.disassembly_types']}</span>}
+              </div>
+            )}
+          </div>
+
+          {errors['serviceDetails.work_types'] && <span className="error-text">{errors['serviceDetails.work_types']}</span>}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AirConditioningForm;

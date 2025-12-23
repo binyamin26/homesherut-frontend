@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "homesherut-platform",
+  "version": "1.0.0",
+  "description": "Plateforme de services à domicile en Israël",
+  "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev", 
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start"
+  },
+  "author": "HomeSherut Team",
+  "license": "MIT"
+}

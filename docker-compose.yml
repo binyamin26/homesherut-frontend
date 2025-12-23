@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: homesherut_db
+      MYSQL_USER: homesherut_user
+      MYSQL_PASSWORD: secure_password
+    ports:
+     - "0.0.0.0:3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      # Supprimé temporairement les fichiers qui n'existent pas :
+      # - ./backend/database/schema-unified.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      # - ./backend/database/seeds:/docker-entrypoint-initdb.d/seeds
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "9090:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: homesherut_user
+      PMA_PASSWORD: secure_password
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
