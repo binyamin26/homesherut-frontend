@@ -22,10 +22,26 @@ const CleaningForm = ({ serviceDetails, errors, handleServiceDetailsChange, hand
   <option value="חברה">{t('serviceForm.cleaning.company')}</option>
   <option value="עצמאי">{t('serviceForm.cleaning.selfEmployed')}</option>
 </select>
-          {errors['serviceDetails.legalStatus'] && <span className="error-text">{errors['serviceDetails.legalStatus']}</span>}
+       {errors['serviceDetails.legalStatus'] && <span className="error-text">{errors['serviceDetails.legalStatus']}</span>}
         </div>
 
-        
+        <div className="input-group">
+          <label>{t('serviceForm.common.experience')}</label>
+          <input
+            type="text"
+            autoComplete="off"
+            inputMode="numeric"
+            value={serviceDetails.experience || ''}
+            onChange={(e) => {
+              const numericValue = e.target.value.replace(/\D/g, '');
+              handleServiceDetailsChange('experience', numericValue);
+            }}
+            className={`standard-input ${errors['serviceDetails.experience'] ? 'error' : ''}`}
+            data-field="experience"
+          />
+          {errors['serviceDetails.experience'] && <span className="error-text">{errors['serviceDetails.experience']}</span>}
+        </div>
+
       <div className="input-group">
           <label>{t('serviceForm.cleaning.hourlyRate')}</label>
 <input
@@ -232,25 +248,6 @@ onChange={(e) => {
     </div>
   </div>
 </div>
-      </div>
-
-      <div className="form-section optional">
-    <h4>{t('serviceForm.common.optionalFields')}</h4>
-        
-        <div className="input-group">
-          <label>{t('serviceForm.common.experience')}</label>
-          <input
-           type="text"
-           autoComplete="off"
- inputMode="numeric"
-            value={serviceDetails.experienceYears || ''}
-         onChange={(e) => {
-  const numericValue = e.target.value.replace(/\D/g, '');
-  handleServiceDetailsChange('experience', numericValue);  // ← 'experience' ici !
-}}
-            className="standard-input"
-          />
-        </div>
       </div>
     </div>
   );

@@ -29,7 +29,7 @@
   direction: rtl;
 }
 
-/* Input styles - CORRIGÉ POUR RTL */
+
 .input-wrapper input,
 .profile-input,
 .modern-select,
@@ -37,7 +37,9 @@
 textarea,
 .search-input {
   width: 100%;
-  padding: var(--space-4) var(--space-12) var(--space-4) var(--space-4);
+  padding: var(--space-4);
+  padding-right: var(--space-12);
+  padding-left: var(--space-12);
   border: 2px solid var(--neutral-200);
   border-radius: var(--radius-xl);
   font-size: var(--text-base);
@@ -83,7 +85,8 @@ textarea::placeholder {
 /* Icônes dans les inputs - CORRIGÉ POUR RTL */
 .input-icon {
   position: absolute;
-  left: var(--space-4);
+  right: var(--space-4);
+  left: auto;
   top: 50%;
   transform: translateY(-50%);
   color: var(--neutral-400);
@@ -94,6 +97,7 @@ textarea::placeholder {
 .password-toggle {
   position: absolute;
   left: var(--space-4);
+  right: auto;
   top: 50%;
   transform: translateY(-50%);
   background: none;

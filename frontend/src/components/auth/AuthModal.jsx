@@ -652,7 +652,7 @@ console.log('🔍 serviceDetails object:', serviceDetails);
         if (!serviceDetails.hourlyRate) newErrors['serviceDetails.hourlyRate'] = 'תעריף שעתי נדרש';
         break;
 
-      case 'cleaning':
+case 'cleaning':
   console.log('✅ DANS CASE CLEANING');
   console.log('legalStatus:', serviceDetails.legalStatus);
   console.log('cleaningTypes:', serviceDetails.cleaningTypes);
@@ -661,6 +661,7 @@ console.log('🔍 serviceDetails object:', serviceDetails);
     console.log('⚠️ Ajout erreur legalStatus');
     newErrors['serviceDetails.legalStatus'] = 'סטטוס משפטי נדרש';
   }
+  if (!serviceDetails.experience) newErrors['serviceDetails.experience'] = 'שנות ניסיון נדרשות';
   if (!serviceDetails.cleaningTypes || serviceDetails.cleaningTypes.length === 0) {
     console.log('⚠️ Ajout erreur cleaningTypes');
     newErrors['serviceDetails.cleaningTypes'] = 'יש לבחור קטגוריות ניקיון';
@@ -677,13 +678,13 @@ console.log('🔍 serviceDetails object:', serviceDetails);
   console.log('📋 newErrors après cleaning:', newErrors);
   break;
 
-      case 'gardening':
+case 'gardening':
+        if (!serviceDetails.experience) newErrors['serviceDetails.experience'] = 'שנות ניסיון נדרשות';
         if (!serviceDetails.services || serviceDetails.services.length === 0) newErrors['serviceDetails.services'] = 'יש לבחור סוגי שירותים';
         if (!serviceDetails.seasons || serviceDetails.seasons.length === 0) newErrors['serviceDetails.seasons'] = 'יש לבחור עונות זמינות';
         if (!serviceDetails.equipment || serviceDetails.equipment.length === 0) newErrors['serviceDetails.equipment'] = 'יש לציין ציוד בבעלותך';
         if (!serviceDetails.rate) newErrors['serviceDetails.rate'] = 'תעריף נדרש';
         break;
-
       case 'petcare':
         if (!serviceDetails.animalTypes || serviceDetails.animalTypes.length === 0) newErrors['serviceDetails.animalTypes'] = 'יש לבחור סוגי חיות';
         if (!serviceDetails.dogSizes || serviceDetails.dogSizes.length === 0) newErrors['serviceDetails.dogSizes'] = 'יש לבחור גדלי כלבים';
@@ -691,7 +692,8 @@ console.log('🔍 serviceDetails object:', serviceDetails);
         if (!serviceDetails.experience) newErrors['serviceDetails.experience'] = 'ניסיון עם חיות נדרש';
         break;
 
-      case 'tutoring':
+   case 'tutoring':
+        if (!serviceDetails.experience) newErrors['serviceDetails.experience'] = 'שנות ניסיון נדרשות';
         if (!serviceDetails.subjects || serviceDetails.subjects.length === 0) newErrors['serviceDetails.subjects'] = 'יש לבחור מקצועות';
         if (!serviceDetails.levels || serviceDetails.levels.length === 0) newErrors['serviceDetails.levels'] = 'יש לבחור רמות לימוד';
         if (!serviceDetails.qualifications) newErrors['serviceDetails.qualifications'] = 'השכלה/הסמכות נדרשות';
@@ -705,7 +707,8 @@ console.log('🔍 serviceDetails object:', serviceDetails);
         if (!serviceDetails.experience) newErrors['serviceDetails.experience'] = 'ניסיון עם קשישים נדרש';
         break;
 
-       case 'electrician':
+case 'electrician':
+  if (!serviceDetails.experience) newErrors['serviceDetails.experience'] = 'שנות ניסיון נדרשות';
   if (!serviceDetails.work_types || serviceDetails.work_types.length === 0) {
     newErrors['serviceDetails.work_types'] = 'יש לבחור לפחות סוג עבודה אחד';
   }
@@ -720,7 +723,8 @@ console.log('🔍 serviceDetails object:', serviceDetails);
 }
   break;
 
-  case 'plumbing':
+ case 'plumbing':
+        if (!serviceDetails.experience) newErrors['serviceDetails.experience'] = 'שנות ניסיון נדרשות';
         if (!serviceDetails.work_types || serviceDetails.work_types.length === 0) {
           newErrors['serviceDetails.work_types'] = 'יש לבחור לפחות סוג עבודה אחד';
         }
@@ -738,12 +742,13 @@ console.log('🔍 serviceDetails object:', serviceDetails);
         }
         break;
 
-      case 'laundry':
+    case 'laundry':
+        if (!serviceDetails.experience) newErrors['serviceDetails.experience'] = 'שנות ניסיון נדרשות';
         if (!serviceDetails.laundryTypes || serviceDetails.laundryTypes.length === 0) newErrors['serviceDetails.laundryTypes'] = 'יש לבחור סוגי שירותים';
-        if (!serviceDetails.rate) newErrors['serviceDetails.rate'] = 'תעריף נדרש';
         break;
 
-      case 'property_management':
+   case 'property_management':
+        if (!serviceDetails.experience) newErrors['serviceDetails.experience'] = 'שנות ניסיון נדרשות';
         if (!serviceDetails.management_type || serviceDetails.management_type.length === 0) {
           newErrors['serviceDetails.management_type'] = 'יש לבחור לפחות סוג ניהול אחד';
         }

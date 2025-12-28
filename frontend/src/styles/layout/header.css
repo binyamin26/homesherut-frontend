@@ -390,3 +390,94 @@ nav {
   height: 100%;
   object-fit: cover;
 }
+
+/* ====================================
+   MOBILE MENU - CORRECTIONS
+   ==================================== */
+@media (max-width: 768px) {
+  /* Cacher les boutons CTA desktop */
+  header .container > .flex.items-center {
+    gap: var(--space-2);
+  }
+  
+  header .container > .flex.items-center > .flex.items-center {
+    display: none;
+  }
+  
+  /* Afficher le bouton burger */
+  .mobile-menu-button {
+    display: flex !important;
+  }
+  
+  /* Menu mobile */
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid var(--neutral-100);
+    box-shadow: var(--shadow-xl);
+    padding: var(--space-4);
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    z-index: 999;
+  }
+  
+  .mobile-menu.open {
+    display: block !important;
+  }
+  
+  /* Liens du menu mobile */
+  .mobile-menu .nav-link {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--neutral-800);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    text-align: right;
+  }
+  
+  .mobile-menu .nav-link:hover {
+    background: var(--primary-50);
+    color: var(--primary-600);
+  }
+  
+  /* Services dans menu mobile */
+  .mobile-menu .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    text-decoration: none;
+    color: var(--neutral-700);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-2);
+  }
+  
+  .mobile-menu .dropdown-item:hover {
+    background: var(--primary-50);
+  }
+  
+  .mobile-menu .dropdown-item h4 {
+    font-size: var(--text-base);
+    font-weight: 600;
+    margin: 0;
+    color: var(--neutral-800);
+  }
+  
+  .mobile-menu .dropdown-item p {
+    font-size: var(--text-sm);
+    color: var(--neutral-500);
+    margin: 0;
+  }
+  
+  /* Boutons auth mobile */
+  .mobile-menu .cta-button {
+    width: 100%;
+    margin-bottom: var(--space-2);
+  }
+}

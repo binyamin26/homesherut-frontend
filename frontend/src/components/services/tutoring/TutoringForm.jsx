@@ -84,8 +84,26 @@ const { t, currentLanguage } = useLanguage();
         <div className="service-details-form">
             <h3>{t('serviceForm.tutoring.title')}</h3>
             
-            <div className="form-section">
+           <div className="form-section">
                 {t('serviceForm.common.requiredFields')}
+
+                {/* EXPÉRIENCE */}
+                <div className="input-group">
+                    <label>{t('serviceForm.common.experience')}</label>
+                    <input
+                        type="text"
+                        inputMode="numeric"
+                        autoComplete="off"
+                        value={serviceDetails.experience || ''}
+                        onChange={(e) => {
+                            const numericValue = e.target.value.replace(/\D/g, '');
+                            handleServiceDetailsChange('experience', numericValue);
+                        }}
+                        className={`standard-input ${errors['serviceDetails.experience'] ? 'error' : ''}`}
+                        data-field="experience"
+                    />
+                    {errors['serviceDetails.experience'] && <span className="error-text">{errors['serviceDetails.experience']}</span>}
+                </div>
                 
                 {/* MATIÈRES - Chargées depuis la DB */}
                 <div className="input-group">
@@ -209,26 +227,6 @@ const { t, currentLanguage } = useLanguage();
                         data-field="qualifications"
                     />
                     {errors['serviceDetails.qualifications'] && <span className="error-text">{errors['serviceDetails.qualifications']}</span>}
-                </div>
-            </div>
-
-            <div className="form-section optional">
-                <h4>{t('serviceForm.common.optionalFields')}</h4>
-                
-                {/* EXPÉRIENCE */}
-                <div className="input-group">
-                    <label>{t('serviceForm.common.experience')}</label>
-                    <input
-                        type="text"
-                        inputMode="numeric"
-                        autoComplete="off"
-                        value={serviceDetails.experienceYears || ''}
-                        onChange={(e) => {
-                            const numericValue = e.target.value.replace(/\D/g, '');
-                            handleServiceDetailsChange('experienceYears', numericValue);
-                        }}
-                        className="standard-input"
-                    />
                 </div>
             </div>
         </div>

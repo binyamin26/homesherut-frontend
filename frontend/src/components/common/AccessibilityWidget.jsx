@@ -710,12 +710,13 @@ const AccessibilityWidget = () => {
           background: #dc2626;
         }
 
-        /* Mobile responsive */
-        @media (max-width: 480px) {
-          .accessibility-widget {
-            top: 10px;
-            left: 10px;
-          }
+     /* Mobile responsive */
+@media (max-width: 480px) {
+  .accessibility-widget {
+    bottom: 10px;
+    left: 10px;
+    top: auto;
+  }
 
        .accessibility-btn {
   width: 40px;
