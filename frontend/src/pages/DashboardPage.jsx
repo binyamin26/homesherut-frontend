@@ -310,6 +310,22 @@ useEffect(() => {
   }
 }, [user]);
 
+// ✅ NOUVEAU - Recharger les données quand activeService change
+useEffect(() => {
+  const loadServiceData = async () => {
+    if (activeService && user?.role === 'provider') {
+      const currentServiceType = user.providerProfile?.service_type;
+      
+      if (currentServiceType !== activeService) {
+        console.log('🔄 Rechargement données pour:', activeService);
+        await switchService(activeService);
+      }
+    }
+  };
+  
+  loadServiceData();
+}, [activeService]);
+
   const togglePasswordVisibility = (field) => {
     setShowPasswords(prev => ({
       ...prev,

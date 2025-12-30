@@ -1070,18 +1070,22 @@
 
 @media (max-width: 480px) {
   .services-carousel-container {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
   
   .service-card-image {
-    max-width: 260px;
+    max-width: 240px !important;
     margin: 0 auto;
   }
   
   .service-card-image .service-image,
   .service-card-image .service-icon-fallback {
-    height: 140px;
+    height: 130px !important;
+  }
+  
+  .service-name-overlay h3 {
+    font-size: 13px !important;
   }
 }
 

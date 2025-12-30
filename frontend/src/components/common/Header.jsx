@@ -169,21 +169,19 @@ const Header = () => {
               דף הבית
             </Link>
             
-          <div className="space-y-2">
+<div className="space-y-2">
 <div 
   className="nav-link" 
   style={{fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}
   onClick={() => setShowMobileServices(!showMobileServices)}
 >
     {t('nav.services')}
-    <svg 
-      className="w-4 h-4" 
-      fill="currentColor" 
-      viewBox="0 0 20 20"
-      style={{transform: showMobileServices ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease'}}
-    >
-      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-    </svg>
+    <span style={{
+      display: 'inline-block',
+      fontSize: '12px',
+      transform: showMobileServices ? 'rotate(180deg)' : 'rotate(0deg)',
+      transition: 'transform 0.3s ease'
+    }}>▼</span>
   </div>
   {showMobileServices && services.map((service, index) => (
                 <Link key={index} to={service.href} className="dropdown-item" style={{marginRight: '16px'}} onClick={() => setIsMenuOpen(false)}>
@@ -221,15 +219,8 @@ const Header = () => {
                     התנתק
                   </button>
                 </div>
-              ) : (
+          ) : (
                 <div className="space-y-3">
-                  <button 
-                    onClick={handleRegisterClick}
-                    className="cta-button" 
-                    style={{width: '100%'}}
-                  >
-                    {t('auth.register')}
-                  </button>
                   <button 
                     onClick={handleAuthClick}
                     className="cta-button" 
