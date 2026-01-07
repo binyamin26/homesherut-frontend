@@ -552,7 +552,7 @@ const translationMappings = {
   // ═══════════════════════════════════════════════════════════════
   // PAINTING
   // ═══════════════════════════════════════════════════════════════
-  paintingWorkTypes: {
+ paintingWorkTypes: {
     'צביעה כללית של דירה': 'filters.painting.generalPainting',
     'תיקוני קירות – חורים, סדקים, שפכטל': 'filters.painting.wallRepairs',
     'החלקת קירות (שפכטל מלא)': 'filters.painting.wallSmoothing',

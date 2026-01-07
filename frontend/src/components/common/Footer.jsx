@@ -81,13 +81,13 @@ const quickLinks = [
             <div className="footer-logo">
            <div className="footer-logo-icon">
   <img 
-    src="/images/logo-homesherut.png" 
-    alt="HomeSherut" 
+    src="/images/logo-homesherut.jpg" 
+    alt="AllSherut" 
     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
   />
 </div>
               <div className="footer-logo-text">
-                <div className="footer-logo-main">HomeSherut</div>
+                <div className="footer-logo-main">AllSherut</div>
                 <div className="footer-logo-sub">{t('common.tagline')}</div>
               </div>
             </div>

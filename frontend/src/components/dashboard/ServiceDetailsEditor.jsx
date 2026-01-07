@@ -30,15 +30,15 @@ const fieldToCategoryMapping = {
   specialCleaning: 'cleaningSpecial',
   frequency: 'cleaningFrequency',
   
-  // ELDERCARE
+ // ELDERCARE
   careTypes: 'eldercareTypes',
   specificConditions: 'eldercareConditions',
+  specialConditions: 'eldercareConditions',
   
   // PETCARE
   animalTypes: 'petcareAnimals',
   dogSizes: 'petcareDogSizes',
   location: 'petcareLocation',
-  additionalServices: 'petcareServices',
   facilities: 'petcareFacilities',
   veterinaryServices: 'petcareVeterinary',
   
@@ -46,6 +46,7 @@ const fieldToCategoryMapping = {
   services: 'gardeningServices',
   seasons: 'gardeningSeasons',
   equipment: 'gardeningEquipment',
+  specializations: 'gardeningSpecializations',
   gardeningSpecializations: 'gardeningSpecializations',
   gardeningAdditional: 'gardeningAdditional',
   
@@ -58,23 +59,27 @@ const fieldToCategoryMapping = {
   installation_types: 'electricianInstallations',
   large_work_types: 'electricianLargeWork',
   
-  // PLUMBING
+// PLUMBING
   plumbing_work_types: 'plumbingWorkTypes',
   blockage_types: 'plumbingBlockages',
   pipe_repair_types: 'plumbingPipeRepair',
   plumbing_large_work_types: 'plumbingLargeWork',
+  large_work_types: 'plumbingLargeWork',
   fixture_types: 'plumbingFixtures',
   
-  // AIR CONDITIONING
+// AIR CONDITIONING
   ac_work_types: 'acWorkTypes',
   ac_installation_types: 'acInstallation',
   ac_repair_types: 'acRepair',
   disassembly_types: 'acDisassembly',
+  installation_types: 'acInstallation',
+  repair_types: 'acRepair',
   
-  // GAS TECHNICIAN
+// GAS TECHNICIAN
   gas_work_types: 'gasWorkTypes',
   gas_installation_types: 'gasInstallation',
   gas_repair_types: 'gasRepair',
+  // Note: installation_types et repair_types déjà ajoutés pour AC, utilisés aussi par GAS
   
   // DRYWALL
   drywall_work_types: 'drywallWorkTypes',
@@ -100,18 +105,22 @@ const fieldToCategoryMapping = {
   // PAINTING
   painting_work_types: 'paintingWorkTypes',
   
-  // PRIVATE CHEF
+ // PRIVATE CHEF
   cuisineTypes: 'chefCuisine',
+  cuisine_types: 'chefCuisine',
   kosherTypes: 'chefKosher',
+  kosher_types: 'chefKosher',
   
-  // EVENT ENTERTAINMENT
+// EVENT ENTERTAINMENT
   event_work_types: 'eventWorkTypes',
   equipment_rental_categories: 'eventEquipmentRentalCategories',
+  equipment_rental_types: 'eventEquipmentRentalCategories',
   food_machine_types: 'eventFoodMachines',
   inflatable_game_types: 'eventInflatableGames',
   effect_machine_types: 'eventEffectMachines',
   entertainment_types: 'eventEntertainment',
   other_event_types: 'eventOther',
+  other_types: 'eventOther',
   
   // WATERPROOFING
   waterproofing_work_types: 'waterproofingWorkTypes',
@@ -137,10 +146,11 @@ const fieldToCategoryMapping = {
   repairs_service_types: 'aluminumRepairs',
   cladding_types: 'aluminumCladding',
   
-  // GLASS WORKS
+// GLASS WORKS
   glass_work_types: 'glassWorkTypes',
   shower_glass_types: 'glassShower',
   windows_door_glass_types: 'glassWindowsDoors',
+  windows_doors_glass_types: 'glassWindowsDoors',
   kitchen_home_glass_types: 'glassKitchenHome',
   special_safety_glass_types: 'glassSpecialSafety',
   repair_custom_types: 'glassRepairCustom',
@@ -161,6 +171,7 @@ const fieldToCategoryMapping = {
 const fieldToMultipleCategories = {
   management_type: ['propertyFullYear', 'propertyShortTerm'],
   cleaningTypes: ['cleaningHome', 'cleaningOffice', 'cleaningSpecial', 'cleaningAdditional'],
+  additionalServices: ['petcareServices', 'gardeningAdditional'],
   work_types: ['electricianWorkTypes', 'acWorkTypes', 'gasWorkTypes', 'drywallWorkTypes', 
                'carpentryWorkTypes', 'homeOrgWorkTypes', 'paintingWorkTypes', 'eventWorkTypes',
                'waterproofingWorkTypes', 'contractorWorkTypes', 'aluminumWorkTypes', 

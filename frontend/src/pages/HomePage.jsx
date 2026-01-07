@@ -286,7 +286,7 @@ useEffect(() => {
           <div className="hero-content">
           <div className="hero-text">
   <h1 className="hero-title animate-fade-in-down">
-    HomeSherut – <span className="gradient-text">{t('homepage.hero.tagline')}</span>
+    AllSherut – <span className="gradient-text">{t('homepage.hero.tagline')}</span>
   </h1>
   <p className="hero-description animate-fade-in-up delay-200" style={{ marginBottom: '0.5rem' }}>
     {t('homepage.hero.description1')}
@@ -311,8 +311,8 @@ useEffect(() => {
           <div className="hero-visual animate-fade-in-left delay-400">
   <div className="services-logo">
     <img 
-      src="/images/logo-homesherut.png" 
-      alt="HomeSherut Logo" 
+      src="/images/logo-homesherut.jpg" 
+      alt="AllSherut Logo" 
       style={{ width: '100%', maxWidth: '400px', height: 'auto' }}
     />
   </div>

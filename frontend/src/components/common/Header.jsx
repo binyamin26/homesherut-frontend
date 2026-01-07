@@ -79,13 +79,13 @@ const Header = () => {
           <Link to="/" className="logo" onClick={() => setIsMenuOpen(false)}>
           <div className="logo-icon">
   <img 
-    src="/images/logo-homesherut.png" 
-    alt="HomeSherut" 
+    src="/images/logo-homesherut.jpg" 
+    alt="AllSherut" 
     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
   />
 </div>
             <div className="logo-text">
-              <div className="logo-main">HomeSherut</div>
+              <div className="logo-main">AllSherut</div>
               <div className="logo-sub">{t('common.tagline')}</div>
             </div>
           </Link>
