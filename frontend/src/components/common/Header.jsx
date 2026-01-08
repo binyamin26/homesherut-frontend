@@ -13,6 +13,7 @@ const Header = () => {
   const [showMobileServices, setShowMobileServices] = useState(false)
   const { user, isAuthenticated, logout } = useAuth()
   const navigate = useNavigate()
+  const [showLangDropdown, setShowLangDropdown] = useState(false)
   
   const { t, changeLanguage, currentLanguage } = useLanguage()
 
@@ -159,17 +160,34 @@ const languages = [
               </div>
             )}
 
-            {/* Language flags - mobile */}
-<div className="header-language-flags">
-  {languages.map((lang) => (
-    <button
-      key={lang.code}
-      onClick={() => changeLanguage(lang.code)}
-      className={`header-flag-btn ${currentLanguage === lang.code ? 'active' : ''}`}
-    >
-      <img src={lang.flag} alt={lang.alt} />
-    </button>
-  ))}
+ {/* Language dropdown - mobile */}
+<div className="header-language-dropdown">
+  <button 
+    className="header-language-trigger"
+    onClick={() => setShowLangDropdown(!showLangDropdown)}
+  >
+    <img 
+      src={languages.find(l => l.code === currentLanguage)?.flag} 
+      alt={currentLanguage} 
+    />
+    <span className={`lang-arrow ${showLangDropdown ? 'open' : ''}`}>▼</span>
+  </button>
+  {showLangDropdown && (
+    <div className="header-language-menu">
+      {languages.filter(l => l.code !== currentLanguage).map((lang) => (
+        <button
+          key={lang.code}
+          onClick={() => {
+            changeLanguage(lang.code);
+            setShowLangDropdown(false);
+          }}
+          className="header-language-option"
+        >
+          <img src={lang.flag} alt={lang.alt} />
+        </button>
+      ))}
+    </div>
+  )}
 </div>
 
             {/* Mobile menu button */}
@@ -259,18 +277,7 @@ const languages = [
                 </>
               )}
             </div>
-            {/* Language selector mobile */}
-<div className="mobile-language-selector">
-  {languages.map((lang) => (
-    <button
-      key={lang.code}
-      onClick={() => changeLanguage(lang.code)}
-      className={`mobile-flag-btn ${currentLanguage === lang.code ? 'active' : ''}`}
-    >
-      <img src={lang.flag} alt={lang.alt} />
-    </button>
-  ))}
-</div>
+  
           </div>
         </div>
       </header>
