@@ -639,3 +639,21 @@ body {
     left: auto;
   }
 }
+
+/* Afficher le dropdown langue seulement sur desktop OU mobile selon le contexte */
+.header-language-dropdown.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Cacher le dropdown dans le nav (car le nav est caché) */
+  nav .header-language-dropdown {
+    display: none !important;
+  }
+  
+  /* Afficher le dropdown mobile */
+  .header-language-dropdown.mobile-only {
+    display: flex !important;
+    margin-left: 0.5rem;
+  }
+}
