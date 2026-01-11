@@ -718,6 +718,12 @@ case 'petcare':
         if (!serviceDetails.levels || serviceDetails.levels.length === 0) newErrors['serviceDetails.levels'] = 'יש לבחור רמות לימוד';
         if (!serviceDetails.qualifications) newErrors['serviceDetails.qualifications'] = 'השכלה/הסמכות נדרשות';
         if (!serviceDetails.teachingMode) newErrors['serviceDetails.teachingMode'] = 'אופן הוראה נדרש';
+        if (!serviceDetails.availability_days || serviceDetails.availability_days.length === 0) {
+  newErrors['serviceDetails.availability_days'] = 'יש לבחור ימי זמינות';
+}
+if (!serviceDetails.availability_hours || serviceDetails.availability_hours.length === 0) {
+  newErrors['serviceDetails.availability_hours'] = 'יש לבחור שעות זמינות';
+}
         break;
 
      case 'eldercare':
@@ -799,6 +805,12 @@ case 'laundry':
         if (!serviceDetails.experience) newErrors['serviceDetails.experience'] = 'שנות ניסיון נדרשות';
         if (!serviceDetails.management_type || serviceDetails.management_type.length === 0) {
           newErrors['serviceDetails.management_type'] = 'יש לבחור לפחות סוג ניהול אחד';
+          if (!serviceDetails.availability_days || serviceDetails.availability_days.length === 0) {
+  newErrors['serviceDetails.availability_days'] = 'יש לבחור ימי זמינות';
+}
+if (!serviceDetails.availability_hours || serviceDetails.availability_hours.length === 0) {
+  newErrors['serviceDetails.availability_hours'] = 'יש לבחור שעות זמינות';
+}
         }
         break;
 
@@ -1194,7 +1206,9 @@ case 'glass_works':
 
     }
 
-  setErrors(newErrors);
+// Juste avant setErrors(newErrors);
+console.log('📋 VRAIES ERREURS newErrors:', JSON.stringify(newErrors));
+setErrors(newErrors);
     
     if (Object.keys(newErrors).length > 0) {
       setTimeout(() => {
@@ -1484,6 +1498,7 @@ const handleStep2Submit = (e) => {
       const isValid = validateStep2();
       console.log('✅ Validation result:', isValid);
       console.log('❌ Errors après validation:', errors);
+      console.log('❌ Errors après validation:', JSON.stringify(errors));
       
       if (!isValid) {
         console.log('❌ Validation échouée - arrêt');

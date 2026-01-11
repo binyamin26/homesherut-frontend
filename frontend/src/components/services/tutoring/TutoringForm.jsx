@@ -104,6 +104,68 @@ const { t, currentLanguage } = useLanguage();
                     />
                     {errors['serviceDetails.experience'] && <span className="error-text">{errors['serviceDetails.experience']}</span>}
                 </div>
+
+                {/* JOURS DE DISPONIBILITÉ */}
+<div className="input-group">
+  <label>{t('serviceForm.common.availabilityDays')}</label>
+  <div className="checkbox-group" data-field="availability_days">
+    {[
+      { value: 'ראשון', label: t('days.sunday') },
+      { value: 'שני', label: t('days.monday') },
+      { value: 'שלישי', label: t('days.tuesday') },
+      { value: 'רביעי', label: t('days.wednesday') },
+      { value: 'חמישי', label: t('days.thursday') },
+      { value: 'שישי', label: t('days.friday') },
+      { value: 'שבת', label: t('days.saturday') }
+    ].map(day => (
+      <label key={day.value} className="checkbox-item">
+        <input
+          type="checkbox"
+          checked={serviceDetails.availability_days?.includes(day.value) || false}
+          onChange={(e) => {
+            const current = serviceDetails.availability_days || [];
+            const newDays = e.target.checked 
+              ? [...current, day.value]
+              : current.filter(d => d !== day.value);
+            handleServiceDetailsChange('availability_days', newDays);
+          }}
+        />
+        {day.label}
+      </label>
+    ))}
+  </div>
+  {errors['serviceDetails.availability_days'] && <span className="error-text">{errors['serviceDetails.availability_days']}</span>}
+</div>
+
+{/* HEURES DE DISPONIBILITÉ */}
+<div className="input-group">
+  <label>{t('serviceForm.common.availabilityHours')}</label>
+  <div className="checkbox-group" data-field="availability_hours">
+    {[
+      { value: 'בוקר', label: t('hours.morning') },
+      { value: 'צהריים', label: t('hours.noon') },
+      { value: 'אחר הצהריים', label: t('hours.afternoon') },
+      { value: 'ערב', label: t('hours.evening') },
+      { value: 'לילה', label: t('hours.night') }
+    ].map(hour => (
+      <label key={hour.value} className="checkbox-item">
+        <input
+          type="checkbox"
+          checked={serviceDetails.availability_hours?.includes(hour.value) || false}
+          onChange={(e) => {
+            const current = serviceDetails.availability_hours || [];
+            const newHours = e.target.checked 
+              ? [...current, hour.value]
+              : current.filter(h => h !== hour.value);
+            handleServiceDetailsChange('availability_hours', newHours);
+          }}
+        />
+        {hour.label}
+      </label>
+    ))}
+  </div>
+  {errors['serviceDetails.availability_hours'] && <span className="error-text">{errors['serviceDetails.availability_hours']}</span>}
+</div>
                 
                 {/* MATIÈRES - Chargées depuis la DB */}
                 <div className="input-group">

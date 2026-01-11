@@ -65,6 +65,38 @@ const EldercareForm = ({ serviceDetails, errors, handleServiceDetailsChange, han
           {errors['serviceDetails.certification'] && <span className="error-text">{errors['serviceDetails.certification']}</span>}
         </div>
 
+        {/* JOURS DE DISPONIBILITÉ */}
+<div className="input-group">
+  <label>{t('serviceForm.common.availabilityDays')}</label>
+  <div className="checkbox-group" data-field="availability_days">
+    {[
+      { value: 'ראשון', label: t('days.sunday') },
+      { value: 'שני', label: t('days.monday') },
+      { value: 'שלישי', label: t('days.tuesday') },
+      { value: 'רביעי', label: t('days.wednesday') },
+      { value: 'חמישי', label: t('days.thursday') },
+      { value: 'שישי', label: t('days.friday') },
+      { value: 'שבת', label: t('days.saturday') }
+    ].map(day => (
+      <label key={day.value} className="checkbox-item">
+        <input
+          type="checkbox"
+          checked={serviceDetails.availability_days?.includes(day.value) || false}
+          onChange={(e) => {
+            const current = serviceDetails.availability_days || [];
+            const newDays = e.target.checked 
+              ? [...current, day.value]
+              : current.filter(d => d !== day.value);
+            handleServiceDetailsChange('availability_days', newDays);
+          }}
+        />
+        {day.label}
+      </label>
+    ))}
+  </div>
+  {errors['serviceDetails.availability_days'] && <span className="error-text">{errors['serviceDetails.availability_days']}</span>}
+</div>
+
 <div className="input-group">
           <label>{t('serviceForm.eldercare.availability')}</label>
           <div className="checkbox-group" data-field="availability_hours">

@@ -84,12 +84,12 @@ const translations = {
 
     // HomePage - Hero
     'homepage.hero.tagline': 'כל השירותים בבית אחד',
-    'homepage.hero.description1': 'מחפשים שירות לבית? ב־HomeSherut תמצאו את כל שירותי הבית במקום אחד — ניקיון, גינון, שיעורים פרטיים, עזרה לאזרחים ותיקים, שף פרטי, ניהול נכסים ועוד מגוון גדול של שירותים. הכול עם ספקים אמינים, דירוגים, ביקורות ומידע מלא שמאפשר לכם לבחור בביטחון.',
+    'homepage.hero.description1': 'מחפשים שירות לבית? ב־AllSherut תמצאו את כל שירותי הבית במקום אחד — ניקיון, גינון, שיעורים פרטיים, עזרה לאזרחים ותיקים, שף פרטי, ניהול נכסים ועוד מגוון גדול של שירותים. הכול עם ספקים אמינים, דירוגים, ביקורות ומידע מלא שמאפשר לכם לבחור בביטחון.',
     'homepage.hero.description2': 'אם אתם ספקים — זו ההזדמנות שלכם להגיע ליותר לקוחות, להציג את השירותים שלכם, ולקבל הזמנות ישירות דרך הפלטפורמה.',
     
     // HomePage - Clients Section
     'homepage.clients.title': 'ללקוחות',
-    'homepage.clients.subtitle': 'ב־HomeSherut אין יותר צורך להסתבך או לבזבז זמן על חיפושים אינסופיים',
+    'homepage.clients.subtitle': 'ב־AllSherut אין יותר צורך להסתבך או לבזבז זמן על חיפושים אינסופיים',
     'homepage.features.verified.title': 'ספקים מאומתים',
     'homepage.features.verified.description': 'מצאו ספקים אמינים עם דירוגים וביקורות אמיתיות מלקוחות קודמים',
     'homepage.features.centralized.title': 'מידע מרוכז',
@@ -106,7 +106,7 @@ const translations = {
     
     // HomePage - Providers Section
     'homepage.providers.title': 'לספקים',
-    'homepage.providers.subtitle': 'ב־HomeSherut אתם מקבלים גישה ישירה ליותר לקוחות — בלי מתווכים, בלי כאב ראש',
+    'homepage.providers.subtitle': 'ב־AllSherut אתם מקבלים גישה ישירה ליותר לקוחות — בלי מתווכים, בלי כאב ראש',
     'homepage.providers.profile.title': 'פרופיל מקצועי',
     'homepage.providers.profile.description': 'פתחו פרופיל אישי מרשים והציגו את כל השירותים שאתם מציעים',
     'homepage.providers.growth.title': 'הגדלת קהל יעד',
@@ -118,7 +118,7 @@ const translations = {
     
     // HomePage - CTA Section
     'homepage.cta.title': 'מוכנים להתחיל?',
-    'homepage.cta.description': 'הצטרפו כנותני שירות ל־HomeSherut ופתחו לעצמכם דלת ללקוחות חדשים. קבלו חודש ראשון חינם – הרשמה מהירה!',
+    'homepage.cta.description': 'הצטרפו כנותני שירות ל־AllSherut ופתחו לעצמכם דלת ללקוחות חדשים. קבלו חודש ראשון חינם – הרשמה מהירה!',
     'homepage.cta.searchServices': 'חפש שירותים',
     'homepage.cta.becomeProvider': 'הפוך לספק',
     'homepage.cta.register': 'הרשמו עכשיו',
@@ -253,7 +253,7 @@ const translations = {
     'footer.links.support': 'תמיכה',
     'footer.links.terms': 'תנאי שימוש',
     'footer.links.privacy': 'מדיניות פרטיות',
-    'footer.copyright': '© 2025 HomeSherut. כל הזכויות שמורות.',
+    'footer.copyright': '© 2026 AllSherut. כל הזכויות שמורות.',
 
     // Dashboard
     'dashboard.loading': 'טוען דשבורד...',
@@ -1468,7 +1468,7 @@ const translations = {
 
 // CTA Section
 'howItWorks.cta.title': 'מוכנים להתחיל?',
-'howItWorks.cta.subtitle': 'בין אם אתם מחפשים שירות או מציעים אחד - HomeSherut היא הפלטפורמה המושלמת עבורכם',
+'howItWorks.cta.subtitle': 'בין אם אתם מחפשים שירות או מציעים אחד - AllSherut היא הפלטפורמה המושלמת עבורכם',
 'howItWorks.cta.providerButton': 'אני נותן שירותים',
 'howItWorks.cta.clientButton': 'אני מחפש שירות',
 
@@ -2205,7 +2205,7 @@ const translations = {
 'serviceForm.waterproofing.inspectionTypes.thermalImaging': 'צילום תרמי לאיתור נזילות',
 
 // Success Modal
-'success.title': '🎉 ברוכים הבאים ל-HomeSherut!',
+'success.title': '🎉 ברוכים הבאים ל-AllSherut!',
 'success.subtitle': 'שלום {userName}, נרשמת בהצלחה כספק {serviceType}',
 'success.benefits.freeMonth': 'חודש ראשון חינמי לחלוטין',
 'success.benefits.professionalProfile': 'פרופיל מקצועי מלא ומוכן',
@@ -2645,12 +2645,12 @@ const translations = {
 
     // HomePage - Hero
     'homepage.hero.tagline': 'All services in one place',
-    'homepage.hero.description1': 'Looking for home services? At HomeSherut you\'ll find all home services in one place — cleaning, gardening, private lessons, senior care, private chef, property management and a wide variety of services. All with reliable providers, ratings, reviews and complete information that allows you to choose with confidence.',
+    'homepage.hero.description1': 'Looking for home services? At AllSherut you\'ll find all home services in one place — cleaning, gardening, private lessons, senior care, private chef, property management and a wide variety of services. All with reliable providers, ratings, reviews and complete information that allows you to choose with confidence.',
     'homepage.hero.description2': 'If you are a provider — this is your opportunity to reach more customers, showcase your services, and receive bookings directly through the platform.',
     
     // HomePage - Clients Section
     'homepage.clients.title': 'For Clients',
-    'homepage.clients.subtitle': 'With HomeSherut, no need to get complicated or waste time on endless searches',
+    'homepage.clients.subtitle': 'With AllSherut, no need to get complicated or waste time on endless searches',
     'homepage.features.verified.title': 'Verified Providers',
     'homepage.features.verified.description': 'Find reliable providers with ratings and genuine reviews from previous customers',
     'homepage.features.centralized.title': 'Centralized Information',
@@ -2667,7 +2667,7 @@ const translations = {
     
     // HomePage - Providers Section
     'homepage.providers.title': 'For Providers',
-    'homepage.providers.subtitle': 'With HomeSherut you get direct access to more customers — no middlemen, no headaches',
+    'homepage.providers.subtitle': 'With AllSherut you get direct access to more customers — no middlemen, no headaches',
     'homepage.providers.profile.title': 'Professional Profile',
     'homepage.providers.profile.description': 'Create an impressive personal profile and showcase all the services you offer',
     'homepage.providers.growth.title': 'Audience Growth',
@@ -2679,7 +2679,7 @@ const translations = {
     
     // HomePage - CTA Section
     'homepage.cta.title': 'Ready to Start?',
-    'homepage.cta.description':'Join HomeSherut as a service provider and open the door to new customers. Get your first month free – quick registration!',
+    'homepage.cta.description':'Join AllSherut as a service provider and open the door to new customers. Get your first month free – quick registration!',
     'homepage.cta.searchServices': 'Search Services',
     'homepage.cta.becomeProvider': 'Become Provider',
     'homepage.cta.register': 'Register Now',
@@ -2806,7 +2806,7 @@ const translations = {
     'footer.links.support': 'Support',
     'footer.links.terms': 'Terms of Service',
     'footer.links.privacy': 'Privacy Policy',
-    'footer.copyright': '© 2025 HomeSherut. All rights reserved.',
+    'footer.copyright': '© 2026 AllSherut. All rights reserved.',
 
     // Dashboard
     'dashboard.loading': 'Loading dashboard...',
@@ -4047,7 +4047,7 @@ const translations = {
 
 // CTA Section
 'howItWorks.cta.title': 'Ready to Get Started?',
-'howItWorks.cta.subtitle': 'Whether you\'re looking for a service or offering one - HomeSherut is the perfect platform for you',
+'howItWorks.cta.subtitle': 'Whether you\'re looking for a service or offering one - AllSherut is the perfect platform for you',
 'howItWorks.cta.providerButton': 'I\'m a Service Provider',
 'howItWorks.cta.clientButton': 'I\'m Looking for a Service',
 
@@ -4794,7 +4794,7 @@ const translations = {
 'serviceForm.waterproofing.inspectionTypes.thermalImaging': 'Thermal imaging for leak detection',
 
 // Success Modal
-'success.title': '🎉 Welcome to HomeSherut!',
+'success.title': '🎉 Welcome to AllSherut!',
 'success.subtitle': 'Hello {userName}, you have successfully registered as a {serviceType} provider',
 'success.benefits.freeMonth': 'First month completely free',
 'success.benefits.professionalProfile': 'Complete professional profile ready to go',
@@ -5218,10 +5218,10 @@ const translations = {
 
     // HomePage sections
     'homepage.hero.tagline': 'Все услуги в одном месте',
-    'homepage.hero.description1': 'Ищете услуги для дома? В HomeSherut вы найдёте все домашние услуги в одном месте — уборка, садоводство, частные уроки, помощь пожилым, частный повар, управление недвижимостью и большое разнообразие услуг. Всё с надёжными поставщиками, рейтингами, отзывами и полной информацией для уверенного выбора.',
+    'homepage.hero.description1': 'Ищете услуги для дома? В AllSherut вы найдёте все домашние услуги в одном месте — уборка, садоводство, частные уроки, помощь пожилым, частный повар, управление недвижимостью и большое разнообразие услуг. Всё с надёжными поставщиками, рейтингами, отзывами и полной информацией для уверенного выбора.',
     'homepage.hero.description2': 'Если вы поставщик услуг — это ваша возможность привлечь больше клиентов, продемонстрировать свои услуги и получать заказы напрямую через платформу.',
     'homepage.clients.title': 'Для клиентов',
-    'homepage.clients.subtitle': 'С HomeSherut нет необходимости усложнять или тратить время на бесконечные поиски',
+    'homepage.clients.subtitle': 'С AllSherut нет необходимости усложнять или тратить время на бесконечные поиски',
     'homepage.features.verified.title': 'Проверенные поставщики',
     'homepage.features.verified.description': 'Найдите надежных поставщиков с рейтингами и подлинными отзывами от предыдущих клиентов',
     'homepage.features.centralized.title': 'Централизованная информация',
@@ -5234,7 +5234,7 @@ const translations = {
     'homepage.services.subtitle': 'Широкий спектр профессиональных услуг для любых потребностей и везде в Израиле',
     'homepage.services.findProvider': 'Найти поставщика',
     'homepage.providers.title': 'Для поставщиков',
-    'homepage.providers.subtitle': 'С HomeSherut вы получаете прямой доступ к большему количеству клиентов — без посредников, без головной боли',
+    'homepage.providers.subtitle': 'С AllSherut вы получаете прямой доступ к большему количеству клиентов — без посредников, без головной боли',
     'homepage.providers.profile.title': 'Профессиональный профиль',
     'homepage.providers.profile.description': 'Создайте впечатляющий личный профиль и продемонстрируйте все услуги, которые вы предлагаете',
     'homepage.providers.growth.title': 'Рост аудитории',
@@ -5244,7 +5244,7 @@ const translations = {
     'homepage.providers.management.title': 'Простое управление',
     'homepage.providers.management.description': 'Управляйте своей доступностью и ценами легко через платформу',
     'homepage.cta.title': 'Готовы начать?',
-    'homepage.cta.description': 'Присоединяйтесь к HomeSherut как поставщик услуг и откройте дверь к новым клиентам. Получите первый месяц бесплатно – быстрая регистрация!',
+    'homepage.cta.description': 'Присоединяйтесь к AllSherut как поставщик услуг и откройте дверь к новым клиентам. Получите первый месяц бесплатно – быстрая регистрация!',
     'homepage.cta.searchServices': 'Поиск услуг',
     'homepage.cta.becomeProvider': 'Стать поставщиком',
     'homepage.cta.register': 'Зарегистрироваться',
@@ -5371,7 +5371,7 @@ const translations = {
     'footer.links.support': 'Поддержка',
     'footer.links.terms': 'Условия использования',
     'footer.links.privacy': 'Политика конфиденциальности',
-    'footer.copyright': '© 2025 HomeSherut. Все права защищены.',
+    'footer.copyright': '© 2026 AllSherut. Все права защищены.',
 
     // Dashboard
     'dashboard.loading': 'Загрузка панели управления...',
@@ -6595,7 +6595,7 @@ const translations = {
 
 // CTA Section
 'howItWorks.cta.title': 'Готовы начать?',
-'howItWorks.cta.subtitle': 'Ищете ли вы услугу или предлагаете её - HomeSherut идеальная платформа для вас',
+'howItWorks.cta.subtitle': 'Ищете ли вы услугу или предлагаете её - AllSherut идеальная платформа для вас',
 'howItWorks.cta.providerButton': 'Я поставщик услуг',
 'howItWorks.cta.clientButton': 'Я ищу услугу',
 
@@ -7333,7 +7333,7 @@ const translations = {
 'serviceForm.waterproofing.inspectionTypes.thermalImaging': 'Тепловизионная съемка для обнаружения утечек',
 
 // Success Modal
-'success.title': '🎉 Добро пожаловать в HomeSherut!',
+'success.title': '🎉 Добро пожаловать в AllSherut!',
 'success.subtitle': 'Здравствуйте, {userName}, вы успешно зарегистрированы как поставщик услуг {serviceType}',
 'success.benefits.freeMonth': 'Первый месяц полностью бесплатно',
 'success.benefits.professionalProfile': 'Полный профессиональный профиль готов',
@@ -7763,12 +7763,12 @@ const translations = {
     
     // HomePage - Hero
     'homepage.hero.tagline': 'Tous les services en un seul endroit',
-   'homepage.hero.description1': 'Vous cherchez un service à domicile ? Chez HomeSherut, vous trouverez tous les services à domicile en un seul endroit — ménage, jardinage, cours particuliers, aide aux seniors, chef privé, gestion immobilière et une grande variété de services. Le tout avec des prestataires fiables, des notes, des avis et des informations complètes pour choisir en toute confiance.',
+   'homepage.hero.description1': 'Vous cherchez un service à domicile ? Chez AllSherut, vous trouverez tous les services à domicile en un seul endroit — ménage, jardinage, cours particuliers, aide aux seniors, chef privé, gestion immobilière et une grande variété de services. Le tout avec des prestataires fiables, des notes, des avis et des informations complètes pour choisir en toute confiance.',
     'homepage.hero.description2': 'Si vous êtes prestataire — c\'est votre opportunité d\'atteindre plus de clients, de présenter vos services et de recevoir des réservations directement via la plateforme.',
     
     // HomePage - Clients Section
     'homepage.clients.title': 'Pour les clients',
-    'homepage.clients.subtitle': 'Avec HomeSherut, plus besoin de se compliquer ou de perdre du temps dans des recherches infinies',
+    'homepage.clients.subtitle': 'Avec AllSherut, plus besoin de se compliquer ou de perdre du temps dans des recherches infinies',
     'homepage.features.verified.title': 'Prestataires vérifiés',
     'homepage.features.verified.description': 'Trouvez des prestataires fiables avec des notes et des avis authentiques d\'anciens clients',
     'homepage.features.centralized.title': 'Information centralisée',
@@ -7785,7 +7785,7 @@ const translations = {
     
     // HomePage - Providers Section
     'homepage.providers.title': 'Pour les prestataires',
-    'homepage.providers.subtitle': 'Avec HomeSherut vous obtenez un accès direct à plus de clients — sans intermédiaires, sans maux de tête',
+    'homepage.providers.subtitle': 'Avec AllSherut vous obtenez un accès direct à plus de clients — sans intermédiaires, sans maux de tête',
     'homepage.providers.profile.title': 'Profil professionnel',
     'homepage.providers.profile.description': 'Créez un profil personnel impressionnant et présentez tous les services que vous offrez',
     'homepage.providers.growth.title': 'Croissance d\'audience',
@@ -7797,7 +7797,7 @@ const translations = {
     
     // HomePage - CTA Section
     'homepage.cta.title': 'Prêt à commencer ?',
-    'homepage.cta.description':'Rejoignez HomeSherut en tant que prestataire de services et ouvrez la porte à de nouveaux clients. Premier mois gratuit – inscription rapide !',
+    'homepage.cta.description':'Rejoignez AllSherut en tant que prestataire de services et ouvrez la porte à de nouveaux clients. Premier mois gratuit – inscription rapide !',
     'homepage.cta.searchServices': 'Rechercher services',
     'homepage.cta.becomeProvider': 'Devenir prestataire',
     'homepage.cta.register': 'S\'inscrire maintenant',
@@ -7924,7 +7924,7 @@ const translations = {
     'footer.links.support': 'Support',
     'footer.links.terms': 'Conditions d\'utilisation',
     'footer.links.privacy': 'Politique de confidentialité',
-    'footer.copyright': '© 2025 HomeSherut. Tous droits réservés.',
+    'footer.copyright': '© 2026 AllSherut. Tous droits réservés.',
 
     // Dashboard
     'dashboard.loading': 'Chargement du tableau de bord...',
@@ -9160,7 +9160,7 @@ const translations = {
 
 // CTA Section
 'howItWorks.cta.title': 'Prêt à commencer ?',
-'howItWorks.cta.subtitle': 'Que vous cherchiez un service ou que vous en proposiez un - HomeSherut est la plateforme parfaite pour vous',
+'howItWorks.cta.subtitle': 'Que vous cherchiez un service ou que vous en proposiez un - AllSherut est la plateforme parfaite pour vous',
 'howItWorks.cta.providerButton': 'Je suis prestataire',
 'howItWorks.cta.clientButton': 'Je cherche un service',
 
@@ -9897,7 +9897,7 @@ const translations = {
 'serviceForm.waterproofing.inspectionTypes.thermalImaging': 'Imagerie thermique pour détection de fuites',
 
 // Success Modal
-'success.title': '🎉 Bienvenue sur HomeSherut !',
+'success.title': '🎉 Bienvenue sur AllSherut !',
 'success.subtitle': 'Bonjour {userName}, vous êtes inscrit avec succès en tant que prestataire {serviceType}',
 'success.benefits.freeMonth': 'Premier mois entièrement gratuit',
 'success.benefits.professionalProfile': 'Profil professionnel complet et prêt',
@@ -10281,10 +10281,32 @@ export const LanguageProvider = ({ children }) => {
     setDirection(langConfig[savedLanguage] || 'rtl');
   }, []);
 
-  // Fonction de traduction
-  const t = (key, fallback = key) => {
-    return translations[currentLanguage]?.[key] || fallback;
-  };
+  
+  // Fonction de traduction avec support des variables
+const t = (key, paramsOrFallback = null) => {
+  let translation = translations[currentLanguage]?.[key];
+  
+  // Si pas de traduction trouvée
+  if (!translation) {
+    // Si paramsOrFallback est une string, c'est un fallback
+    if (typeof paramsOrFallback === 'string') {
+      return paramsOrFallback;
+    }
+    return key;
+  }
+  
+  // Si paramsOrFallback est un objet, faire l'interpolation des variables
+  if (paramsOrFallback && typeof paramsOrFallback === 'object') {
+    Object.keys(paramsOrFallback).forEach(paramKey => {
+      translation = translation.replace(
+        new RegExp(`\\{${paramKey}\\}`, 'g'), 
+        paramsOrFallback[paramKey]
+      );
+    });
+  }
+  
+  return translation;
+};
 
   // Changer de langue programmatiquement
   const changeLanguage = (langCode) => {
