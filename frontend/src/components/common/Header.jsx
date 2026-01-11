@@ -13,8 +13,20 @@ const Header = () => {
   const [showMobileServices, setShowMobileServices] = useState(false)
   const { user, isAuthenticated, logout } = useAuth()
   const navigate = useNavigate()
-  const [showLangDropdown, setShowLangDropdown] = useState(false)
+const [showLangDropdown, setShowLangDropdown] = useState(false)
   
+  // Fermer le dropdown au clic extérieur
+  React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showLangDropdown && !event.target.closest('.header-language-dropdown')) {
+        setShowLangDropdown(false);
+      }
+    };
+    
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showLangDropdown]);
+
   const { t, changeLanguage, currentLanguage } = useLanguage()
 
 const languages = [
@@ -98,23 +110,52 @@ const languages = [
               <div className="logo-sub">{t('common.tagline')}</div>
             </div>
           </Link>
+<nav>
+  {/* Language dropdown - AVANT Accueil pour qu'il apparaisse entre Accueil et Services en RTL */}
+  <div className="header-language-dropdown">
+    <button 
+      className="header-language-trigger"
+      onClick={() => setShowLangDropdown(!showLangDropdown)}
+    >
+      <img 
+        src={languages.find(l => l.code === currentLanguage)?.flag} 
+        alt={currentLanguage} 
+      />
+      <span className={`lang-arrow ${showLangDropdown ? 'open' : ''}`}>▼</span>
+    </button>
+    {showLangDropdown && (
+      <div className="header-language-menu">
+        {languages.filter(l => l.code !== currentLanguage).map((lang) => (
+          <button
+            key={lang.code}
+            onClick={() => {
+              changeLanguage(lang.code);
+              setShowLangDropdown(false);
+            }}
+            className="header-language-option"
+          >
+            <img src={lang.flag} alt={lang.alt} />
+          </button>
+        ))}
+      </div>
+    )}
+  </div>
 
-       <nav>
   <Link to="/" className="nav-link">{t('nav.home')}</Link>
   
-  <div className="services-dropdown">  {/* ← CHANGÉ */}
- <div className="services-dropdown-trigger nav-link">
+  <div className="services-dropdown">
+    <div className="services-dropdown-trigger nav-link">
       {t('nav.services')}
       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
         <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
       </svg>
     </div>
-    <div className="services-dropdown-menu">  {/* ← CHANGÉ */}
+    <div className="services-dropdown-menu">
       {services.map((service, index) => (
-        <Link key={index} to={service.href} className="services-dropdown-item" onClick={() => setIsMenuOpen(false)}>  {/* ← CHANGÉ */}
+        <Link key={index} to={service.href} className="services-dropdown-item" onClick={() => setIsMenuOpen(false)}>
           <div className="dropdown-icon">{service.icon}</div>
           <div className="dropdown-content">
-         <h4>{t(service.nameKey)}</h4>
+            <h4>{t(service.nameKey)}</h4>
             <p>{t(service.descKey)}</p>
           </div>
         </Link>
@@ -122,7 +163,7 @@ const languages = [
     </div>
   </div>
   
-<Link to="/contact" className="nav-link">{t('nav.contact')}</Link>
+  <Link to="/contact" className="nav-link">{t('nav.contact')}</Link>
 </nav>
 
           {/* Auth Buttons */}
@@ -159,36 +200,6 @@ const languages = [
                 </button>
               </div>
             )}
-
- {/* Language dropdown - mobile */}
-<div className="header-language-dropdown">
-  <button 
-    className="header-language-trigger"
-    onClick={() => setShowLangDropdown(!showLangDropdown)}
-  >
-    <img 
-      src={languages.find(l => l.code === currentLanguage)?.flag} 
-      alt={currentLanguage} 
-    />
-    <span className={`lang-arrow ${showLangDropdown ? 'open' : ''}`}>▼</span>
-  </button>
-  {showLangDropdown && (
-    <div className="header-language-menu">
-      {languages.filter(l => l.code !== currentLanguage).map((lang) => (
-        <button
-          key={lang.code}
-          onClick={() => {
-            changeLanguage(lang.code);
-            setShowLangDropdown(false);
-          }}
-          className="header-language-option"
-        >
-          <img src={lang.flag} alt={lang.alt} />
-        </button>
-      ))}
-    </div>
-  )}
-</div>
 
             {/* Mobile menu button */}
             <button
