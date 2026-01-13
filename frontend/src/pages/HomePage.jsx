@@ -95,7 +95,7 @@ useEffect(() => {
     {
       id: 'babysitting',
       name: t('services.babysitting'),
-      image: 'public/images/babysite.png',
+      image: '/images//babysite.png',
       description: t('services.babysitting.desc'),
       color: 'from-pink-500 to-rose-600',
       href: '/services/babysitting'
@@ -103,7 +103,7 @@ useEffect(() => {
     {
       id: 'cleaning',
       name: t('services.cleaning'),
-      image: 'public/images/nikayon.jpg',
+      image: '/images//nikayon.jpg',
       description: t('services.cleaning.desc'),
       color: 'from-cyan-500 to-blue-600',
       href: '/services/cleaning'
@@ -111,7 +111,7 @@ useEffect(() => {
     {
       id: 'gardening',
       name: t('services.gardening'),
-      image: 'public/images/jardinage.jpg',
+      image: '/images//jardinage.jpg',
       description: t('services.gardening.desc'),
       color: 'from-green-500 to-emerald-600',
       href: '/services/gardening'
@@ -119,7 +119,7 @@ useEffect(() => {
     {
       id: 'petcare',
       name: t('services.petcare'),
-     image: 'public/images/chien.jpg',
+     image: '/images//chien.jpg',
       description: t('services.petcare.desc'),
       color: 'from-orange-500 to-amber-600',
       href: '/services/petcare'
@@ -127,7 +127,7 @@ useEffect(() => {
     {
       id: 'tutoring',
       name: t('services.tutoring'),
-     image: 'public/images/tutoring.png',
+     image: '/images//tutoring.png',
       description: t('services.tutoring.desc'),
       color: 'from-blue-500 to-indigo-600',
       href: '/services/tutoring'
@@ -135,7 +135,7 @@ useEffect(() => {
     {
       id: 'eldercare',
       name: t('services.eldercare'),
-     image: 'public/images/eldercare.png',
+     image: '/images//eldercare.png',
       description: t('services.eldercare.desc'),
       color: 'from-purple-500 to-violet-600',
       href: '/services/eldercare'
@@ -143,7 +143,7 @@ useEffect(() => {
     {
       id: 'laundry',
       name: t('services.laundry'),
-     image: 'public/images/kvissa.jpg',
+     image: '/images//kvissa.jpg',
       description: t('services.laundry.desc'),
       color: 'from-blue-400 to-cyan-600',
       href: '/services/laundry'
@@ -151,7 +151,7 @@ useEffect(() => {
     {
       id: 'property_management',
       name: t('services.property_management'),
-       image: 'public/images/nihoul dirot.jpg',
+       image: '/images//nihoul dirot.jpg',
       description: t('services.property_management.desc'),
       color: 'from-indigo-500 to-purple-600',
       href: '/services/property-management'
@@ -159,7 +159,7 @@ useEffect(() => {
 {
       id: 'electrician',
       name: t('services.electrician'),
-      image: 'public/images/electrician.jpg',
+      image: '/images//electrician.jpg',
       description: t('services.electrician.desc'),
       color: 'from-yellow-500 to-orange-600',
       href: '/services/electrician'
@@ -167,7 +167,7 @@ useEffect(() => {
     {
       id: 'plumbing',
       name: t('services.plumbing'),
-      image: 'public/images/plombier.jpg',
+      image: '/images//plombier.jpg',
       description: t('services.plumbing.desc'),
       color: 'from-teal-500 to-cyan-600',
       href: '/services/plumbing'
@@ -175,7 +175,7 @@ useEffect(() => {
     {
       id: 'air_conditioning',
       name: t('services.air_conditioning'),
-      image: 'public/images/clim.png',
+      image: '/images//clim.png',
       description: t('services.air_conditioning.desc'),
       color: 'from-sky-500 to-blue-600',
       href: '/services/air-conditioning'
@@ -183,7 +183,7 @@ useEffect(() => {
     {
       id: 'gas_technician',
       name: t('services.gas_technician'),
-      image: 'public/images/gaz.jpg',
+      image: '/images//gaz.jpg',
       description: t('services.gas_technician.desc'),
       color: 'from-red-500 to-orange-600',
       href: '/services/gas-technician'
@@ -191,7 +191,7 @@ useEffect(() => {
     {
       id: 'drywall',
       name: t('services.drywall'),
-      image: 'public/images/guevess.png',
+      image: '/images//guevess.png',
       description: t('services.drywall.desc'),
       color: 'from-gray-500 to-slate-600',
       href: '/services/drywall'
@@ -199,7 +199,7 @@ useEffect(() => {
     {
       id: 'carpentry',
       name: t('services.carpentry'),
-      image: 'public/images/menuisier.png',
+      image: '/images//menuisier.png',
       description: t('services.carpentry.desc'),
       color: 'from-amber-600 to-brown-700',
       href: '/services/carpentry'
@@ -207,7 +207,7 @@ useEffect(() => {
     {
       id: 'home_organization',
       name: t('services.home_organization'),
-      image: 'public/images/rangement.jpg',
+      image: '/images//rangement.jpg',
       description: t('services.home_organization.desc'),
       color: 'from-violet-500 to-fuchsia-600',
       href: '/services/home-organization'
@@ -215,7 +215,7 @@ useEffect(() => {
     {
       id: 'event_entertainment',
       name: t('services.event_entertainment'),
-      image: 'public/images/fetes1.jpg',
+      image: '/images//fetes1.jpg',
       description: t('services.event_entertainment.desc'),
       color: 'from-pink-500 to-purple-600',
       href: '/services/event-entertainment'
@@ -223,7 +223,7 @@ useEffect(() => {
     {
       id: 'private_chef',
       name: t('services.private_chef'),
-      image: 'public/images/pizza.png',
+      image: '/images//pizza.png',
       description: t('services.private_chef.desc'),
       color: 'from-amber-500 to-yellow-600',
       href: '/services/private-chef'
@@ -231,7 +231,7 @@ useEffect(() => {
     {
       id: 'painting',
       name: t('services.painting'),
-      image: 'public/images/peinture.jpg',
+      image: '/images//peinture.jpg',
       description: t('services.painting.desc'),
       color: 'from-violet-500 to-purple-600',
       href: '/services/painting'
@@ -239,7 +239,7 @@ useEffect(() => {
     {
       id: 'waterproofing',
       name: t('services.waterproofing'),
-      image: 'public/images/itoum.jpg',
+      image: '/images//itoum.jpg',
       description: t('services.waterproofing.desc'),
       color: 'from-blue-600 to-cyan-700',
       href: '/services/waterproofing'
@@ -247,7 +247,7 @@ useEffect(() => {
     {
       id: 'contractor',
       name: t('services.contractor'),
-      image: 'public/images/kablan.png',
+      image: '/images//kablan.png',
       description: t('services.contractor.desc'),
       color: 'from-orange-600 to-amber-700',
       href: '/services/contractor'
@@ -255,7 +255,7 @@ useEffect(() => {
     {
       id: 'aluminum',
       name: t('services.aluminum'),
-      image: 'public/images/aluminium.png',
+      image: '/images//aluminium.png',
       description: t('services.aluminum.desc'),
       color: 'from-slate-400 to-gray-600',
       href: '/services/aluminum'
@@ -263,7 +263,7 @@ useEffect(() => {
     {
       id: 'glass_works',
       name: t('services.glass_works'),
-      image: 'public/images/verre.png',
+      image: '/images//verre.png',
       description: t('services.glass_works.desc'),
       color: 'from-slate-400 to-gray-500',
       href: '/services/glass-works'
@@ -271,7 +271,7 @@ useEffect(() => {
     {
       id: 'locksmith',
       name: t('services.locksmith'),
-      image: 'public/images/serrure.png',
+      image: '/images//serrure.png',
       description: t('services.locksmith.desc'),
       color: 'from-amber-500 to-yellow-600',
       href: '/services/locksmith'
