@@ -1,7 +1,7 @@
 class ApiService {
   constructor() {
     // On s'assure que VITE_API_URL est la priorité absolue
-    this.baseURL = import.meta.env.VITE_API_URL;
+  this.baseURL = 'https://homesherut-backend.onrender.com/api';
     this.defaultHeaders = {
       'Content-Type': 'application/json',
     };
