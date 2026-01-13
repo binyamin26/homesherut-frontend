@@ -24,30 +24,32 @@ class ApiService {
 
   // Méthode générique pour les requêtes
 async request(endpoint, options = {}) {
-  // On force l'URL complète sans passer par baseURL pour tester
-  const url = `https://homesherut-backend.onrender.com/api${endpoint}`;
-  console.log("🚀 Tentative d'appel vers :", url);
+  // On définit l'URL en dur pour être certain à 100%
+  const fullURL = `https://homesherut-backend.onrender.com/api${endpoint}`;
+  
+  console.log("🚀 APPEL FORCÉ VERS :", fullURL);
+
+  const config = {
+    ...options,
+    headers: this.getAuthHeaders(),
+  };
 
   try {
-    const response = await fetch(url, {
-      ...options,
-      headers: this.getAuthHeaders()
-    });
-      
-      // Gestion automatique de la déconnexion si token expiré
-      if (response.status === 401) {
-        localStorage.removeItem('homesherut_token');
-        window.location.href = '/';
-        return null;
-      }
-
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error(`❌ Erreur API ${endpoint}:`, error);
-      throw new Error('שגיאת חיבור לשרת');
+    const response = await fetch(fullURL, config);
+    
+    if (response.status === 401) {
+      localStorage.removeItem('homesherut_token');
+      window.location.href = '/';
+      return null;
     }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`❌ Erreur API sur ${fullURL}:`, error);
+    throw new Error('שגיאת חיבור לשרת');
   }
+}
 
   // =============================================
   // AUTHENTIFICATION
