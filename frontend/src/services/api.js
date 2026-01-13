@@ -23,15 +23,16 @@ class ApiService {
   }
 
   // Méthode générique pour les requêtes
-  async request(endpoint, options = {}) {
-    const url = `${this.baseURL}${endpoint}`;
-    const config = {
-      headers: this.getAuthHeaders(),
-      ...options,
-    };
+async request(endpoint, options = {}) {
+  // On force l'URL complète sans passer par baseURL pour tester
+  const url = `https://homesherut-backend.onrender.com/api${endpoint}`;
+  console.log("🚀 Tentative d'appel vers :", url);
 
-    try {
-      const response = await fetch(url, config);
+  try {
+    const response = await fetch(url, {
+      ...options,
+      headers: this.getAuthHeaders()
+    });
       
       // Gestion automatique de la déconnexion si token expiré
       if (response.status === 401) {

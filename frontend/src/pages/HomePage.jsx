@@ -151,7 +151,7 @@ useEffect(() => {
     {
       id: 'property_management',
       name: t('services.property_management'),
-       image: '/images//nihoul dirot.jpg',
+       image: '/images//nihoul-dirot.jpg',
       description: t('services.property_management.desc'),
       color: 'from-indigo-500 to-purple-600',
       href: '/services/property-management'

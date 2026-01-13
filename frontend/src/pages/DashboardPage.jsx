@@ -64,7 +64,7 @@ const serviceImages = {
   tutoring: '/images/tutoring.png',
   eldercare: '/images/eldercare.png',
   laundry: '/images/kvissa.jpg',
-  property_management: '/images/nihoul dirot.jpg',
+  property_management: '/images/nihoul-dirot.jpg',
   electrician: '/images/electrician.jpg',
   plumbing: '/images/plombier.jpg',
   air_conditioning: '/images/clim.png',
