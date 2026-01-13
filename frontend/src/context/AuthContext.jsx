@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_BASE = 'http://localhost:5000/api';
+ const API_BASE = import.meta.env.VITE_API_URL;
 
   const checkSubscriptionExpired = (user) => {
   if (user?.role === 'provider' && user?.premium_until) {
@@ -314,7 +314,8 @@ const uploadProfileImage = async (imageFile, serviceType = null) => {
     const data = await response.json();
 
     if (data.success) {
-      const imageFullUrl = `http://localhost:5000${data.data.imageUrl}`;
+      const baseUrl = import.meta.env.VITE_API_URL.replace('/api', '');
+const imageFullUrl = `${baseUrl}${data.data.imageUrl}`;
       const updatedUser = { 
         ...user, 
         profileImage: imageFullUrl,

@@ -331,14 +331,15 @@ if (response.data.success) {
   
   // ✅ Récupérer le profil COMPLET depuis le serveur
   const serviceType = formData.serviceType;
-  const meResponse = await axios.get(
-    `http://localhost:5000/api/auth/me?service_type=${serviceType}`,
-    {
-      headers: {
-        'Authorization': `Bearer ${response.data.data.token}`
-      }
+// ✅ Utilisation de la variable d'environnement configurée sur Vercel
+const meResponse = await axios.get(
+  `${import.meta.env.VITE_API_URL}/auth/me?service_type=${serviceType}`,
+  {
+    headers: {
+      'Authorization': `Bearer ${response.data.data.token}`
     }
-  );
+  }
+);
   
   if (meResponse.data.success) {
     const fullUserData = meResponse.data.data;
