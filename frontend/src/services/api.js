@@ -1,22 +1,26 @@
 class ApiService {
   async request(endpoint) {
-    // URL en dur sans aucune variable pour forcer le système
-    const forceURL = "https://homesherut-backend.onrender.com/api" + endpoint;
-    console.log("🔥 URL FINALE UTILISÉE :", forceURL);
+    // On sépare l'URL en deux parties pour forcer le navigateur à reconstruire la chaîne
+    const base = ["https:", "", "homesherut-backend.onrender.com", "api"].join("/");
+    const forceURL = base + endpoint;
+    
+    console.log("🚀 TENTATIVE DE CONNEXION EXTERNE :", forceURL);
     
     try {
-      const r = await fetch(forceURL, {
-        headers: { 'Content-Type': 'application/json' }
+      const response = await fetch(forceURL, {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' }
       });
-      return await r.json();
+      return await response.json();
     } catch (e) {
-      console.error("Erreur:", e);
+      console.error("Erreur critique connexion:", e);
       throw e;
     }
   }
 
   async searchProviders(filters) {
-    return this.request('/search/providers?service=' + (filters.service || ''));
+    const service = filters.service || '';
+    return this.request('/search/providers?service=' + service);
   }
 }
 export default new ApiService();
