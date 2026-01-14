@@ -127,7 +127,7 @@ useEffect(() => {
     {
       id: 'tutoring',
       name: t('services.tutoring'),
-     image: '/images//tutoring.png',
+     image: '/images/tutoring.png',
       description: t('services.tutoring.desc'),
       color: 'from-blue-500 to-indigo-600',
       href: '/services/tutoring'
@@ -135,7 +135,7 @@ useEffect(() => {
     {
       id: 'eldercare',
       name: t('services.eldercare'),
-     image: '/images//eldercare.png',
+     image: '/images/eldercare.png',
       description: t('services.eldercare.desc'),
       color: 'from-purple-500 to-violet-600',
       href: '/services/eldercare'

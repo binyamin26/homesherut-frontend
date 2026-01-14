@@ -117,10 +117,10 @@ const languages = [
       className="header-language-trigger"
       onClick={() => setShowLangDropdown(!showLangDropdown)}
     >
-      <img 
-        src={languages.find(l => l.code === currentLanguage)?.flag} 
-        alt={currentLanguage} 
-      />
+   <img 
+  src={languages.find(l => l.code === currentLanguage)?.flag || 'https://flagcdn.com/w40/il.png'} 
+  alt={currentLanguage || 'he'} 
+/>
       <span className={`lang-arrow ${showLangDropdown ? 'open' : ''}`}>▼</span>
     </button>
     {showLangDropdown && (
