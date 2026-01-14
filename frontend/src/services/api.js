@@ -41,6 +41,8 @@ class ApiService {
     }
   }
 
+  
+
   async searchProviders(filters) {
     const params = new URLSearchParams();
     if (filters.service) params.append('service', filters.service);
