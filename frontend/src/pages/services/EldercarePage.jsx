@@ -134,29 +134,19 @@ useEffect(() => {
     <div className="service-page eldercare-page">
       <section className="service-header">
         <div className="container">
-        <div className="service-title-section" style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-  <h1 className="service-title" style={{ textAlign: 'center', margin: '0 auto' }}>{t('services.eldercare.pageTitle')}</h1>
-  <div style={{ 
-  position: 'absolute', 
-  right: '0',
-  width: '120px',
-  height: '120px',
-  borderRadius: '50%',
-  overflow: 'hidden',
-  background: '#f0f0f0'
-}}>
-  <img 
-    src="/images/logo kachich.png" 
-    alt="kachich" 
-    style={{ 
-      width: '100%', 
-      height: '100%',
-      objectFit: 'cover',
-        transform: 'scale(1.3)'
-    }}
-  />
+<section className="service-header">
+  <div className="container">
+    <div className="service-title-section">
+      <div className="service-hero-icon">
+        <img 
+          src="/images/logo kachich.png" 
+          alt="Aide aux aînés" 
+        />
+      </div>
+      <h1 className="service-title">{t('services.eldercare.pageTitle')}</h1>
+    </div>
   </div>
-</div>
+</section>
         </div>
       </section>
 

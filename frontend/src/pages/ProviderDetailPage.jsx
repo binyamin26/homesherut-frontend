@@ -1369,7 +1369,7 @@ const handleContact = () => {
   {provider.media?.profileImage ? (
     <img 
     // REMPLACEZ le src de l'image par :
-src={`${import.meta.env.VITE_API_URL.replace('/api', '')}/${provider.media.profileImage.replace(/\\/g, '/').replace(/^\/+/, '')}`}
+src={`${(import.meta.env.VITE_API_URL || '').replace('/api', '')}/${(provider.media?.profileImage || '').replace(/\\/g, '/').replace(/^\/+/, '')}`}
       alt={provider.name}
       className="provider-image"
     />

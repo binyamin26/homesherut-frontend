@@ -1,350 +1,233 @@
 /* ====================================
-   BOUTONS - HOMESHERUT
+   BOUTONS "UNICORN" - HOMESHERUT
    ==================================== */
 
-/* Styles de base pour tous les boutons */
+/* --- CONFIG GÉNÉRALE --- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: 14px 28px;
-  font-size: var(--text-lg);
+  
+  font-family: var(--font-primary);
   font-weight: 600;
-  border-radius: 12px;
+  font-size: var(--text-base);
+  letter-spacing: -0.01em;
   text-decoration: none;
-  border: 2px solid transparent;
+  
+  /* Nouveaux arrondis plus doux */
+  border-radius: var(--radius-xl);
+  border: 1px solid transparent;
+  
   cursor: pointer;
-  transition: all var(--transition-medium);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  font-family: var(--font-primary);
+  user-select: none;
+  
+  padding: 12px 28px; /* Un peu plus large pour l'élégance */
 }
 
-/* Bouton primaire avec dégradé */
+/* Effet "Press" (Tactile) */
+.btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+/* --- BOUTON PRIMARY (INDIGO ROYAL) --- */
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-500) 0%, var(--accent-500) 100%);
+  /* Dégradé Indigo vers Violet */
+  background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-500) 100%);
   color: white;
-  box-shadow: var(--shadow-lg);
+  
+  /* Lueur Indigo */
+  box-shadow: var(--shadow-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn-primary:hover:not(:disabled) {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: var(--shadow-2xl);
+  /* On éclaircit au survol */
+  background: linear-gradient(135deg, var(--primary-500) 0%, #818cf8 100%);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-primary-hover);
 }
 
-.btn-primary:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-/* Style spécifique pour bouton d'envoi dans ReviewModal */
-.btn-primary.btn-full {
-  padding: 16px 32px !important;
-  border-radius: 12px !important;
-  font-size: 17px !important;
-  min-height: 56px !important;
-}
-
-/* Bouton secondaire */
+/* --- BOUTON SECONDARY (BLANC PUR) --- */
 .btn-secondary {
   background: white;
-  color: var(--primary-600);
+  color: var(--neutral-700);
+  border: 1px solid var(--neutral-200);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.btn-secondary:hover:not(:disabled) {
   border-color: var(--primary-300);
+  color: var(--primary-600);
+  background: var(--primary-50);
+  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
-.btn-secondary:hover {
-  background: var(--primary-50);
-  border-color: var(--primary-400);
-  transform: translateY(-2px);
-}
-
-/* Bouton outline */
+/* --- BOUTON OUTLINE (MINIMAL) --- */
 .btn-outline {
   background: transparent;
   border: 1px solid var(--neutral-300);
-  color: var(--neutral-700);
+  color: var(--neutral-600);
 }
 
-.btn-outline:hover {
-  background: var(--neutral-50);
-  border-color: var(--neutral-400);
+.btn-outline:hover:not(:disabled) {
+  border-color: var(--neutral-800);
+  color: var(--neutral-900);
+  background: white;
 }
 
-/* Bouton avec dégradé */
-.btn-gradient {
-  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
-  border: none;
-  color: white;
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-gradient:hover {
-  background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-1px);
-}
-
-/* Tailles de boutons */
-.btn-sm {
-  padding: var(--space-2) var(--space-4);
-  font-size: var(--text-sm);
-}
-
-.btn-large {
-  padding: var(--space-4) var(--space-6);
-  font-size: var(--text-base);
-  min-height: 48px;
-}
-
-.btn-xlarge {
-  padding: var(--space-5) var(--space-10);
-  font-size: var(--text-xl);
+/* --- BOUTON HERO CTA (LE PLUS IMPORTANT) --- */
+.btn-large, .hero-register-btn {
+  padding: 18px 40px;
+  font-size: 1.25rem; /* Gros texte */
+  border-radius: 99px; /* Pill */
   font-weight: 700;
+  
+  /* Dégradé spécial "Menthe vers Indigo" pour le bouton d'inscription */
+  background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-500) 100%);
+  box-shadow: 0 15px 30px -5px rgba(79, 70, 229, 0.4);
 }
 
-/* ====================================
-   BOUTON DANGER - SUPPRESSION
-   ==================================== */
-
-.btn-danger {
-  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-  color: white;
-  border: 2px solid #dc2626;
-  box-shadow: var(--shadow-md);
+.btn-large:hover, .hero-register-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px -5px rgba(79, 70, 229, 0.5);
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-400) 100%);
 }
 
-.btn-danger:hover:not(:disabled) {
-  background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-xl);
-}
+/* --- BOUTONS UTILITAIRES --- */
 
-.btn-danger:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: var(--shadow-sm);
-}
+.btn-full { width: 100%; }
 
-/* Largeur pleine */
-.btn-full {
-  width: 100%;
-}
-
-/* 🆕 NOUVEAU - Bouton centré avec largeur auto */
-.btn-centered {
-  display: flex;
-  margin: 0 auto;
-  min-width: 250px; /* Largeur minimum confortable */
-}
-
-/* Animation d'effet de brillance */
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left var(--transition-slow);
-}
-
-.btn:hover::before {
-  left: 100%;
-}
-
-/* Boutons spéciaux */
-.contact-btn,
-.search-btn,
-.apply-filters-btn,
-.contact-provider-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-4);
-  background: linear-gradient(135deg, var(--primary-500) 0%, var(--accent-500) 100%);
-  color: white;
-  border: none;
-  border-radius: var(--radius-xl);
-  font-size: var(--text-base);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--transition-medium);
-  box-shadow: var(--shadow-md);
-  font-family: var(--font-primary);
-}
-
-.contact-btn:hover,
-.search-btn:hover,
-.apply-filters-btn:hover,
-.contact-provider-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
-
-/* Boutons de service */
-.select-service-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  padding: var(--space-4) var(--space-6);
-  background: linear-gradient(135deg, var(--primary-500) 0%, var(--accent-500) 100%);
-  color: white;
-  border: none;
-  border-radius: var(--radius-xl);
-  font-size: var(--text-lg);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--transition-medium);
-  box-shadow: var(--shadow-lg);
-  font-family: var(--font-primary);
-}
-
-.select-service-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-xl);
-}
-
-/* Boutons d'upload */
+/* Upload stylé */
 .image-upload-btn {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-2);
-  padding: var(--space-4) var(--space-6);
-  background: linear-gradient(135deg, var(--neutral-100) 0%, var(--neutral-200) 100%);
-  color: var(--neutral-700);
+  padding: 2.5rem;
+  background: var(--neutral-50);
+  color: var(--neutral-500);
   border: 2px dashed var(--neutral-300);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-2xl); /* Très arrondi */
   cursor: pointer;
-  transition: all var(--transition-medium);
-  font-size: var(--text-base);
-  font-weight: 500;
-  font-family: var(--font-primary);
+  transition: all 0.2s ease;
+  width: 100%;
 }
 
 .image-upload-btn:hover {
-  background: linear-gradient(135deg, var(--primary-50) 0%, var(--accent-50) 100%);
   border-color: var(--primary-400);
-  color: var(--primary-700);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  background: var(--primary-50);
+  color: var(--primary-600);
 }
 
-/* Boutons de navigation */
+/* Bouton Retour */
 .back-btn {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
   background: none;
   border: none;
-  color: var(--neutral-700);
+  color: var(--neutral-500);
   font-weight: 600;
   cursor: pointer;
-  transition: color var(--transition-fast);
+  padding: 0;
+  transition: color 0.2s;
 }
 
 .back-btn:hover {
   color: var(--primary-600);
+  transform: translateX(-3px);
 }
 
-/* Boutons de favoris */
-.favorite-btn {
-  background: none;
-  border: 2px solid var(--neutral-200);
-  border-radius: var(--radius-full);
-  padding: var(--space-2);
-  cursor: pointer;
-  color: var(--neutral-400);
-  transition: all var(--transition-medium);
-}
-
-.favorite-btn:hover {
-  border-color: var(--primary-300);
-  color: var(--primary-500);
-  background: var(--primary-50);
-}
-
-.favorite-btn.modern-favorite {
-  position: absolute;
-  top: var(--space-3);
-  left: var(--space-3);
-  background: white;
-  border: 1px solid var(--neutral-300);
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  color: var(--neutral-400);
-}
-
-.favorite-btn.modern-favorite:hover {
-  background: var(--danger-50);
-  border-color: var(--danger-300);
-  color: var(--danger-500);
-}
-
-/* Boutons d'action pour modales */
+/* Close Modal */
 .modal-close-btn {
   width: 40px;
   height: 40px;
   border: none;
   background: var(--neutral-100);
-  border-radius: var(--radius-full);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all var(--transition-medium);
+  transition: all 0.2s;
   color: var(--neutral-500);
 }
 
 .modal-close-btn:hover {
   background: var(--danger);
   color: white;
-  transform: scale(1.1);
+  transform: rotate(90deg);
 }
 
-/* États désactivé */
+/* Favoris */
+.favorite-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid var(--neutral-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neutral-400);
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: var(--shadow-sm);
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+  color: #ef4444;
+  border-color: #fecaca;
+  background: #fff1f2;
+}
+
+/* BOUTONS D'ACTION LARGEUR PLEINE (Recherche/Contact) */
+/* Eux, on les met en ACCENT (Menthe) pour varier du bleu */
+.contact-btn,
+.search-btn,
+.apply-filters-btn {
+  width: 100%;
+  padding: 16px;
+  
+  /* Vert Menthe Foncé */
+  background: linear-gradient(135deg, var(--accent-600) 0%, var(--accent-500) 100%);
+  
+  color: white;
+  border: none;
+  border-radius: var(--radius-xl);
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); /* Lueur verte */
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover,
+.search-btn:hover {
+  background: linear-gradient(135deg, var(--accent-500) 0%, var(--accent-400) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+/* --- ÉTAT DÉSACTIVÉ --- */
 .btn:disabled,
 .btn[disabled] {
-  opacity: 0.6;
+  opacity: 0.5;
+  filter: grayscale(100%);
   cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
   transform: none !important;
-  box-shadow: none !important;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .btn {
-    padding: var(--space-3) var(--space-4);
-    font-size: var(--text-base);
-  }
-  
-  .btn-large {
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .btn-large, .hero-register-btn {
     width: 100%;
-  }
-  
-  .contact-btn,
-  .search-btn {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .image-upload-btn {
-    padding: var(--space-3) var(--space-4);
-    font-size: var(--text-sm);
+    padding: 16px;
   }
 }

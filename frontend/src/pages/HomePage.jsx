@@ -1,41 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
-  Search, 
-  Star, 
-  Users, 
-  Clock, 
-  Shield, 
-  Heart,
-  Baby,
-  Scissors,
-  PawPrint,
-  BookOpen,
-  Home,
-  ArrowLeft,
-  CheckCircle,
-  TrendingUp,
-  Award,
-  Smile,
-  Sparkles,
-  TreePine,
-  Shirt,
-  Building2,
-  Zap,
-  Wrench,
-   Wind,
-   Flame,
-   Layers, 
-   Hammer,
-   PartyPopper,
-   ChefHat,
-   Paintbrush ,
-   Droplets,
-   HardHat,
-   Box,
-   Square,
-   Key,
-   ChevronLeft, ChevronRight                   
+  Search, Star, Users, Clock, Shield, Heart, Baby, Scissors, PawPrint,
+  BookOpen, Home, ArrowLeft, CheckCircle, TrendingUp, Award, Smile,
+  Sparkles, TreePine, Shirt, Building2, Zap, Wrench, Wind, Flame,
+  Layers, Hammer, PartyPopper, ChefHat, Paintbrush, Droplets, HardHat,
+  Box, Square, Key, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import AuthModal from '../components/auth/AuthModal';
 import { useAuth } from '../context/AuthContext';
@@ -47,7 +17,8 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import ServiceSearchBar from '../components/common/ServiceSearchBar';
-
+// IMPORT DU NOUVEAU COMPOSANT VIDÉO
+import PromoVideo from '../components/home/PromoVideo';
 
 const HomePage = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -56,28 +27,25 @@ const HomePage = () => {
   const { user, isAuthenticated } = useAuth();
   const { t } = useLanguage();
   const navigate = useNavigate();
- 
-
   const location = useLocation();
 
-useEffect(() => {
-  if (location.hash === '#services') {
-    setTimeout(() => {
-      const element = document.getElementById('services');
-      if (element) {
-        const headerOffset = 100;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  useEffect(() => {
+    if (location.hash === '#services') {
+      setTimeout(() => {
+        const element = document.getElementById('services');
+        if (element) {
+          const headerOffset = 100;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    }, 100);
-  }
-}, [location]);
-
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    }
+  }, [location]);
 
   const openAuthModal = (mode = 'login') => {
     setAuthMode(mode);
@@ -91,11 +59,12 @@ useEffect(() => {
     }
   };
 
+  // Liste des services
   const services = [
     {
       id: 'babysitting',
       name: t('services.babysitting'),
-      image: '/images//babysite.png',
+      image: '/images/babysite.png',
       description: t('services.babysitting.desc'),
       color: 'from-pink-500 to-rose-600',
       href: '/services/babysitting'
@@ -103,7 +72,7 @@ useEffect(() => {
     {
       id: 'cleaning',
       name: t('services.cleaning'),
-      image: '/images//nikayon.jpg',
+      image: '/images/nikayon.jpg',
       description: t('services.cleaning.desc'),
       color: 'from-cyan-500 to-blue-600',
       href: '/services/cleaning'
@@ -111,7 +80,7 @@ useEffect(() => {
     {
       id: 'gardening',
       name: t('services.gardening'),
-      image: '/images//jardinage.jpg',
+      image: '/images/jardinage.jpg',
       description: t('services.gardening.desc'),
       color: 'from-green-500 to-emerald-600',
       href: '/services/gardening'
@@ -119,7 +88,7 @@ useEffect(() => {
     {
       id: 'petcare',
       name: t('services.petcare'),
-     image: '/images//chien.jpg',
+      image: '/images/chien.jpg',
       description: t('services.petcare.desc'),
       color: 'from-orange-500 to-amber-600',
       href: '/services/petcare'
@@ -127,7 +96,7 @@ useEffect(() => {
     {
       id: 'tutoring',
       name: t('services.tutoring'),
-     image: '/images/tutoring.png',
+      image: '/images/tutoring.png',
       description: t('services.tutoring.desc'),
       color: 'from-blue-500 to-indigo-600',
       href: '/services/tutoring'
@@ -135,7 +104,7 @@ useEffect(() => {
     {
       id: 'eldercare',
       name: t('services.eldercare'),
-     image: '/images/eldercare.png',
+      image: '/images/eldercare.png',
       description: t('services.eldercare.desc'),
       color: 'from-purple-500 to-violet-600',
       href: '/services/eldercare'
@@ -143,7 +112,7 @@ useEffect(() => {
     {
       id: 'laundry',
       name: t('services.laundry'),
-     image: '/images//kvissa.jpg',
+      image: '/images/kvissa.jpg',
       description: t('services.laundry.desc'),
       color: 'from-blue-400 to-cyan-600',
       href: '/services/laundry'
@@ -151,15 +120,15 @@ useEffect(() => {
     {
       id: 'property_management',
       name: t('services.property_management'),
-       image: '/images//nihoul-dirot.jpg',
+      image: '/images/nihoul-dirot.jpg',
       description: t('services.property_management.desc'),
       color: 'from-indigo-500 to-purple-600',
       href: '/services/property-management'
     },
-{
+    {
       id: 'electrician',
       name: t('services.electrician'),
-      image: '/images//electrician.jpg',
+      image: '/images/electrician.jpg',
       description: t('services.electrician.desc'),
       color: 'from-yellow-500 to-orange-600',
       href: '/services/electrician'
@@ -167,7 +136,7 @@ useEffect(() => {
     {
       id: 'plumbing',
       name: t('services.plumbing'),
-      image: '/images//plombier.jpg',
+      image: '/images/plombier.jpg',
       description: t('services.plumbing.desc'),
       color: 'from-teal-500 to-cyan-600',
       href: '/services/plumbing'
@@ -175,7 +144,7 @@ useEffect(() => {
     {
       id: 'air_conditioning',
       name: t('services.air_conditioning'),
-      image: '/images//clim.png',
+      image: '/images/clim.png',
       description: t('services.air_conditioning.desc'),
       color: 'from-sky-500 to-blue-600',
       href: '/services/air-conditioning'
@@ -183,7 +152,7 @@ useEffect(() => {
     {
       id: 'gas_technician',
       name: t('services.gas_technician'),
-      image: '/images//gaz.jpg',
+      image: '/images/gaz.jpg',
       description: t('services.gas_technician.desc'),
       color: 'from-red-500 to-orange-600',
       href: '/services/gas-technician'
@@ -191,7 +160,7 @@ useEffect(() => {
     {
       id: 'drywall',
       name: t('services.drywall'),
-      image: '/images//guevess.png',
+      image: '/images/guevess.png',
       description: t('services.drywall.desc'),
       color: 'from-gray-500 to-slate-600',
       href: '/services/drywall'
@@ -199,7 +168,7 @@ useEffect(() => {
     {
       id: 'carpentry',
       name: t('services.carpentry'),
-      image: '/images//menuisier.png',
+      image: '/images/menuisier.png',
       description: t('services.carpentry.desc'),
       color: 'from-amber-600 to-brown-700',
       href: '/services/carpentry'
@@ -207,7 +176,7 @@ useEffect(() => {
     {
       id: 'home_organization',
       name: t('services.home_organization'),
-      image: '/images//rangement.jpg',
+      image: '/images/rangement.jpg',
       description: t('services.home_organization.desc'),
       color: 'from-violet-500 to-fuchsia-600',
       href: '/services/home-organization'
@@ -215,7 +184,7 @@ useEffect(() => {
     {
       id: 'event_entertainment',
       name: t('services.event_entertainment'),
-      image: '/images//fetes1.jpg',
+      image: '/images/fetes1.jpg',
       description: t('services.event_entertainment.desc'),
       color: 'from-pink-500 to-purple-600',
       href: '/services/event-entertainment'
@@ -223,7 +192,7 @@ useEffect(() => {
     {
       id: 'private_chef',
       name: t('services.private_chef'),
-      image: '/images//pizza.png',
+      image: '/images/pizza.png',
       description: t('services.private_chef.desc'),
       color: 'from-amber-500 to-yellow-600',
       href: '/services/private-chef'
@@ -231,7 +200,7 @@ useEffect(() => {
     {
       id: 'painting',
       name: t('services.painting'),
-      image: '/images//peinture.jpg',
+      image: '/images/peinture.jpg',
       description: t('services.painting.desc'),
       color: 'from-violet-500 to-purple-600',
       href: '/services/painting'
@@ -239,7 +208,7 @@ useEffect(() => {
     {
       id: 'waterproofing',
       name: t('services.waterproofing'),
-      image: '/images//itoum.jpg',
+      image: '/images/itoum.jpg',
       description: t('services.waterproofing.desc'),
       color: 'from-blue-600 to-cyan-700',
       href: '/services/waterproofing'
@@ -247,7 +216,7 @@ useEffect(() => {
     {
       id: 'contractor',
       name: t('services.contractor'),
-      image: '/images//kablan.png',
+      image: '/images/kablan.png',
       description: t('services.contractor.desc'),
       color: 'from-orange-600 to-amber-700',
       href: '/services/contractor'
@@ -255,7 +224,7 @@ useEffect(() => {
     {
       id: 'aluminum',
       name: t('services.aluminum'),
-      image: '/images//aluminium.png',
+      image: '/images/aluminium.png',
       description: t('services.aluminum.desc'),
       color: 'from-slate-400 to-gray-600',
       href: '/services/aluminum'
@@ -263,7 +232,7 @@ useEffect(() => {
     {
       id: 'glass_works',
       name: t('services.glass_works'),
-      image: '/images//verre.png',
+      image: '/images/verre.png',
       description: t('services.glass_works.desc'),
       color: 'from-slate-400 to-gray-500',
       href: '/services/glass-works'
@@ -271,7 +240,7 @@ useEffect(() => {
     {
       id: 'locksmith',
       name: t('services.locksmith'),
-      image: '/images//serrure.png',
+      image: '/images/serrure.png',
       description: t('services.locksmith.desc'),
       color: 'from-amber-500 to-yellow-600',
       href: '/services/locksmith'
@@ -284,39 +253,48 @@ useEffect(() => {
       <section className="hero-section">
         <div className="container">
           <div className="hero-content">
-          <div className="hero-text">
-  <h1 className="hero-title animate-fade-in-down">
-    AllSherut – <span className="gradient-text">{t('homepage.hero.tagline')}</span>
-  </h1>
-  <p className="hero-description animate-fade-in-up delay-200" style={{ marginBottom: '0.5rem' }}>
-    {t('homepage.hero.description1')}
-  </p>
-  {/* Search Bar */}
-  <div className="animate-fade-in-up delay-300" style={{ marginBottom: '1rem' }}>
-    <ServiceSearchBar style={{ maxWidth: '350px', margin: 0 }} />
-  </div>
-  <p className="hero-description animate-fade-in-up delay-400" style={{ marginBottom: '0.5rem' }}>
-    {t('homepage.hero.description2')}
-  </p>
-  {!isAuthenticated && (
-    <button 
-      className="btn btn-primary hero-register-btn text-custom animate-fade-in-up delay-500"
-      onClick={() => openAuthModal('register')}
-    >
-      {t('homepage.cta.register')}
-    </button>
-  )}
-</div>
+            <div className="hero-text">
+              <h1 className="hero-title animate-fade-in-down">
+                AllSherut – <span className="gradient-text">{t('homepage.hero.tagline')}</span>
+              </h1>
+              <p className="hero-description animate-fade-in-up delay-200" style={{ marginBottom: '0.5rem' }}>
+                {t('homepage.hero.description1')}
+              </p>
+              {/* Search Bar */}
+              <div className="animate-fade-in-up delay-300" style={{ marginBottom: '1rem' }}>
+                <ServiceSearchBar style={{ maxWidth: '350px', margin: 0 }} />
+              </div>
+              <p className="hero-description animate-fade-in-up delay-400" style={{ marginBottom: '0.5rem' }}>
+                {t('homepage.hero.description2')}
+              </p>
+              {!isAuthenticated && (
+                <button 
+                  className="btn btn-primary hero-register-btn text-custom animate-fade-in-up delay-500"
+                  onClick={() => openAuthModal('register')}
+                >
+                  {t('homepage.cta.register')}
+                </button>
+              )}
+            </div>
             
-          <div className="hero-visual animate-fade-in-left delay-400">
-  <div className="services-logo">
-    <img 
-      src="/images/logo-homesherut.jpg" 
-      alt="AllSherut Logo" 
-      style={{ width: '100%', maxWidth: '400px', height: 'auto' }}
-    />
-  </div>
+            <div 
+  className="hero-visual animate-fade-in-left delay-400" 
+  style={{ 
+    width: '100%', 
+    /* C'est ici que vous contrôlez la place qu'elle prend dans la page */
+    maxWidth: '1000px', /* Augmentez ceci (ex: 1200px ou 100%) */
+    margin: '0 auto',
+    display: 'flex',
+    justifyContent: 'center'
+  }}
+>
+  <PromoVideo 
+    services={services} 
+    onRegisterClick={() => openAuthModal('register')} 
+  />
 </div>
+
+            {/* ... le reste du code après ... */}
           </div>
         </div>
       </section>
@@ -375,56 +353,55 @@ useEffect(() => {
         </div>
       </section>
 
-{/* Services Section */}
-<section id="services" className="services-section">
-  <div className="container">
-    <div className="section-header">
-      <h2 className="section-title animate-fade-in-down">{t('homepage.services.title')}</h2>
-      <p className="hero-description text-center mb-16 animate-fade-in-up delay-100">
-        {t('homepage.services.subtitle')}
-      </p>
-    </div>
-  </div>
+      {/* Services Section */}
+      <section id="services" className="services-section">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title animate-fade-in-down">{t('homepage.services.title')}</h2>
+            <p className="hero-description text-center mb-16 animate-fade-in-up delay-100">
+              {t('homepage.services.subtitle')}
+            </p>
+          </div>
+        </div>
 
-  <div className="services-carousel-container">
-    <Swiper
-      modules={[Navigation]}
-      navigation
-      spaceBetween={1}
-      slidesPerView={1}
-      breakpoints={{
-        640: { slidesPerView: 2 },
-        900: { slidesPerView: 3 },
-        1200: { slidesPerView: 4 }
-      }}
-    >
-      {services.map((service) => (
-
-       <SwiperSlide key={service.id}>
-  <Link to={service.href} className="service-card-image">
-    {service.image ? (
-      <img 
-        src={service.image} 
-        alt={service.name} 
-        className="service-image"
-      />
-    ) : (
-      <div className={`service-icon-fallback bg-gradient-to-br ${service.color}`}>
-        <service.icon size={48} color="white" />
-      </div>
-    )}
-    <div className="service-name-overlay">
-      <h3>{service.name}</h3>
-    </div>
-  </Link>
-</SwiperSlide>
-      ))}
-    </Swiper>
-  </div>
-</section>
+        <div className="services-carousel-container">
+          <Swiper
+            modules={[Navigation]}
+            navigation
+            spaceBetween={1}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              900: { slidesPerView: 3 },
+              1200: { slidesPerView: 4 }
+            }}
+          >
+            {services.map((service) => (
+              <SwiperSlide key={service.id}>
+                <Link to={service.href} className="service-card-image">
+                  {service.image ? (
+                    <img 
+                      src={service.image} 
+                      alt={service.name} 
+                      className="service-image"
+                    />
+                  ) : (
+                    <div className={`service-icon-fallback bg-gradient-to-br ${service.color}`}>
+                      <Star size={48} color="white" /> {/* Fallback icon générique */}
+                    </div>
+                  )}
+                  <div className="service-name-overlay">
+                    <h3>{service.name}</h3>
+                  </div>
+                </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </section>
 
       {/* Section Prestataires */}
-     <section className="section" style={{background: 'linear-gradient(135deg, var(--primary-25) 0%, var(--accent-25) 100%)'}}>
+      <section className="section" style={{background: 'linear-gradient(135deg, var(--primary-25) 0%, var(--accent-25) 100%)'}}>
         <div className="container">
           <h2 className="section-title animate-fade-in-up">
             {t('homepage.providers.title')}

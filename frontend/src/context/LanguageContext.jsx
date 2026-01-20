@@ -10255,73 +10255,92 @@ export const LanguageProvider = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] = useState('he');
   const [direction, setDirection] = useState('rtl');
 
+  // ✅ FONCTION POUR DÉTERMINER LA DIRECTION SELON LA LANGUE
+  const getDirectionForLanguage = (lang) => {
+    const rtlLanguages = ['he', 'ar']; // Hébreu et Arabe sont RTL
+    return rtlLanguages.includes(lang) ? 'rtl' : 'ltr';
+  };
+
+  // ✅ FONCTION POUR APPLIQUER LA DIRECTION SUR LE DOM
+  const applyDirection = (lang, dir) => {
+    // Appliquer sur <html>
+    document.documentElement.dir = dir;
+    document.documentElement.lang = lang;
+    
+    // Appliquer sur <body>
+    document.body.dir = dir;
+    
+    // Mettre à jour les variables CSS
+    document.documentElement.style.setProperty('--direction', dir);
+    document.documentElement.style.setProperty('--text-align', dir === 'rtl' ? 'right' : 'left');
+    document.documentElement.style.setProperty('--text-align-start', dir === 'rtl' ? 'right' : 'left');
+    document.documentElement.style.setProperty('--text-align-end', dir === 'rtl' ? 'left' : 'right');
+    
+    console.log(`🌐 Langue: ${lang} | Direction: ${dir}`);
+  };
+
+  // Charger la langue sauvegardée au démarrage
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('homesherut_language') || 'he';
+    const dir = getDirectionForLanguage(savedLanguage);
+    
+    setCurrentLanguage(savedLanguage);
+    setDirection(dir);
+    applyDirection(savedLanguage, dir);
+  }, []);
+
   // Écouter les changements de langue depuis LanguageSelector
   useEffect(() => {
     const handleLanguageChange = (event) => {
-      const { language, direction: dir } = event.detail;
+      const { language } = event.detail;
+      const dir = getDirectionForLanguage(language);
+      
       setCurrentLanguage(language);
       setDirection(dir);
+      applyDirection(language, dir);
+      
+      // Sauvegarder dans localStorage
+      localStorage.setItem('homesherut_language', language);
     };
 
     window.addEventListener('languageChanged', handleLanguageChange);
     return () => window.removeEventListener('languageChanged', handleLanguageChange);
   }, []);
 
-  // Charger la langue sauvegardée au démarrage
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('homesherut_language') || 'he';
-    const langConfig = {
-      he: 'rtl',
-      en: 'ltr',
-      ru: 'ltr',
-      fr: 'ltr'
-    };
-    
-    setCurrentLanguage(savedLanguage);
-    setDirection(langConfig[savedLanguage] || 'rtl');
-  }, []);
-
-  
   // Fonction de traduction avec support des variables
-const t = (key, paramsOrFallback = null) => {
-  let translation = translations[currentLanguage]?.[key];
-  
-  // Si pas de traduction trouvée
-  if (!translation) {
-    // Si paramsOrFallback est une string, c'est un fallback
-    if (typeof paramsOrFallback === 'string') {
-      return paramsOrFallback;
+  const t = (key, paramsOrFallback = null) => {
+    let translation = translations[currentLanguage]?.[key];
+    
+    // Si pas de traduction trouvée
+    if (!translation) {
+      // Si paramsOrFallback est une string, c'est un fallback
+      if (typeof paramsOrFallback === 'string') {
+        return paramsOrFallback;
+      }
+      return key;
     }
-    return key;
-  }
-  
-  // Si paramsOrFallback est un objet, faire l'interpolation des variables
-  if (paramsOrFallback && typeof paramsOrFallback === 'object') {
-    Object.keys(paramsOrFallback).forEach(paramKey => {
-      translation = translation.replace(
-        new RegExp(`\\{${paramKey}\\}`, 'g'), 
-        paramsOrFallback[paramKey]
-      );
-    });
-  }
-  
-  return translation;
-};
+    
+    // Si paramsOrFallback est un objet, faire l'interpolation des variables
+    if (paramsOrFallback && typeof paramsOrFallback === 'object') {
+      Object.keys(paramsOrFallback).forEach(paramKey => {
+        translation = translation.replace(
+          new RegExp(`\\{${paramKey}\\}`, 'g'), 
+          paramsOrFallback[paramKey]
+        );
+      });
+    }
+    
+    return translation;
+  };
 
   // Changer de langue programmatiquement
   const changeLanguage = (langCode) => {
-    const langConfig = {
-      he: 'rtl',
-      en: 'ltr',
-      ru: 'ltr',
-      fr: 'ltr'
-    };
-
-    setCurrentLanguage(langCode);
-    setDirection(langConfig[langCode] || 'rtl');
+    const dir = getDirectionForLanguage(langCode);
     
-    document.documentElement.setAttribute('dir', langConfig[langCode] || 'rtl');
-    document.documentElement.setAttribute('lang', langCode);
+    setCurrentLanguage(langCode);
+    setDirection(dir);
+    applyDirection(langCode, dir);
+    
     localStorage.setItem('homesherut_language', langCode);
   };
 

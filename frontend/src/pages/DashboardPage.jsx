@@ -996,22 +996,19 @@ console.log('🔍 DEBUG serviceDetails COMPLET:', JSON.stringify(userData?.servi
       <div style={{ display: 'flex', gap: '2rem' }}>
         
      <div className="provider-avatar" style={{ width: '100px', height: '100px' }}>
-  {imagePreview ? (
- <img 
-  src={imagePreview} 
-  alt="Preview"
-  style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '50%', border: 'none', boxShadow: 'none' }}
-/>
-  ) : userData?.providerProfile?.profile_image ? (
-// REMPLACEZ la balise <img> par celle-ci :
-<img 
-  src={`${import.meta.env.VITE_API_URL.replace('/api', '')}/${userData.providerProfile.profile_image.replace(/^\/+/, '')}`} 
-  alt={userData.firstName}
-  style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '50%', border: 'none', boxShadow: 'none' }}
-/>
-  ) : (
-    <User size={60} />
-  )}
+ {imagePreview ? (
+        <img 
+          src={imagePreview} 
+          alt="Preview" 
+        />
+      ) : userData?.providerProfile?.profile_image ? (
+        <img 
+          src={`${(import.meta.env.VITE_API_URL || 'https://homesherut-backend.onrender.com/api').replace('/api', '')}/${userData.providerProfile.profile_image.replace(/^\/+/, '')}`} 
+          alt={userData.firstName}
+        />
+      ) : (
+        <User size={60} />
+      )}
   
   <div className="avatar-actions">
   {!imagePreview ? (

@@ -23,11 +23,19 @@ const ProviderCard = ({ provider, onOpenReviewModal }) => {
     onOpenReviewModal(provider.providerId || provider.provider_id || provider.id, provider.name || provider.full_name);
   };
 
-  // Image URL
-const baseUrl = import.meta.env.VITE_API_URL.replace('/api', '');
+// 1. Définition sécurisée de l'URL de base du serveur
+const baseUrl = (import.meta.env.VITE_API_URL || '').replace('/api', '');
+
+// 2. Création de la variable 'imageUrl' UNIQUE et SÉCURISÉE
+// Cette variable contient déjà l'URL complète pour la ligne 70
 const imageUrl = provider.profile_image 
   ? `${baseUrl}/${provider.profile_image.replace(/\\/g, '/').replace(/^\/+/, '')}` 
-  : '';
+  : null;
+
+// 🔍 Log de contrôle (Ligne 36 de votre console)
+console.log("ID:", provider.id, "Image calculée:", imageUrl);
+
+// SUPPRIMEZ la ligne 'const fullImageUrl = imagePath...' qui faisait planter le site
 
   // Prix (seulement si > 0)
   const hourlyRate = (provider.hourly_rate && provider.hourly_rate > 0) 
