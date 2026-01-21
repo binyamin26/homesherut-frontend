@@ -1,79 +1,77 @@
 // src/services/api.js
 class ApiService {
   constructor() {
-    // URL forcée pour éviter les erreurs 404 sur Vercel
+    // FORCEZ l'URL complète ici pour éviter que Vercel ne cherche en local
     this.baseURL = 'https://homesherut-backend.onrender.com/api';
   }
 
-  // Récupération du token pour les zones connectées
   getAuthToken() {
     return localStorage.getItem('homesherut_token');
   }
 
-  // Méthode de requête universelle et ultra-robuste
- async request(endpoint, options = {}) {
-  const fullURL = this.baseURL + endpoint;
-  const token = this.getAuthToken();
-  
-  const headers = {
-    'Accept': 'application/json',
-    ...(options.body instanceof FormData ? {} : { 'Content-Type': 'application/json' }),
-    ...(token && { 'Authorization': `Bearer ${token}` }),
-    ...options.headers
-  };
-
-  try {
-    const response = await fetch(fullURL, { ...options, headers });
-
-    // Si le serveur répond, on essaie de lire le JSON quoi qu'il arrive
-    const data = await response.json();
+  async request(endpoint, options = {}) {
+    // On s'assure que le chemin est correct entre baseURL et l'endpoint
+    const fullURL = this.baseURL + (endpoint.startsWith('/') ? endpoint : `/${endpoint}`);
     
-    // On s'assure que 'success' et 'providers' existent pour éviter le crash du frontend
-    return {
-      success: data.success || response.ok,
-      providers: data.providers || (Array.isArray(data) ? data : []),
-      ...data
+    console.log(`🚀 TENTATIVE DE CONNEXION VERS : ${fullURL}`);
+
+    const token = this.getAuthToken();
+    const headers = {
+      'Accept': 'application/json',
+      ...(options.body instanceof FormData ? {} : { 'Content-Type': 'application/json' }),
+      ...(token && { 'Authorization': `Bearer ${token}` }),
+      ...options.headers
     };
-  } catch (error) {
-    console.error(`❌ Échec sur ${fullURL}:`, error);
-    // Retourne un objet vide au lieu de 'undefined' pour empêcher le crash
-    return { success: false, providers: [], message: 'שגיאה בחיבור לשרת' };
+
+    try {
+      const response = await fetch(fullURL, { ...options, headers });
+
+      // Vérification du type de contenu pour éviter de lire du HTML comme du JSON
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.includes("text/html")) {
+        console.error("❌ ERREUR : Le serveur a renvoyé du HTML. Vérifiez l'URL de l'API.");
+        return { success: false, providers: [] };
+      }
+
+      const data = await response.json();
+      
+      // On sécurise le retour pour que le frontend ne plante jamais
+      return {
+        success: data.success || response.ok,
+        providers: data.providers || (Array.isArray(data) ? data : []),
+        ...data
+      };
+    } catch (error) {
+      console.error(`❌ Échec critique sur ${fullURL}:`, error);
+      return { success: false, providers: [], message: 'שגיאה בחיבור לשרת' };
+    }
   }
-}
 
   // =============================================
-  // SERVICES ET RECHERCHE (Ce qui te manquait !)
+  // SERVICES ET RECHERCHE
   // =============================================
 
-async searchProviders(filters) {
+  async searchProviders(filters) {
     const queryParams = new URLSearchParams(filters).toString();
     const result = await this.request(`/search/providers?${queryParams}`);
     
-    // Si le serveur renvoie directement la liste au lieu de {providers: []}
-    if (Array.isArray(result)) {
-      return { success: true, providers: result };
-    }
-    
-    // Si le serveur renvoie une erreur, on garantit que 'providers' existe
-    if (!result || !result.providers) {
-      return { ...result, providers: result?.providers || [] };
-    }
-    
-    return result;
+    // On garantit que 'providers' est toujours un tableau exploitable
+    return {
+      ...result,
+      providers: result?.providers || []
+    };
   }
 
   async getProvider(id) {
-    // Répare l'erreur "apiService.getProvider is not a function"
     return this.request(`/providers/${id}`);
   }
 
   async getProviderReviews(id) {
-    // Route backend pour les avis
     return this.request(`/providers/${id}/reviews`);
   }
 
   // =============================================
-  // AUTHENTIFICATION
+  // AUTHENTIFICATION ET AUTRES
   // =============================================
 
   async login(email, password) {
@@ -94,10 +92,6 @@ async searchProviders(filters) {
     return this.request('/auth/me');
   }
 
-  // =============================================
-  // AUTRES MÉTHODES (Upload, Dashboard, etc.)
-  // =============================================
-
   async uploadImage(file) {
     const formData = new FormData();
     formData.append('profileImage', file);
@@ -105,10 +99,6 @@ async searchProviders(filters) {
       method: 'POST',
       body: formData,
     });
-  }
-
-  async getSubscriptionInfo() {
-    return this.request('/subscriptions/info');
   }
 
   async testConnection() {
