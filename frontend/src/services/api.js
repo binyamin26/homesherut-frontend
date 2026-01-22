@@ -9,9 +9,12 @@ class ApiService {
     return localStorage.getItem('homesherut_token');
   }
 
-  async request(endpoint, options = {}) {
-    // On s'assure que le chemin est correct entre baseURL et l'endpoint
-    const fullURL = this.baseURL + (endpoint.startsWith('/') ? endpoint : `/${endpoint}`);
+async request(endpoint, options = {}) {
+  // On ignore complètement les chemins relatifs, on force l'adresse de Render
+  const base = 'https://homesherut-backend.onrender.com/api';
+  const fullURL = base + (endpoint.startsWith('/') ? endpoint : `/${endpoint}`);
+  
+  console.log(`🚀 APPEL API RÉEL : ${fullURL}`);
     
     console.log(`🚀 TENTATIVE DE CONNEXION VERS : ${fullURL}`);
 
