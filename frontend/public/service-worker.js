@@ -75,10 +75,13 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Ignore les requêtes vers l'API (toujours en ligne)
-  if (API_URLS.some(apiUrl => request.url.startsWith(apiUrl))) {
-    return;
-  }
+// ✅ CORRECTION: Bypass cache pour API
+if (API_URLS.some(apiUrl => request.url.startsWith(apiUrl)) || 
+    request.url.includes('/search/providers') ||
+    request.url.includes('/api/')) {
+  event.respondWith(fetch(request));
+  return;
+}
 
   // Ignore chrome-extension et autres protocoles
   if (!request.url.startsWith('http')) {
