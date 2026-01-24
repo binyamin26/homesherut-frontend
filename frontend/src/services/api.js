@@ -10,12 +10,8 @@ class ApiService {
   }
 
 async request(endpoint, options = {}) {
-  const serverUrl = 'https://homesherut-backend.onrender.com/api';
-  
-  // ✅ CORRECTION : Ne pas ajouter / si endpoint commence déjà par /
-  const fullURL = endpoint.startsWith('/') 
-    ? `${serverUrl}${endpoint}` 
-    : `${serverUrl}/${endpoint}`;
+  // ✅ URL FORCÉE - NE JAMAIS UTILISER baseURL
+  const fullURL = `https://homesherut-backend.onrender.com/api${endpoint}`;
   
   console.log(`🚀 APPEL API RÉEL : ${fullURL}`);
 
@@ -30,7 +26,6 @@ async request(endpoint, options = {}) {
   try {
     const response = await fetch(fullURL, { ...options, headers });
 
-    // Sécurité : si on reçoit du HTML (code <!doctype), on arrête tout
     const contentType = response.headers.get("content-type");
     if (contentType && contentType.includes("text/html")) {
       console.error("❌ ERREUR : Le serveur a renvoyé du HTML au lieu de JSON.");
