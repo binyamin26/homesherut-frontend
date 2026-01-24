@@ -10,12 +10,12 @@ class ApiService {
   }
 
 async request(endpoint, options = {}) {
-  // 1. On force l'adresse Render en dur ici pour court-circuiter les bugs de baseURL
   const serverUrl = 'https://homesherut-backend.onrender.com/api';
   
-  // 2. On nettoie l'endpoint pour éviter les doubles slashes
-  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
-  const fullURL = serverUrl + cleanEndpoint;
+  // ✅ CORRECTION : Ne pas ajouter / si endpoint commence déjà par /
+  const fullURL = endpoint.startsWith('/') 
+    ? `${serverUrl}${endpoint}` 
+    : `${serverUrl}/${endpoint}`;
   
   console.log(`🚀 APPEL API RÉEL : ${fullURL}`);
 
