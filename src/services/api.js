@@ -11,9 +11,9 @@ class ApiService {
 
 async request(endpoint, options = {}) {
   // ✅ URL FORCÉE - NE JAMAIS UTILISER baseURL
-  const fullURL = `https://homesherut-backend.onrender.com/api${endpoint}`;
+  const backendURL = `https://homesherut-backend.onrender.com/api${endpoint}`;
   
-  console.log(`🚀 APPEL API RÉEL : ${fullURL}`);
+  console.log(`🚀 APPEL API RÉEL : ${backendURL}`);
 // Build 2026-01-25
   const token = this.getAuthToken();
   const headers = {
@@ -24,7 +24,7 @@ async request(endpoint, options = {}) {
   };
 
   try {
-    const response = await fetch(fullURL, { ...options, headers });
+    const response = await fetch(backendURL, { ...options, headers });
 
     const contentType = response.headers.get("content-type");
     if (contentType && contentType.includes("text/html")) {
@@ -39,7 +39,7 @@ async request(endpoint, options = {}) {
       ...data
     };
   } catch (error) {
-    console.error(`❌ Échec sur ${fullURL}:`, error);
+    console.error(`❌ Échec sur ${backendURL}:`, error);
     return { success: false, providers: [], message: 'שגיאה בחיבור לשרת' };
   }
 }
