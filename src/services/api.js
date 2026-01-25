@@ -14,7 +14,7 @@ async request(endpoint, options = {}) {
   const fullURL = `https://homesherut-backend.onrender.com/api${endpoint}`;
   
   console.log(`🚀 APPEL API RÉEL : ${fullURL}`);
-
+// Build 2026-01-25
   const token = this.getAuthToken();
   const headers = {
     'Accept': 'application/json',
