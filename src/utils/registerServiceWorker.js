@@ -18,18 +18,14 @@ export function registerServiceWorker() {
           registration.addEventListener('updatefound', () => {
             const newWorker = registration.installing;
             
-            newWorker.addEventListener('statechange', () => {
-              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                // Nouvelle version disponible
-                console.log('🆕 Nouvelle version disponible!');
-                
-                // Optionnel: Afficher notification à l'utilisateur
-                if (confirm('גרסה חדשה זמינה! רוצה לרענן?')) {
-                  newWorker.postMessage({ type: 'SKIP_WAITING' });
-                  window.location.reload();
-                }
-              }
-            });
+           newWorker.addEventListener('statechange', () => {
+  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+    console.log('🆕 Nouvelle version disponible!');
+    
+    // Recharge automatiquement SANS popup
+    newWorker.postMessage({ type: 'SKIP_WAITING' });
+  }
+});
           });
         })
         .catch((error) => {
@@ -45,17 +41,17 @@ export function registerServiceWorker() {
         }
       });
 
-      // NOUVEAU: Écoute les messages du Service Worker
-      navigator.serviceWorker.addEventListener('message', (event) => {
-        if (event.data && event.data.type === 'SW_UPDATED') {
-          console.log('🔄 Nouvelle version détectée:', event.data.version);
-          
-          // Affiche un message et recharge (optionnel - tu peux afficher un toast à la place)
-          if (confirm('גרסה חדשה זמינה (v' + event.data.version + '). לרענן עכשיו?')) {
-            window.location.reload();
-          }
-        }
-      });
+    // NOUVEAU: Écoute les messages du Service Worker
+navigator.serviceWorker.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SW_UPDATED') {
+    console.log('🔄 Nouvelle version détectée:', event.data.version);
+    
+    // Recharge automatiquement SANS popup
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000); // Attend 2 secondes avant de recharger
+  }
+});
     });
   } else {
     console.log('⚠️ Service Workers non supportés par ce navigateur');

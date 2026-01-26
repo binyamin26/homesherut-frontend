@@ -1,5 +1,5 @@
 // Service Worker HomeSherut - Version avec auto-update
-const CACHE_VERSION = 'v2.0.0'; // Incrémente ce numéro à chaque déploiement
+const CACHE_VERSION = 'v' + Date.now();
 const CACHE_NAME = `homesherut-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `homesherut-runtime-${CACHE_VERSION}`;
 
