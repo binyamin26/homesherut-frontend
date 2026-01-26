@@ -1,6 +1,17 @@
 /* ====================================
    AUTH MODAL - HOMESHERUT (VERSION RTL COMPLÈTE)
    ==================================== */
+/* Décaler le TEXTE à l'intérieur des inputs vers la gauche */
+.standard-input,
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="tel"],
+.auth-form input[type="password"],
+.auth-form select {
+  padding-right: 48px !important; /* Pour l'icône à droite */
+  padding-left: 20px !important; /* Espace à gauche du texte */
+  text-align: right !important;
+}
 
 /* Auth form styles */
 .auth-form {
@@ -70,13 +81,6 @@
   text-align: center;
 }
 
-.service-selection {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); /* 200px au lieu de 160px */
-  gap: var(--space-4);
-  margin-top: var(--space-6);
-  direction: rtl;
-}
 
 .service-btn {
   display: flex;
