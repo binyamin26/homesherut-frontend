@@ -1,4 +1,4 @@
-# Dependencies
+
 node_modules/
 */node_modules/
 
@@ -157,3 +157,4 @@ jspm_packages
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
