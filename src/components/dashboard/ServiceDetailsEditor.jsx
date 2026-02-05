@@ -3,6 +3,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useAuth } from '../../context/AuthContext';
 import serviceFieldsConfig from './../config/serviceFieldsConfig';
 import { translateValue, translateAndJoin } from '../../utils/translationMapper';
+import CustomDropdown from '../common/CustomDropdown';
 
 // ✅ Mapping des champs vers leurs catégories de traduction
 const fieldToCategoryMapping = {
@@ -406,35 +407,35 @@ const ServiceDetailsEditor = ({
       );
     }
 
-    if (field.type === 'boolean-select') {
+  if (field.type === 'boolean-select') {
       return (
-        <select
+        <CustomDropdown
+          name={field.name}
           value={value === true ? 'yes' : value === false ? 'no' : ''}
           onChange={(e) => onFieldChange(field.name, e.target.value === 'yes')}
-          className="form-input inline-edit"
-        >
-          <option value="">{t('common.select')}</option>
-          <option value="yes">{t('common.yes')}</option>
-          <option value="no">{t('common.no')}</option>
-        </select>
+          placeholder={t('common.select')}
+          options={[
+            { value: 'yes', label: t('common.yes') },
+            { value: 'no', label: t('common.no') }
+          ]}
+        />
       );
     }
 
- if (field.type === 'select') {
+if (field.type === 'select') {
       return (
-        <select
+        <CustomDropdown
+          name={field.name}
           value={value || ''}
           onChange={(e) => onFieldChange(field.name, e.target.value)}
-          className="form-input inline-edit"
-        >
-          <option value="">{t('common.select')}</option>
-          {field.options.map((opt, i) => {
+          placeholder={t('common.select')}
+          options={field.options.map((opt) => {
             const optValue = typeof opt === 'string' ? opt : opt.value;
             const optLabel = typeof opt === 'string' ? opt : opt.label;
             const translatedLabel = translateFieldValue(field.name, optLabel);
-            return <option key={i} value={optValue}>{translatedLabel}</option>;
+            return { value: optValue, label: translatedLabel };
           })}
-        </select>
+        />
       );
     }
 
