@@ -1507,7 +1507,7 @@ const handleStep2Submit = (e) => {
         return;
       }
       
-      setStep(3);
+     handleFinalSubmit();
     }, 50);
     
     return;

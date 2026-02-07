@@ -1417,85 +1417,171 @@ body .dashboard-page .info-section h3.section-title {
   }
 }
 
+
+
 /* ====================================
    ZONE DANGER - SUPPRESSION DE COMPTE
    ==================================== */
 
-/* Settings card danger zone */
+/* Supprimer le fond blanc du dashboard-content quand on est dans account-management */
+.dashboard-content:has(.account-management-section) {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Section account management */
+.account-management-section {
+  background: transparent;
+  padding: 0;
+}
+
+/* Settings card danger zone - le cadre principal rouge */
 .settings-card.danger-zone {
   border: 3px solid #dc2626;
   background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
   transition: all var(--transition-medium);
   box-shadow: 0 4px 20px rgba(220, 38, 38, 0.15);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
 }
 
 .settings-card.danger-zone:hover {
-  border-color: #b91c1c;
   box-shadow: 0 8px 30px rgba(220, 38, 38, 0.25);
-  transform: translateY(-2px);
 }
 
+/* Header rouge avec titre et poubelle */
 .settings-card.danger-zone .settings-card-header {
   background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
   border-bottom: none;
   padding: var(--space-5) var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  direction: rtl;
+  justify-content: flex-start;
 }
 
 .settings-card.danger-zone .settings-card-header h4 {
   color: white;
   font-weight: 700;
   font-size: var(--text-xl);
+  margin: 0;
 }
 
-.settings-card.danger-zone .settings-card-header svg {
+.settings-card.danger-zone .settings-card-header > svg {
   color: white;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-left: 12px; /* décalage du bord - augmente à 16px, 20px, 24px si besoin */
 }
 
+/* Contenu principal */
 .settings-card.danger-zone .settings-content {
   background: transparent;
-  padding: var(--space-6);
+  padding: var(--space-8);
+}
+
+/* Layout deux colonnes: texte à droite, cartes à gauche */
+.settings-card.danger-zone .account-action-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+/* Info texte à droite */
+.settings-card.danger-zone .account-action-info {
+  order: 2;
+  text-align: right;
 }
 
 .settings-card.danger-zone .account-action-info h5 {
   color: #991b1b;
-  font-size: var(--text-xl);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
 }
 
 .settings-card.danger-zone .account-action-info p {
   color: #7f1d1d;
+  font-size: var(--text-base);
+  line-height: 1.7;
+}
+
+.settings-card.danger-zone .warning-list {
+  margin-top: var(--space-4);
 }
 
 .settings-card.danger-zone .warning-list li {
   color: #991b1b;
+  font-size: var(--text-base);
+  padding: var(--space-2) var(--space-6) var(--space-2) 0;
 }
 
 .settings-card.danger-zone .warning-list li::before {
   color: #dc2626;
+  font-size: 1.5rem;
 }
 
-/* Cartes de service dans danger zone */
+/* Grid des cartes de service à gauche */
+.settings-card.danger-zone .service-deletion-grid {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Cartes de service individuelles */
 .settings-card.danger-zone .service-deletion-card {
   background: white;
   border: 2px solid #fca5a5;
-  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  transition: all var(--transition-medium);
 }
 
 .settings-card.danger-zone .service-deletion-card:hover {
   border-color: #dc2626;
   background: #fff5f5;
-  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.15);
+  transform: translateX(-4px);
 }
 
-.settings-card.danger-zone .service-deletion-card h5 {
+/* Info du service */
+.settings-card.danger-zone .service-deletion-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  text-align: right;
+}
+
+.settings-card.danger-zone .service-deletion-info h5 {
   color: #991b1b;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  margin: 0;
 }
 
-/* Bouton danger amélioré */
+.settings-card.danger-zone .active-badge {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  font-size: var(--text-xs);
+  padding: var(--space-1) var(--space-3);
+}
+
+/* Bouton danger - GROS et visible */
 .settings-card.danger-zone .btn-danger {
   background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
   color: white;
   border: none;
-  padding: var(--space-3) var(--space-5);
+  padding: var(--space-3) var(--space-6);
   border-radius: var(--radius-xl);
   font-size: var(--text-base);
   font-weight: 700;
@@ -1506,8 +1592,8 @@ body .dashboard-page .info-section h3.section-title {
   gap: var(--space-2);
   transition: all var(--transition-medium);
   box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .settings-card.danger-zone .btn-danger:hover {
@@ -1516,18 +1602,80 @@ body .dashboard-page .info-section h3.section-title {
   box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
 }
 
-.settings-card.danger-zone .btn-danger:active {
-  transform: translateY(0);
+.settings-card.danger-zone .btn-danger svg {
+  width: 18px;
+  height: 18px;
 }
 
-/* Responsive danger zone */
+/* ========================================
+   RESPONSIVE DANGER ZONE
+   ======================================== */
+@media (max-width: 1024px) {
+  .settings-card.danger-zone .account-action-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  
+  .settings-card.danger-zone .account-action-info {
+    order: 1;
+  }
+  
+  .settings-card.danger-zone .service-deletion-grid {
+    order: 2;
+  }
+}
+
 @media (max-width: 768px) {
+  .settings-card.danger-zone .settings-content {
+    padding: var(--space-5);
+  }
+  
+  .settings-card.danger-zone .service-deletion-card {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-3);
+  }
+  
+  .settings-card.danger-zone .service-deletion-info {
+    text-align: center;
+    align-items: center;
+  }
+  
+  .settings-card.danger-zone .btn-danger {
+    width: 100%;
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-lg);
+  }
+  
+  .settings-card.danger-zone .account-action-info h5 {
+    font-size: var(--text-xl);
+    text-align: center;
+  }
+  
+  .settings-card.danger-zone .account-action-info p {
+    text-align: center;
+  }
+  
+  .settings-card.danger-zone .warning-list {
+    text-align: right;
+  }
+}
+
+@media (max-width: 480px) {
   .settings-card.danger-zone .settings-card-header {
-    padding: var(--space-4) var(--space-5);
+    padding: var(--space-4);
   }
   
   .settings-card.danger-zone .settings-card-header h4 {
     font-size: var(--text-lg);
+  }
+  
+  .settings-card.danger-zone .settings-content {
+    padding: var(--space-4);
+  }
+  
+  .settings-card.danger-zone .service-deletion-card {
+    padding: var(--space-4);
   }
 }
 
@@ -2154,3 +2302,58 @@ select.inline-edit {
   }
 }
 
+/* ========================================
+   FIXES DANGER ZONE DESKTOP
+   ======================================== */
+
+/* Enlever le cadre blanc derrière danger-zone */
+.account-management-section .settings-card.danger-zone {
+  margin: 0 -var(--space-8);
+  width: calc(100% + var(--space-8) * 2);
+  border-radius: var(--radius-2xl);
+}
+
+/* Ou plus simple - fond transparent pour la section */
+.account-management-section {
+  background: transparent;
+  padding: 0;
+}
+
+/* Fix: boutons pas full width sur desktop */
+.settings-card.danger-zone .service-deletion-card .btn {
+  width: auto;
+  align-self: flex-start;
+}
+
+/* Fix: grid des cartes de service */
+.settings-card.danger-zone .service-deletion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+/* Fix: cartes de service alignement */
+.settings-card.danger-zone .service-deletion-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  padding: var(--space-4);
+}
+
+
+/* Mobile reste inchangé */
+@media (max-width: 768px) {
+  .settings-card.danger-zone .service-deletion-card .btn {
+    width: 100%;
+  }
+  
+  .settings-card.danger-zone .service-deletion-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .account-management-section .settings-card.danger-zone {
+    margin: 0;
+    width: 100%;
+  }
+}
