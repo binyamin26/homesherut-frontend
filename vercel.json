@@ -3,6 +3,10 @@
     {
       "source": "/api/:path*",
       "destination": "https://homesherut-backend.onrender.com/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
