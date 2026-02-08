@@ -28,6 +28,24 @@ const EldercareForm = ({ serviceDetails, errors, handleServiceDetailsChange, han
       
       <div className="form-section">
        <h4>{t('serviceForm.common.requiredFields')}</h4>
+
+       {/* ✅ AGE */}
+        <div className="input-group">
+          <label>{t('serviceForm.common.age')}</label>
+          <input
+            type="text"
+            inputMode="numeric"
+            autoComplete="off"
+            value={serviceDetails.age || ''}
+            onChange={(e) => {
+              const numericValue = e.target.value.replace(/\D/g, '');
+              handleServiceDetailsChange('age', numericValue);
+            }}
+            className={`standard-input ${errors['serviceDetails.age'] ? 'error' : ''}`}
+            data-field="age"
+          />
+          {errors['serviceDetails.age'] && <span className="error-text">{errors['serviceDetails.age']}</span>}
+        </div>
         
         <div className="input-group">
           <label>{t('serviceForm.eldercare.careTypesLabel')}</label>

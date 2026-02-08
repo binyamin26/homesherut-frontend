@@ -380,7 +380,14 @@ const handleContact = () => {
             )}
           </>
         )}
-
+        
+{/* === AGE pour services manquants === */}
+        {['cleaning', 'gardening', 'petcare', 'tutoring', 'eldercare', 'laundry', 'property_management'].includes(provider.serviceType) && details.age && (
+          <div className="detail-item">
+            <strong>{t('provider.details.age')}:</strong>
+            <span>{details.age} {t('provider.details.years')}</span>
+          </div>
+        )}
         {/* Disponibilité jours */}
         {(details.availableDays || details.availability_days) && (details.availableDays?.length > 0 || details.availability_days?.length > 0) && (
           <div className="detail-item">

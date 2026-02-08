@@ -25,6 +25,28 @@ const styles = `
       animation-play-state: paused !important;
   }
 
+  /* --- AJOUT : VIDÉO SPÉCIFIQUE --- */
+  .overlay-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5; /* Au-dessus du fond, sous le texte */
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      background: #000; /* Fond noir pour éviter la transparence */
+  }
+  .overlay-layer.visible {
+      opacity: 1;
+  }
+  .overlay-video-content {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6; /* Ajuste ici si tu veux la vidéo plus ou moins sombre */
+  }
+
   /* --- ARRIÈRE-PLAN VIDÉO (Subtil) --- */
   .bg-video {
       position: absolute;
@@ -498,7 +520,11 @@ const PromoVideo = ({ videoSrc = "/background.mp4", services = [] }) => {
   };
 
   const activeSeq = getActiveSequence(currentTime);
-  
+  // --- AJOUT : Mapping des vidéos spécifiques ---
+  const specificVideos = {
+      6: "dashboard.mp4" // La vidéo s'affichera pendant l'étape 6
+  };
+  const currentSpecificVideo = specificVideos[activeSeq];
   const isServicesSlide = activeSeq === 5;
 
   const toggleVideo = (e) => {
@@ -553,6 +579,19 @@ const PromoVideo = ({ videoSrc = "/background.mp4", services = [] }) => {
           <div className="geo-shape gs-3"></div>
       </div>
 
+{/* --- AJOUT : CONTAINER VIDÉO SPÉCIFIQUE --- */}
+      <div className={`overlay-layer ${currentSpecificVideo ? 'visible' : ''}`}>
+          {currentSpecificVideo && (
+              <video 
+                  src={currentSpecificVideo} 
+                  className="overlay-video-content" 
+                  autoPlay loop muted playsInline 
+                  key={currentSpecificVideo} // Force le rechargement si la vidéo change
+              />
+          )}
+      </div>
+      {/* ------------------------------------------ */}
+      
       {/* 3. MARQUEE MULTI-DIRECTIONNEL */}
       <div className={`marquee-layer ${isServicesSlide ? 'visible' : ''}`}>
           <div className="marquee-row scroll-left">
