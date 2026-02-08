@@ -61,7 +61,7 @@ const serviceFieldsConfig = {
 
   cleaning: {
     fields: [
-      { name: 'age', label: 'serviceFields.cleaning.age', type: 'number' },
+      { name: 'age', label: 'serviceForm.common.age', type: 'number' },
       { 
         name: 'legalStatus', 
         label: 'serviceFields.cleaning.legalStatus', 
@@ -106,7 +106,7 @@ const serviceFieldsConfig = {
 
   gardening: {
     fields: [
-      { name: 'age', label: 'serviceFields.gardening.age', type: 'number' },
+      { name: 'age', label: 'serviceForm.common.age', type: 'number' },
       { 
         name: 'services', 
         label: 'serviceFields.gardening.services', 
@@ -156,7 +156,7 @@ const serviceFieldsConfig = {
 
   petcare: {
     fields: [
-      { name: 'age', label: 'serviceFields.petcare.age', type: 'number' },
+      { name: 'age', label: 'serviceForm.common.age', type: 'number' },
       { 
         name: 'animalTypes', 
         label: 'serviceFields.petcare.animalTypes', 
@@ -213,7 +213,7 @@ const serviceFieldsConfig = {
 
   tutoring: {
     fields: [
-      { name: 'age', label: 'serviceFields.tutoring.age', type: 'number' },
+      { name: 'age', label: 'serviceForm.common.age', type: 'number' },
       { 
         name: 'subjects', 
         label: 'serviceFields.tutoring.subjects', 
@@ -240,7 +240,7 @@ const serviceFieldsConfig = {
 
  eldercare: {
     fields: [
-      { name: 'age', label: 'serviceFields.eldercare.age', type: 'number' },
+      { name: 'age', label: 'serviceForm.common.age', type: 'number' },
       { 
         name: 'careTypes', 
         label: 'serviceFields.eldercare.careTypes', 
@@ -273,7 +273,7 @@ const serviceFieldsConfig = {
 
  laundry: {
     fields: [
-      { name: 'age', label: 'serviceFields.laundry.age', type: 'number' },
+      { name: 'age', label: 'serviceForm.common.age', type: 'number' },
       { name: 'experience', label: 'serviceFields.laundry.experienceYears', type: 'number' },
       { 
         name: 'laundryTypes', 
@@ -313,7 +313,7 @@ const serviceFieldsConfig = {
   
   property_management: {
     fields: [
-      { name: 'age', label: 'serviceFields.property_management.age', type: 'number' },
+      { name: 'age', label: 'serviceForm.common.age', type: 'number' },
       { 
         name: 'management_type', 
         label: 'serviceFields.property_management.management_type', 

@@ -273,6 +273,7 @@
 .btn-full {
   width: 100%;
   justify-content: center;
+  margin-top: var(--space-4);
 }
 
 .btn-primary {
