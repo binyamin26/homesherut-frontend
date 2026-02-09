@@ -1138,13 +1138,13 @@ console.log('🔍 DEBUG serviceDetails COMPLET:', JSON.stringify(userData?.servi
           </>
         ) : (
           !isSubscriptionExpired && (
-          <button 
-              onClick={handleEditToggle}
-              className="btn btn-secondary"
-            >
-              <Edit size={18} />
-              ערוך פרופיל
-            </button>
+        <button 
+  onClick={handleEditToggle}
+  className="btn btn-secondary"
+>
+  <Edit size={18} />
+  {t('dashboard.editProfile')}
+</button>
           )
         )}
       </div>
