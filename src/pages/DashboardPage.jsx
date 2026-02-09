@@ -995,20 +995,24 @@ console.log('🔍 DEBUG serviceDetails COMPLET:', JSON.stringify(userData?.servi
     <div className="provider-header" style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
       <div style={{ display: 'flex', gap: '2rem' }}>
         
-     <div className="provider-avatar" style={{ width: '100px', height: '100px' }}>
- {imagePreview ? (
-        <img 
-          src={imagePreview} 
-          alt="Preview" 
-        />
-      ) : userData?.providerProfile?.profile_image ? (
-        <img 
-          src={`${(import.meta.env.VITE_API_URL || 'https://homesherut-backend.onrender.com/api').replace('/api', '')}/${userData.providerProfile.profile_image.replace(/^\/+/, '')}`} 
-          alt={userData.firstName}
-        />
-      ) : (
-        <User size={60} />
-      )}
+    <div className="provider-avatar" style={{ width: '100px', height: '100px' }}>
+  {imagePreview ? (
+    <img 
+      src={imagePreview} 
+      alt="Preview" 
+    />
+  ) : userData?.providerProfile?.profile_image ? (
+    <img 
+      src={
+        userData.providerProfile.profile_image.startsWith('http') 
+          ? userData.providerProfile.profile_image 
+          : `https://homesherut-backend.onrender.com/${userData.providerProfile.profile_image.replace(/^\/+/, '')}`
+      }
+      alt={userData.firstName}
+    />
+  ) : (
+    <User size={60} />
+  )}
   
   <div className="avatar-actions">
   {!imagePreview ? (
