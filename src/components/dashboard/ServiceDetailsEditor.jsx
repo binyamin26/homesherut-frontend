@@ -237,8 +237,20 @@ const ServiceDetailsEditor = ({
   }
 
   // ✅ NOUVELLE FONCTION : Traduire une valeur selon le champ
- const translateFieldValue = (fieldName, value) => {
+ // ✅ Normaliser les valeurs pour comparaison (enlever tirets, espaces multiples, etc.)
+const normalizeValue = (val) => {
+  if (!val || typeof val !== 'string') return '';
+  return val
+    .replace(/-/g, ' ')           // Remplacer tirets par espaces
+    .replace(/\s+/g, ' ')         // Normaliser espaces multiples
+    .trim()                       // Enlever espaces début/fin
+    .toLowerCase();               // Tout en minuscules
+};
+
+const translateFieldValue = (fieldName, value) => {
   if (!value) return t('dashboard.notSpecified');
+  
+  const normalizedValue = normalizeValue(value);
   
   // Chercher dans toutes les catégories de filterConfig
   for (const serviceKey in FILTER_CONFIG) {
@@ -247,7 +259,9 @@ const ServiceDetailsEditor = ({
       
       const options = FILTER_CONFIG[serviceKey][categoryKey];
       if (Array.isArray(options)) {
-        const found = options.find(opt => opt.value === value);
+        const found = options.find(opt => 
+          normalizeValue(opt.value) === normalizedValue
+        );
         if (found) {
           return t(found.key);
         }
@@ -260,7 +274,9 @@ const ServiceDetailsEditor = ({
     for (const categoryKey in FILTER_CONFIG.common) {
       const options = FILTER_CONFIG.common[categoryKey];
       if (Array.isArray(options)) {
-        const found = options.find(opt => opt.value === value);
+        const found = options.find(opt => 
+          normalizeValue(opt.value) === normalizedValue
+        );
         if (found) {
           return t(found.key);
         }
@@ -268,6 +284,7 @@ const ServiceDetailsEditor = ({
     }
   }
   
+  // Si rien trouvé, retourner la valeur originale
   return value;
 };
 
