@@ -284,13 +284,25 @@ const Header = () => {
       transition: 'transform 0.3s ease'
     }}>▼</span>
   </div>
-  {showMobileServices && services.map((service, index) => (
-                <Link key={index} to={service.href} className="dropdown-item" style={{marginRight: '16px'}} onClick={() => setIsMenuOpen(false)}>
-                  <div className="dropdown-icon">{service.icon}</div>
-                  <div className="dropdown-content">
-                    <h4>{t(service.nameKey)}</h4>
-            <p>{t(service.descKey)}</p>
-                  </div>
+ {showMobileServices && services.map((service, index) => (
+                <Link key={index} to={service.href} className="dropdown-item" style={{marginRight: '16px', display: 'flex', alignItems: 'center', gap: '12px'}} onClick={() => setIsMenuOpen(false)}>
+                  {currentLanguage === 'he' ? (
+                    <>
+                      <div className="dropdown-icon" style={{flexShrink: 0}}>{service.icon}</div>
+                      <div className="dropdown-content" style={{flexGrow: 1, textAlign: 'right'}}>
+                        <h4>{t(service.nameKey)}</h4>
+                        <p>{t(service.descKey)}</p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="dropdown-content" style={{flexGrow: 1, textAlign: 'left'}}>
+                        <h4>{t(service.nameKey)}</h4>
+                        <p>{t(service.descKey)}</p>
+                      </div>
+                      <div className="dropdown-icon" style={{flexShrink: 0}}>{service.icon}</div>
+                    </>
+                  )}
                 </Link>
               ))}
             </div>
