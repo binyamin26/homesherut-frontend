@@ -285,7 +285,7 @@ const Header = () => {
     }}>▼</span>
   </div>
  {showMobileServices && services.map((service, index) => (
-                <Link key={index} to={service.href} className="dropdown-item" style={{marginRight: '16px', display: 'flex', alignItems: 'center', gap: '12px'}} onClick={() => setIsMenuOpen(false)}>
+                <Link key={index} to={service.href} className="dropdown-item" style={{marginRight: '16px', display: 'flex', alignItems: 'center', gap: '12px', direction: currentLanguage === 'he' ? 'rtl' : 'ltr'}} onClick={() => setIsMenuOpen(false)}>
                   {currentLanguage === 'he' ? (
                     <>
                       <div className="dropdown-icon" style={{flexShrink: 0}}>{service.icon}</div>
