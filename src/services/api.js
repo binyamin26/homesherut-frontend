@@ -86,8 +86,8 @@ class ApiService {
   }
 
   async getProviderReviews(id) {
-    return this.request("/providers/" + id + "/reviews");
-  }
+    return this.request("/reviews/provider/" + id);
+}
 
   async submitReview(providerId, reviewData) {
     return this.request("/providers/" + providerId + "/reviews", {
