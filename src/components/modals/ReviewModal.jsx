@@ -314,7 +314,7 @@ placeholder={t('review.form.codePlaceholder')}
   {t('common.back')}
 </button>
                  <button
-  className="btn-primary btn-full"
+  className="btn-verify"
   style={{ padding: '16px 32px', borderRadius: '12px', minHeight: '56px' }}
   onClick={handleVerifyCode}
   disabled={loading}
