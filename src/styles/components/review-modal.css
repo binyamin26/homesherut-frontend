@@ -438,11 +438,15 @@
     max-height: 95vh;
     margin: 0;
     border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    display: flex;
+    flex-direction: column;
   }
   
   .modal-content {
     padding: var(--space-4);
-    max-height: calc(95vh - 80px);
+    flex: 1;
+    min-height: 0;
+    max-height: none;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: var(--space-8);

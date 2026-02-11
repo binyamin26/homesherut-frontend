@@ -306,16 +306,15 @@ placeholder={t('review.form.codePlaceholder')}
                 )}
 
                 <div className="step-navigation">
-           <button
-  className="btn-back-green"
+         <button
+  className="btn-secondary"
   onClick={() => setStep('email-verification')}
   disabled={loading}
 >
   {t('common.back')}
 </button>
-                 <button
-  className="btn-verify"
-  style={{ padding: '16px 32px', borderRadius: '12px', minHeight: '56px' }}
+<button
+  className="btn-primary"
   onClick={handleVerifyCode}
   disabled={loading}
 >
