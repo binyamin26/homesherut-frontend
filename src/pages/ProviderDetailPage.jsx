@@ -1376,7 +1376,9 @@ const handleContact = () => {
   {provider.media?.profileImage ? (
     <img 
     // REMPLACEZ le src de l'image par :
-src={`${(import.meta.env.VITE_API_URL || '').replace('/api', '')}/${(provider.media?.profileImage || '').replace(/\\/g, '/').replace(/^\/+/, '')}`}
+src={provider.media?.profileImage?.startsWith('http') 
+  ? provider.media.profileImage 
+  : `${(import.meta.env.VITE_API_URL || '').replace('/api', '')}/${(provider.media?.profileImage || '').replace(/\\/g, '/').replace(/^\/+/, '')}`}
       alt={provider.name}
       className="provider-image"
     />
@@ -1611,10 +1613,12 @@ src={`${(import.meta.env.VITE_API_URL || '').replace('/api', '')}/${(provider.me
       <div className="provider-info" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
   <div className="provider-avatar">
     <img 
-    src={provider.media?.profileImage 
-  ? `${import.meta.env.VITE_API_URL.replace('/api', '')}/${provider.media.profileImage.replace(/\\/g, '/').replace(/^\/+/, '')}`
-  : '/images/placeholder-user.png' // Utilisez un chemin local pour le placeholder
-}
+  src={provider.media?.profileImage 
+  ? (provider.media.profileImage.startsWith('http') 
+      ? provider.media.profileImage 
+      : `${import.meta.env.VITE_API_URL.replace('/api', '')}/${provider.media.profileImage.replace(/\\/g, '/').replace(/^\/+/, '')}`)
+  : '/images/placeholder-user.png'}
+  
       alt={provider.name}
       className="provider-response-image"
     />
