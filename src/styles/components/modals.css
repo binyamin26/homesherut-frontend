@@ -224,16 +224,20 @@
 @media (max-width: 640px) {
   .modal-overlay {
     padding: 0;
-    align-items: flex-end;
+    align-items: stretch;
+    overflow: hidden;
   }
   
   .modal-content {
     margin: 0;
     max-width: 100%;
     width: 100%;
-    max-height: 100vh;
-    min-height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
+    min-height: auto;
     border-radius: 0;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
   
   .success-modal {
