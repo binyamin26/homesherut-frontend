@@ -217,3 +217,41 @@ footer {
   height: 100%;
   object-fit: cover;
 }
+
+/* Accordion mobile */
+.footer-accordion-icon {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .footer-section h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    cursor: pointer;
+    padding: var(--space-3) 0;
+    margin-bottom: 0;
+  }
+  
+  .footer-accordion-icon {
+    display: block;
+    transition: transform 0.3s ease;
+    color: var(--neutral-400);
+  }
+  
+  .footer-section.open .footer-accordion-icon {
+    transform: rotate(180deg);
+  }
+  
+  .footer-section .footer-links {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .footer-section.open .footer-links {
+    max-height: 500px;
+    margin-top: var(--space-3);
+  }
+}

@@ -1,7 +1,7 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
-import { Home } from 'lucide-react'
 import { useLanguage } from '../../context/LanguageContext'
+import React, { useState } from 'react'
+import { Home, ChevronDown } from 'lucide-react'
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -71,6 +71,7 @@ const quickLinks = [
     { nameKey: 'footer.links.terms', path: '/terms' },
     { nameKey: 'footer.links.privacy', path: '/privacy' }
   ]
+  const [openSection, setOpenSection] = useState(null);
 
   return (
     <footer>
@@ -105,10 +106,12 @@ const quickLinks = [
             </div>
           </div>
 
-          {/* Services par catégories */}
        {serviceCategories.map((category, catIndex) => (
-            <div key={catIndex} className="footer-section">
-              <h3>{t(category.titleKey)}</h3>
+            <div key={catIndex} className={`footer-section ${openSection === catIndex ? 'open' : ''}`}>
+              <h3 onClick={() => setOpenSection(openSection === catIndex ? null : catIndex)}>
+                {t(category.titleKey)}
+                <ChevronDown size={18} className="footer-accordion-icon" />
+              </h3>
               <div className="footer-links">
                 {category.services.map((service, index) => (
                   <Link 
@@ -125,8 +128,11 @@ const quickLinks = [
           ))}
 
           {/* Quick Links */}
-        <div className="footer-section">
-            <h3>{t('footer.quickLinks')}</h3>
+        <div className={`footer-section ${openSection === 'quick' ? 'open' : ''}`}>
+            <h3 onClick={() => setOpenSection(openSection === 'quick' ? null : 'quick')}>
+              {t('footer.quickLinks')}
+              <ChevronDown size={18} className="footer-accordion-icon" />
+            </h3>
             <div className="footer-links">
               {quickLinks.map((link, index) => (
                 <Link 
