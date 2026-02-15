@@ -269,6 +269,7 @@ const ContactPage = () => {
   placeholder={t('contact.form.subjectPlaceholder')}
   disabled={loading}
   error={errors.subject}
+  t={t}
 />
                   {errors.subject && <span className="error-text">{errors.subject}</span>}
                 </div>
