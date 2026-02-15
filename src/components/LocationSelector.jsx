@@ -80,7 +80,7 @@ const LocationSelector = ({
               options={availableCities}
               value={selectedCity}
               onChange={handleCityChange}
-              placeholder="בחר עיר"
+              placeholder={t('auth.selectCity')}
             />
           </div>
 
