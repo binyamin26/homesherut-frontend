@@ -1797,9 +1797,9 @@ const renderWorkingAreasSection = () => {
 <p className="modal-subtitle">
   {mode === 'login' 
     ? t('auth.modal.loginSubtitle') 
-    : step === 1 
-      ? t('auth.modal.step1Subtitle')
-      : t('auth.modal.step2Subtitle')}
+    : step === 2 
+      ? t('auth.modal.step2Subtitle')
+      : ''}
 </p>
           </div>
 
