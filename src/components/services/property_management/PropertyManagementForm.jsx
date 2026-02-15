@@ -30,7 +30,7 @@ const shortTermManagement = [
 
        {/* ✅ AGE */}
         <div className="input-group">
-          <label>{t('serviceForm.common.age')}</label>
+          <label className="auth-form-label required">{t('serviceForm.common.age')}</label>
           <input
             type="text"
             inputMode="numeric"
