@@ -96,6 +96,7 @@ const PetcareForm = ({ serviceDetails, errors, handleServiceDetailsChange, handl
   onChange={(e) => handleServiceDetailsChange('location', e.target.value)}
   placeholder={t('serviceForm.petcare.selectLocation')}
   error={errors['serviceDetails.location']}
+  t={t}
   options={[
     { value: 'בבית הלקוח', label: t('filters.petcare.clientHome') },
     { value: 'בבית המטפל', label: t('filters.petcare.caregiverHome') },

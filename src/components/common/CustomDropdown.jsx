@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { ChevronDown, Search } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 
 const CustomDropdown = ({ 
@@ -14,6 +15,7 @@ const CustomDropdown = ({
   searchable = true,
   t
 }) => {
+   const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0, width: 0 });

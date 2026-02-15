@@ -199,6 +199,7 @@ const BabysittingForm = ({ serviceDetails, errors, handleServiceDetailsChange, h
   onChange={(e) => handleServiceDetailsChange('can_travel_alone', e.target.value === 'yes')}
   placeholder={t('serviceForm.common.select')}
   error={errors['serviceDetails.can_travel_alone']}
+  t={t}
   options={[
     { value: 'yes', label: t('common.yes') },
     { value: 'no', label: t('common.no') }
@@ -267,6 +268,7 @@ const BabysittingForm = ({ serviceDetails, errors, handleServiceDetailsChange, h
   value={serviceDetails.certifications || ''}
   onChange={(e) => handleServiceDetailsChange('certifications', e.target.value)}
   placeholder={t('serviceForm.common.selectCertification')}
+  t={t}
   options={[
     { value: 'הכשרה בתחום החינוך המיוחד', label: t('filters.babysitting.certSpecialEd') },
     { value: 'קורס עזרה ראשונה', label: t('filters.babysitting.certFirstAid') },
@@ -282,6 +284,7 @@ const BabysittingForm = ({ serviceDetails, errors, handleServiceDetailsChange, h
   value={serviceDetails.religiosity || ''}
   onChange={(e) => handleServiceDetailsChange('religiosity', e.target.value)}
   placeholder={t('serviceForm.common.selectLevel')}
+  t={t}
   options={[
     { value: '', label: t('filters.noMatter') },
     { value: 'חילוני', label: t('filters.religious.secular') },

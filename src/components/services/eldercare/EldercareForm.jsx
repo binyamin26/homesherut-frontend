@@ -200,6 +200,7 @@ const EldercareForm = ({ serviceDetails, errors, handleServiceDetailsChange, han
   value={serviceDetails.administrativeHelp || 'not_specified'}
   onChange={(e) => handleServiceDetailsChange('administrativeHelp', e.target.value)}
   placeholder={t('filters.noMatter')}
+  t={t}
   options={[
     { value: 'not_specified', label: t('filters.noMatter') },
     { value: 'yes', label: t('common.yes') },
@@ -216,6 +217,7 @@ const EldercareForm = ({ serviceDetails, errors, handleServiceDetailsChange, han
   value={serviceDetails.medicalAccompaniment || 'not_specified'}
   onChange={(e) => handleServiceDetailsChange('medicalAccompaniment', e.target.value)}
   placeholder={t('filters.noMatter')}
+  t={t}
   options={[
     { value: 'not_specified', label: t('filters.noMatter') },
     { value: 'yes', label: t('common.yes') },
@@ -232,6 +234,7 @@ const EldercareForm = ({ serviceDetails, errors, handleServiceDetailsChange, han
   value={serviceDetails.vehicleForOutings || 'not_specified'}
   onChange={(e) => handleServiceDetailsChange('vehicleForOutings', e.target.value)}
   placeholder={t('filters.noMatter')}
+  t={t}
   options={[
     { value: 'not_specified', label: t('filters.noMatter') },
     { value: 'yes', label: t('common.yes') },

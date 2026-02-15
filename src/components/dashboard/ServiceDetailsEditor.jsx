@@ -454,6 +454,7 @@ const translateTutoringSubject = (subjectNameHe) => {
           value={value === true ? 'yes' : value === false ? 'no' : ''}
           onChange={(e) => onFieldChange(field.name, e.target.value === 'yes')}
           placeholder={t('common.select')}
+          t={t}
           options={[
             { value: 'yes', label: t('common.yes') },
             { value: 'no', label: t('common.no') }
@@ -469,6 +470,7 @@ if (field.type === 'select') {
           value={value || ''}
           onChange={(e) => onFieldChange(field.name, e.target.value)}
           placeholder={t('common.select')}
+          t={t}
           options={field.options.map((opt) => {
             const optValue = typeof opt === 'string' ? opt : opt.value;
             const optLabel = typeof opt === 'string' ? opt : opt.label;

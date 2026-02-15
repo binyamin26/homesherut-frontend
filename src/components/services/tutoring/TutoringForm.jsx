@@ -255,6 +255,7 @@ const { t, currentLanguage } = useLanguage();
     onChange={(e) => handleServiceDetailsChange('teachingMode', e.target.value)}
     placeholder={t('serviceForm.common.select')}
     error={errors['serviceDetails.teachingMode']}
+    t={t}
     options={config.teachingModes.map(mode => ({
         value: mode.value,
         label: t(mode.key)

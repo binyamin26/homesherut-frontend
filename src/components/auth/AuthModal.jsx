@@ -1669,6 +1669,7 @@ const renderWorkingAreasSection = () => {
     onChange={(e) => setSelectedCity(e.target.value)}
     placeholder={t('auth.selectCity')}
     error={errors.workingAreas}
+    t={t}
   />
 </div>
 

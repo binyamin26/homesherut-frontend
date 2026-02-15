@@ -130,6 +130,7 @@ const LaundryForm = ({ serviceDetails, errors, handleServiceDetailsChange, handl
   value={serviceDetails.pickupService || ''}
   onChange={(e) => handleServiceDetailsChange('pickupService', e.target.value)}
   placeholder={t('serviceForm.laundry.selectOption')}
+  t={t}
   options={[
     { value: 'yes', label: t('serviceForm.laundry.providesPickup') },
     { value: 'no', label: t('serviceForm.laundry.noPickup') }
