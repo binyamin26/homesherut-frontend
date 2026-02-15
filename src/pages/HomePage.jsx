@@ -25,7 +25,7 @@ const HomePage = () => {
   const [authMode, setAuthMode] = useState('login');
   const [searchQuery, setSearchQuery] = useState('');
   const { user, isAuthenticated } = useAuth();
-  const { t } = useLanguage();
+  const { t, direction } = useLanguage();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -311,17 +311,19 @@ const HomePage = () => {
         </div>
 
         <div className="services-carousel-container">
-          <Swiper
-            modules={[Navigation]}
-            navigation
-            spaceBetween={1}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              900: { slidesPerView: 3 },
-              1200: { slidesPerView: 4 }
-            }}
-          >
+         <Swiper
+  modules={[Navigation]}
+  navigation
+  spaceBetween={1}
+  slidesPerView={1}
+  dir={direction === 'rtl' ? 'rtl' : 'ltr'}
+  key={direction}
+  breakpoints={{
+    640: { slidesPerView: 2 },
+    900: { slidesPerView: 3 },
+    1200: { slidesPerView: 4 }
+  }}
+>
             {services.map((service) => (
               <SwiperSlide key={service.id}>
                 <Link to={service.href} className="service-card-image">
