@@ -12,7 +12,7 @@ const GardeningForm = ({ serviceDetails, errors, handleServiceDetailsChange, han
 
     {/* ✅ AGE */}
         <div className="input-group">
-          <label>{t('serviceForm.common.age')}</label>
+          <label className="auth-form-label required">{t('serviceForm.common.age')}</label>
           <input
             type="text"
             inputMode="numeric"
@@ -29,7 +29,7 @@ const GardeningForm = ({ serviceDetails, errors, handleServiceDetailsChange, han
         </div>
 
         <div className="input-group">
-          <label>{t('serviceForm.common.experience')}</label>
+          <label className="auth-form-label required">{t('serviceForm.common.experience')}</label>
           <input
             type="text"
             autoComplete="off"
@@ -46,7 +46,7 @@ const GardeningForm = ({ serviceDetails, errors, handleServiceDetailsChange, han
         </div>
         
         <div className="input-group">
-      <label>{t('filters.gardening.serviceTypes')}</label>
+      <label className="auth-form-label required">{t('filters.gardening.serviceTypes')}</label>
           <div className="checkbox-group" data-field="services">
           <label>{t('serviceForm.gardening.services')}</label>
 <div className="checkbox-group" data-field="services">
@@ -80,7 +80,7 @@ const GardeningForm = ({ serviceDetails, errors, handleServiceDetailsChange, han
         </div>
 
           <div className="input-group">
-         <label>{t('serviceForm.gardening.rate')}</label>
+         <label className="auth-form-label required">{t('serviceForm.gardening.rate')}</label>
 <input
   type="text"
    inputMode="numeric"
@@ -95,7 +95,7 @@ const GardeningForm = ({ serviceDetails, errors, handleServiceDetailsChange, han
         </div>
 
         <div className="input-group">
-         <label>{t('serviceForm.gardening.seasons')}</label>
+         <label className="auth-form-label required">{t('serviceForm.gardening.seasons')}</label>
 <div className="checkbox-group" data-field="seasons">
 {[
   { value: 'כל השנה', label: t('filters.gardening.allYear') },
@@ -117,7 +117,7 @@ const GardeningForm = ({ serviceDetails, errors, handleServiceDetailsChange, han
           {errors['serviceDetails.seasons'] && <span className="error-text">{errors['serviceDetails.seasons']}</span>}
         </div>
 <div className="input-group">
-          <label>{t('serviceForm.common.availabilityDays')}</label>
+          <label className="auth-form-label required">{t('serviceForm.common.availabilityDays')}</label>
           <div className="checkbox-group" data-field="availability_days">
             {[
               { value: 'ראשון', label: t('days.sunday') },
@@ -142,7 +142,7 @@ const GardeningForm = ({ serviceDetails, errors, handleServiceDetailsChange, han
         </div>
 
         <div className="input-group">
-                   <label>{t('serviceForm.common.availabilityHours')}</label>
+                   <label className="auth-form-label required">{t('serviceForm.common.availabilityHours')}</label>
           <div className="checkbox-group" data-field="availability_hours">
             {[
               { value: 'בוקר', label: t('hours.morning') },
@@ -164,7 +164,7 @@ const GardeningForm = ({ serviceDetails, errors, handleServiceDetailsChange, han
         </div>
 
         <div className="input-group">
-        <label>{t('serviceForm.gardening.equipment')}</label>
+        <label className="auth-form-label required">{t('serviceForm.gardening.equipment')}</label>
 <div className="checkbox-group" data-field="equipment">
 {[
   { value: 'מכסחת דשא', label: t('filters.gardening.lawnMower') },
