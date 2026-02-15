@@ -282,7 +282,7 @@ const { t, currentLanguage } = useLanguage();
 
                 {/* TARIF HORAIRE */}
                 <div className="input-group">
-                    <label>{t('serviceForm.tutoring.hourlyRate')}</label>
+                    <label className="auth-form-label required">{t('serviceForm.tutoring.hourlyRate')}</label>
                     <input
                         type="text"
                         inputMode="numeric"
