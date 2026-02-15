@@ -1574,6 +1574,7 @@ const translations = {
 'common.tryAgain': 'נסה שוב',
 'common.tryChangeFilters': 'נסה לשנות את הפילטרים או את האזור',
 'common.searchAllCountry': 'חפש בכל הארץ',
+'common.search': 'חיפוש...',
 
 // Service Pages - Titles and Messages
 'services.babysitting.pageTitle': 'שירותי שמרטפות מקצועיים',
@@ -4153,6 +4154,7 @@ const translations = {
 'common.tryAgain': 'Try again',
 'common.tryChangeFilters': 'Try changing the filters or area',
 'common.searchAllCountry': 'Search nationwide',
+'common.search': 'Search...',  
 
 // Service Pages - Titles and Messages
 'services.babysitting.pageTitle': 'Professional Babysitting Services',
@@ -6701,6 +6703,7 @@ const translations = {
 'common.tryAgain': 'Попробовать снова',
 'common.tryChangeFilters': 'Попробуйте изменить фильтры или область',
 'common.searchAllCountry': 'Искать по всей стране',
+'common.search': 'Поиск...',
 
 // Service Pages - Titles and Messages
 'services.babysitting.pageTitle': 'Профессиональные услуги няни',
@@ -9266,6 +9269,7 @@ const translations = {
 'common.tryAgain': 'Réessayer',
 'common.tryChangeFilters': 'Essayez de modifier les filtres ou la zone',
 'common.searchAllCountry': 'Rechercher dans tout le pays',
+'common.search': 'Recherche...',
 
 // Service Pages - Titles and Messages
 'services.babysitting.pageTitle': 'Services de baby-sitting professionnels',
