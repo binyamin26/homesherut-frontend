@@ -32,6 +32,12 @@
   display: block;
 }
 
+.subsection-title.required::after {
+  content: " *";
+  color: #ef4444;
+  font-weight: bold;
+}
+
 /* Role selection */
 .role-selection {
   display: grid;

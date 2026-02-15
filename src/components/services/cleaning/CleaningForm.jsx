@@ -222,7 +222,7 @@ onChange={(e) => {
 <label className="auth-form-label required">{t('serviceForm.cleaning.availability')}</label>
   
   <div className="availability-subsection">
- <h5 className="subsection-title">{t('serviceForm.cleaning.frequency')}</h5>
+ <h5 className="subsection-title required">{t('serviceForm.cleaning.frequency')}</h5>
 <div className="checkbox-group">
   {[
     { value: 'חד פעמי', label: t('filters.cleaning.oneTime') },
@@ -244,7 +244,7 @@ onChange={(e) => {
   </div>
 
   <div className="availability-subsection">
-   <h5 className="subsection-title">{t('serviceForm.cleaning.days')}</h5>
+   <h5 className="subsection-title required">{t('serviceForm.cleaning.days')}</h5>
     <div className="checkbox-group">
    {[
   { value: 'ראשון', label: t('days.sunday') },
@@ -268,7 +268,7 @@ onChange={(e) => {
   </div>
 
   <div className="availability-subsection">
-  <h5 className="subsection-title">{t('serviceForm.cleaning.hours')}</h5>
+  <h5 className="subsection-title required">{t('serviceForm.cleaning.hours')}</h5>
     <div className="checkbox-group">
      {[
   { value: 'בוקר', label: t('hours.morning') },
