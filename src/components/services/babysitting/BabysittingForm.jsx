@@ -42,7 +42,7 @@ const BabysittingForm = ({ serviceDetails, errors, handleServiceDetailsChange, h
         
         {/* ✅ AGE */}
         <div className="input-group">
-          <label>{t('serviceForm.common.age')}</label>
+          <label className="auth-form-label required">{t('serviceForm.common.age')}</label>
           <input
             ref={ageRef}
             type="text"
@@ -64,7 +64,7 @@ const BabysittingForm = ({ serviceDetails, errors, handleServiceDetailsChange, h
 
         {/* ✅ EXPERIENCE */}
         <div className="input-group">
-          <label>{t('serviceForm.common.experience')}</label>
+          <label className="auth-form-label required">{t('serviceForm.common.experience')}</label>
           <input
             ref={experienceRef}
             type="text"
@@ -84,7 +84,7 @@ const BabysittingForm = ({ serviceDetails, errors, handleServiceDetailsChange, h
         </div>
 
         <div className="input-group">
-          <label>{t('serviceForm.babysitting.ageGroups')}</label>
+          <label className="auth-form-label required">{t('serviceForm.babysitting.ageGroups')}</label>
           <div className="checkbox-group" data-field="ageGroups">
             {[
               { value: '0-1 שנה', label: t('filters.babysitting.age0to1') },
@@ -112,7 +112,7 @@ const BabysittingForm = ({ serviceDetails, errors, handleServiceDetailsChange, h
         </div>
 
         <div className="input-group">
-          <label>{t('serviceForm.common.availabilityDays')}</label>
+          <label className="auth-form-label required">{t('serviceForm.common.availabilityDays')}</label>
           <div className="checkbox-group" data-field="availability_days">
             {[
               { value: 'ראשון', label: t('days.sunday') },
@@ -137,7 +137,7 @@ const BabysittingForm = ({ serviceDetails, errors, handleServiceDetailsChange, h
         </div>
 
         <div className="input-group">
-          <label>{t('serviceForm.common.availabilityHours')}</label>
+          <label className="auth-form-label required">{t('serviceForm.common.availabilityHours')}</label>
           <div className="checkbox-group" data-field="availability_hours">
             {[
               { value: 'בוקר', label: t('hours.morning') },
@@ -159,7 +159,7 @@ const BabysittingForm = ({ serviceDetails, errors, handleServiceDetailsChange, h
         </div>
 
         <div className="input-group">
-          <label>{t('serviceForm.babysitting.babysittingTypes')}</label>
+          <label className="auth-form-label required">{t('serviceForm.babysitting.babysittingTypes')}</label>
           <div className="checkbox-group" data-field="babysitting_types">
             {[
               { value: 'שמרטפות מזדמנת', label: t('filters.babysitting.occasional') },
@@ -192,7 +192,7 @@ const BabysittingForm = ({ serviceDetails, errors, handleServiceDetailsChange, h
         </div>
 
         <div className="input-group">
-          <label>{t('serviceForm.babysitting.canTravelAlone')}</label>
+          <label className="auth-form-label required">{t('serviceForm.babysitting.canTravelAlone')}</label>
          <CustomDropdown
   name="can_travel_alone"
   value={serviceDetails.can_travel_alone === true ? 'yes' : serviceDetails.can_travel_alone === false ? 'no' : ''}
@@ -208,7 +208,7 @@ const BabysittingForm = ({ serviceDetails, errors, handleServiceDetailsChange, h
         </div>
 
         <div className="input-group">
-          <label>{t('serviceForm.babysitting.languages')}</label>
+          <label className="auth-form-label required">{t('serviceForm.babysitting.languages')}</label>
           <div className="checkbox-group" data-field="languages">
             {[
               { value: 'עברית', label: t('languages.hebrew') },
