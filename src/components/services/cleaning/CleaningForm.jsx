@@ -37,7 +37,6 @@ const CleaningForm = ({ serviceDetails, errors, handleServiceDetailsChange, hand
   onChange={(e) => handleServiceDetailsChange('legalStatus', e.target.value)}
   placeholder={t('serviceForm.common.selectStatus')}
   error={errors['serviceDetails.legalStatus']}
-  t={t}
   options={[
     { value: 'חברה', label: t('serviceForm.cleaning.company') },
     { value: 'עצמאי', label: t('serviceForm.cleaning.selfEmployed') }

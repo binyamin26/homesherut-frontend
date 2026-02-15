@@ -81,7 +81,6 @@ const LocationSelector = ({
               value={selectedCity}
               onChange={handleCityChange}
               placeholder={t('auth.selectCity')}
-              t={t}
             />
           </div>
 
@@ -95,7 +94,6 @@ const LocationSelector = ({
                 value={selectedNeighborhood}
                 onChange={handleNeighborhoodChange}
                 placeholder={`כל השכונות ב${selectedCity}`}
-                t={t}
               />
             </div>
           )}

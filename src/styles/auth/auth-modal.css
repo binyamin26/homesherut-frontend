@@ -1350,3 +1350,32 @@
 .auth-form .input-wrapper:has(.password-toggle) input {
   padding-left: 90px !important;
 }
+
+/* LTR support pour langues non-hébraïques */
+[dir="ltr"] .auth-form,
+[dir="ltr"] .service-details-form,
+[dir="ltr"] .input-group,
+[dir="ltr"] .auth-form-label,
+[dir="ltr"] .subsection-title,
+[dir="ltr"] .category-title,
+[dir="ltr"] .checkbox-group,
+[dir="ltr"] .checkbox-item,
+[dir="ltr"] .selected-areas,
+[dir="ltr"] .neighborhoods-selection,
+[dir="ltr"] .neighborhoods-selection h5,
+[dir="ltr"] .selected-areas h5,
+[dir="ltr"] .area-tag {
+  direction: ltr;
+  text-align: left;
+}
+
+[dir="ltr"] .standard-input,
+[dir="ltr"] .auth-form input[type="text"],
+[dir="ltr"] .auth-form input[type="email"],
+[dir="ltr"] .auth-form input[type="tel"],
+[dir="ltr"] .auth-form input[type="password"],
+[dir="ltr"] .auth-form select {
+  text-align: left !important;
+  padding-left: 48px !important;
+  padding-right: 20px !important;
+}
