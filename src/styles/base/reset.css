@@ -29,6 +29,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+  color-scheme: light only;
+ -webkit-appearance: none;
+appearance: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: #ffffff;
+    color: #0f172a;
+  }
+}
+
 /* Éléments HTML de base */
 a {
   color: inherit;
