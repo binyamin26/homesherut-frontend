@@ -95,7 +95,6 @@ const PaintingForm = ({ serviceDetails, errors, handleServiceDetailsChange, hand
         <div className="input-group">
           <label className="auth-form-label required">{t('serviceForm.common.workTypes')}</label>
           <div className="checkbox-group" data-field="work_types">
-          <label>{t('serviceForm.common.workTypes')}</label>
 <div className="checkbox-group" data-field="work_types">
   {[
     { value: 'צביעה כללית של דירה', label: t('filters.painting.generalPainting') },

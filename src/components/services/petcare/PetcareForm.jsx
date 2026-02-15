@@ -106,7 +106,7 @@ const PetcareForm = ({ serviceDetails, errors, handleServiceDetailsChange, handl
         </div>
 
         <div className="input-group">
-          <label>{t('serviceForm.petcare.experience')}</label>
+          <label className="auth-form-label required">{t('serviceForm.petcare.experience')}</label>
 <input
  type="text"
  inputMode="numeric"
