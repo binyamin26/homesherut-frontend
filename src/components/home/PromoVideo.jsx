@@ -10,6 +10,8 @@ const styles = `
       width: 100%;
       height: 100%; 
       min-height: 600px;
+      /* DÉGRADÉ LUMINEUX & PRO */
+      
       background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
       display: flex;
       justify-content: center;
@@ -23,21 +25,17 @@ const styles = `
       animation-play-state: paused !important;
   }
 
-  /* --- COUCHE VIDÉO SPÉCIFIQUE (DASHBOARD) --- */
+  /* --- AJOUT : VIDÉO SPÉCIFIQUE --- */
   .overlay-layer {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 20; /* Au-dessus du texte standard */
+      z-index: 5; /* Au-dessus du fond, sous le texte */
       opacity: 0;
       transition: opacity 0.8s ease;
-      background: #000;
-      pointer-events: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background: #000; /* Fond noir pour éviter la transparence */
   }
   .overlay-layer.visible {
       opacity: 1;
@@ -45,36 +43,8 @@ const styles = `
   .overlay-video-content {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Ou 'contain' si tu veux voir toute l'interface sans coupe */
-  }
-
-  /* --- COUCHE LOGO FINAL --- */
-  .logo-layer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 30;
-      opacity: 0;
-      transition: opacity 1s ease;
-      background: white; /* Fond blanc propre pour la fin */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-  }
-  .logo-layer.visible {
-      opacity: 1;
-  }
-  .final-logo {
-      width: 250px; /* Ajustez la taille selon vos besoins */
-      height: auto;
-      animation: logoPop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  }
-  @keyframes logoPop {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      object-fit: cover;
+      opacity: 0.6; /* Ajuste ici si tu veux la vidéo plus ou moins sombre */
   }
 
   /* --- ARRIÈRE-PLAN VIDÉO (Subtil) --- */
@@ -89,10 +59,10 @@ const styles = `
       mix-blend-mode: multiply;
       z-index: 0;
       filter: grayscale(100%);
-      pointer-events: none;
+      pointer-events: none; /* IMPORTANT: Ne bloque pas les clics */
   }
 
-  /* --- ANIMATION "IDLE" --- */
+  /* --- ANIMATION "IDLE" (Carte Blanche - Pro & Design) --- */
   .idle-layer {
       position: absolute;
       top: 0;
@@ -103,7 +73,7 @@ const styles = `
       opacity: 0;
       transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
       overflow: hidden;
-      pointer-events: none;
+      pointer-events: none; /* IMPORTANT: Clics traversants */
   }
 
   .idle-layer.visible {
@@ -129,7 +99,7 @@ const styles = `
       100% { transform: perspective(500px) rotateX(60deg) translateY(60px); }
   }
 
-  /* Cercles concentriques */
+  /* Cercles concentriques "Pulse" */
   .pulse-circle {
       position: absolute;
       top: 50%;
@@ -139,6 +109,7 @@ const styles = `
       border-radius: 50%;
       animation: pulseExpand 8s infinite linear;
   }
+
   .pc-1 { width: 300px; height: 300px; animation-delay: 0s; }
   .pc-2 { width: 500px; height: 500px; animation-delay: -2s; border-color: rgba(139, 92, 246, 0.1); }
   .pc-3 { width: 700px; height: 700px; animation-delay: -4s; }
@@ -149,7 +120,7 @@ const styles = `
       100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
   }
 
-  /* Formes géométriques */
+  /* Formes géométriques flottantes */
   .geo-shape {
       position: absolute;
       background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
@@ -159,6 +130,7 @@ const styles = `
       border-radius: 20px;
       z-index: 2;
   }
+
   .gs-1 { width: 80px; height: 80px; top: 20%; left: 15%; animation: floatGeo 12s ease-in-out infinite; border-radius: 12px; }
   .gs-2 { width: 120px; height: 120px; bottom: 25%; right: 10%; animation: floatGeo 15s ease-in-out infinite reverse; border-radius: 50%; }
   .gs-3 { width: 60px; height: 60px; top: 15%; right: 20%; animation: floatGeo 10s ease-in-out infinite 1s; transform: rotate(45deg); border-radius: 8px; }
@@ -169,7 +141,61 @@ const styles = `
       100% { transform: translateY(0) rotate(0deg); }
   }
 
-  /* --- TEXTES & SCÈNE --- */
+  /* --- MARQUEE (DÉFILÉ CONTINU) --- */
+  .marquee-layer {
+      position: absolute;
+      top: -20%;
+      left: -20%;
+      width: 140%;
+      height: 140%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 40px;
+      transform: rotate(-6deg); 
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; /* CRUCIAL: Empêche de bloquer les boutons */
+      mask-image: radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);
+      -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 80%);
+      direction: ltr; 
+  }
+
+  .marquee-layer.visible {
+      opacity: 0.8;
+  }
+
+  .marquee-row {
+      display: flex;
+      gap: 24px;
+      width: max-content;
+  }
+
+  .scroll-left { animation: scroll 50s linear infinite; }
+  .scroll-right { animation: scrollReverse 50s linear infinite; }
+
+  @keyframes scroll { 
+      0% { transform: translateX(0); } 
+      100% { transform: translateX(-50%); } 
+  }
+  @keyframes scrollReverse { 
+      0% { transform: translateX(-50%); } 
+      100% { transform: translateX(0); } 
+  }
+
+  .marquee-media {
+      width: 220px;
+      height: 140px;
+      border-radius: 16px;
+      object-fit: cover;
+      background: white;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      border: 4px solid #ffffff;
+      transition: transform 0.3s ease;
+  }
+
+  /* --- TEXTES & SCÈNE (GLASSMORPHISM CLAIR) --- */
   .scene {
       position: relative;
       z-index: 10;
@@ -178,7 +204,7 @@ const styles = `
       display: flex;
       justify-content: center;
       align-items: center;
-      pointer-events: none;
+      pointer-events: none; /* CRUCIAL */
   }
 
   .text-card {
@@ -197,7 +223,7 @@ const styles = `
       width: 85%;
       opacity: 0;
       transform: scale(0.95) translateY(20px);
-      pointer-events: none;
+      pointer-events: none; /* CRUCIAL */
   }
 
   .main-text {
@@ -221,8 +247,13 @@ const styles = `
       margin-top: 10px;
   }
 
+  /* --- SÉQUENCAGE --- */
   .active-slide {
       animation: elegantReveal 3.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .active-slide-long {
+      animation: elegantRevealLong 9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 
   @keyframes elegantReveal {
@@ -232,15 +263,22 @@ const styles = `
       100% { opacity: 0; transform: scale(1.05) translateY(-20px); filter: blur(4px); }
   }
 
+  @keyframes elegantRevealLong {
+      0% { opacity: 0; transform: scale(0.9) translateY(40px); filter: blur(8px); }
+      5% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0px); }
+      95% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0px); }
+      100% { opacity: 0; transform: scale(1.05) translateY(-20px); filter: blur(4px); }
+  }
+
   /* --- CONTRÔLES --- */
   .controls-container {
       position: absolute;
       bottom: 30px;
       right: 30px;
-      z-index: 2000;
+      z-index: 2000; /* Z-INDEX AUGMENTÉ AU MAX */
       display: flex;
       gap: 15px;
-      pointer-events: auto;
+      pointer-events: auto; /* S'assure que les clics sont acceptés */
   }
 
   .control-btn {
@@ -256,8 +294,9 @@ const styles = `
       color: #334155;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative; 
-      z-index: 2001;
+      z-index: 2001; /* Z-INDEX SUPÉRIEUR */
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      pointer-events: auto;
   }
   
   .control-btn:hover { 
@@ -285,7 +324,8 @@ const styles = `
       min-width: 120px;
       border: 1px solid rgba(0,0,0,0.05);
       animation: slideUp 0.2s ease-out;
-      z-index: 3000;
+      z-index: 3000; /* Toujours au dessus */
+      pointer-events: auto;
   }
   
   @keyframes slideUp {
@@ -318,66 +358,106 @@ const styles = `
   }
 `;
 
-// --- DONNÉES DE TRADUCTION MISES À JOUR ---
+// --- DONNÉES DE TRADUCTION ---
 const translations = {
   fr: {
-      1: { main: "Prestataire de services ?", sub: "Cherchez-vous à vous faire connaître ?" },
-      2: { main: "AllSherut", sub: "Est là pour vous accompagner" },
-      3: { main: "Inscription", sub: "Simple et rapide" },
-      4: { main: "Vos Services", sub: "Sélectionnez ce que vous proposez" },
-      5: { main: "Espace Personnel", sub: "Accédez à votre espace" }, // Le texte avant la vidéo
-      6: { main: "", sub: "" }, // SLIDE VIDE POUR LA VIDÉO
-      7: { main: "Mise à jour facile", sub: "Modifiez vos informations à tout moment" },
-      8: { main: "Profil Pro", sub: "Votre profil reste clair et à jour" },
-      9: { main: "Visibilité", sub: "Gagnez en visibilité selon vos services" },
-      10: { main: "Clients ciblés", sub: "Touchez des clients réellement intéressés" },
-      11: { main: "Évaluation", sub: "Les clients évaluent votre travail" },
-      12: { main: "Crédibilité", sub: "Les avis renforcent votre crédibilité" },
-      13: { main: "Gestion Simplifiée", sub: "Un seul espace pour gérer votre activité" },
-      14: { main: "Offre de Lancement", sub: "AllSherut lance son offre spéciale" },
-      15: { main: "100% Gratuit", sub: "Inscription gratuite pour les prestataires" },
-      16: { main: "Rejoignez-nous", sub: "Dès maintenant sur AllSherut" },
-      17: { main: "", sub: "" } // SLIDE FINALE LOGO
+      1: { main: "Prestataire de services ?", sub: "Boostez votre visibilité" },
+      2: { main: "AllSherut", sub: "Votre partenaire croissance" },
+      3: { main: "Inscription Rapide", sub: "En moins de 2 minutes" },
+      4: { main: "Vos Services", sub: "Sélectionnez vos compétences" },
+      5: { main: "+20 Catégories", sub: "Un espace unique pour tout gérer" },
+      6: { main: "Espace Pro", sub: "Tableau de bord intuitif" },
+      7: { main: "Nouveaux Clients", sub: "Développez votre clientèle" },
+      8: { main: "Offre Spéciale", sub: "Inscription 100% Gratuite" },
+      9: { main: "Rejoignez-nous", sub: "allsherut.com" }
   },
   he: {
-      1: { main: "נותני שירות?", sub: "מחפשים להגדיל חשיפה?" },
-      2: { main: "AllSherut", sub: "כאן כדי ללוות אתכם" },
-      3: { main: "הרשמה", sub: "פשוטה ומהירה" },
-      4: { main: "השירותים שלכם", sub: "בחרו את מה שאתם מציעים" },
-      5: { main: "אזור אישי", sub: "כניסה לאזור האישי שלכם" }, // Texte AVANT la vidéo
-      6: { main: "", sub: "" }, // SLIDE VIDE POUR LA VIDÉO
-      7: { main: "עדכון קל", sub: "עדכנו פרטים בכל רגע" },
-      8: { main: "פרופיל מקצועי", sub: "הפרופיל נשאר ברור ומעודכן" },
-      9: { main: "חשיפה", sub: "הגדילו חשיפה לפי תחומים" },
-      10: { main: "לקוחות ממוקדים", sub: "הגיעו ללקוחות רלוונטיים באמת" },
-      11: { main: "דירוג איכות", sub: "הלקוחות מדרגים את העבודה" },
-      12: { main: "אמינות", sub: "הביקורות מחזקות את האמינות" },
-      13: { main: "ניהול פשוט", sub: "מקום אחד לניהול הפעילות" },
-      14: { main: "מבצע השקה", sub: "AllSherut במבצע מיוחד" },
-      15: { main: "חינם לגמרי", sub: "הרשמה חינם לבעלי מקצוע" },
-      16: { main: "הצטרפו אלינו", sub: "הצטרפו ל-AllSherut עכשיו" },
-      17: { main: "", sub: "" } // SLIDE FINALE LOGO
+      1: { main: "אתם נותני שירות?", sub: "רוצים להגדיל חשיפה?" },
+      2: { main: "AllSherut", sub: "השותף שלכם לצמיחה" },
+      3: { main: "הרשמה מהירה", sub: "תוך פחות מ-2 דקות" },
+      4: { main: "השירותים שלכם", sub: "בחרו את תחומי ההתמחות" },
+      5: { main: "+20 קטגוריות", sub: "מקום אחד לניהול העסק" },
+      6: { main: "אזור אישי", sub: "לוח בקרה מתקדם" },
+      7: { main: "לקוחות חדשים", sub: "הגדילו את מעגל הלקוחות" },
+      8: { main: "מבצע השקה", sub: "הרשמה חינם כרגע" },
+      9: { main: "הצטרפו אלינו", sub: "allsherut.com" }
+  },
+  en: {
+      1: { main: "Service Provider?", sub: "Boost your visibility" },
+      2: { main: "AllSherut", sub: "Your growth partner" },
+      3: { main: "Fast Sign Up", sub: "In less than 2 minutes" },
+      4: { main: "Your Services", sub: "Select your skills" },
+      5: { main: "+20 Categories", sub: "One hub to manage it all" },
+      6: { main: "Pro Dashboard", sub: "Intuitive interface" },
+      7: { main: "New Customers", sub: "Expand your reach" },
+      8: { main: "Launch Offer", sub: "100% Free Registration" },
+      9: { main: "Join Us", sub: "allsherut.com" }
+  },
+  ru: {
+      1: { main: "Поставщик услуг?", sub: "Увеличьте свою видимость" },
+      2: { main: "AllSherut", sub: "Ваш партнер по росту" },
+      3: { main: "Быстрая регистрация", sub: "Менее чем за 2 минуты" },
+      4: { main: "Ваши услуги", sub: "Выберите свои навыки" },
+      5: { main: "+20 Категорий", sub: "Единый центр управления" },
+      6: { main: "Личный кабинет", sub: "Интуитивный интерфейс" },
+      7: { main: "Новые клиенты", sub: "Расширьте свою базу" },
+      8: { main: "Спецпредложение", sub: "Бесплатная регистрация" },
+      9: { main: "Присоединяйтесь", sub: "allsherut.com" }
   }
-  // (Vous pouvez ajouter EN et RU si nécessaire sur le même modèle)
 };
 
-const PromoVideo = ({ videoSrc = "/background.mp4" }) => {
-  // 1. LANGUE PAR DÉFAUT: HÉBREU
-  const [lang, setLang] = useState('he');
+const MarqueeItem = ({ src }) => {
+    if (!src) return null;
+    const isVideo = typeof src === 'string' && src.match(/\.(mp4|webm|mov)$/i);
+  
+    if (isVideo) {
+      return <video src={src} className="marquee-media" autoPlay loop muted playsInline />;
+    }
+    
+   return (
+    <img 
+      src={src} 
+      className="marquee-media" 
+      alt="service"
+      loading="eager"
+      onError={(e) => {
+        e.target.onerror = null;
+        e.target.src = `https://placehold.co/240x150/f1f5f9/cbd5e1?text=Service`;
+      }}
+    />
+  );
+};
+
+const PromoVideo = ({ videoSrc = "/background.mp4", services = [] }) => {
+  const [lang, setLang] = useState('fr');
   const [isPaused, setIsPaused] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [showLangMenu, setShowLangMenu] = useState(false);
   
   const [currentTime, setCurrentTime] = useState(0);
-  
-  // Durée recalculée : 17 slides x ~3.5s = ~60s
-  const duration = 60; 
+  const duration = 33; 
 
   const videoRef = useRef(null);
   const audioRef = useRef(null);
   const requestRef = useRef(null);
   const startTimeRef = useRef(null);
   const langMenuRef = useRef(null); 
+
+  // Images par défaut
+  const defaultMedia = [
+    '/images/babysite.png', '/images/nikayon.jpg', '/images/jardinage.jpg',
+    '/images/chien.jpg', '/images/tutoring.png', '/images/eldercare.png',
+    '/images/plombier.jpg', '/images/clim.png', '/images/gaz.jpg'
+  ];
+  
+  const displayMedia = services.length > 0 ? services.map(s => s.image || s) : defaultMedia;
+
+  const marqueeListTop = [...displayMedia, ...displayMedia, ...displayMedia, ...displayMedia];
+  const midIndex = Math.floor(displayMedia.length / 2);
+  const shiftedMedia = [...displayMedia.slice(midIndex), ...displayMedia.slice(0, midIndex)];
+  const marqueeListMiddle = [...shiftedMedia, ...shiftedMedia, ...shiftedMedia, ...shiftedMedia];
+  const reversedMedia = [...displayMedia].reverse();
+  const marqueeListBottom = [...reversedMedia, ...reversedMedia, ...reversedMedia, ...reversedMedia];
 
   // Gestion animation Frame
   const animate = (time) => {
@@ -399,60 +479,53 @@ const PromoVideo = ({ videoSrc = "/background.mp4" }) => {
       return () => cancelAnimationFrame(requestRef.current);
   }, [isPaused, currentTime]); 
 
-  // 3. PAUSE STOPPE AUSSI LA MUSIQUE
   useEffect(() => {
     const video = videoRef.current;
-    const audio = audioRef.current;
+    if (!video) return;
 
     if (isPaused) {
-        if (video) video.pause();
-        if (audio) audio.pause();
+        video.pause();
     } else {
-        if (video) video.play().catch(e => console.log("Video Auto-play prevented:", e));
-        // On ne relance l'audio que s'il n'est pas mute volontairement
-        if (audio && !isMuted) audio.play().catch(e => console.log("Audio Auto-play prevented:", e));
+        video.play().catch(e => console.log("Auto-play prevented or handled:", e));
     }
-  }, [isPaused, isMuted]);
+  }, [isPaused]);
 
+  // --- GESTION DU CLIC À L'EXTÉRIEUR DU MENU LANGUE ---
   useEffect(() => {
       const handleClickOutside = (event) => {
           if (langMenuRef.current && !langMenuRef.current.contains(event.target)) {
               setShowLangMenu(false);
           }
       };
-      if (showLangMenu) document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
+
+      if (showLangMenu) {
+          document.addEventListener('mousedown', handleClickOutside);
+      }
+      return () => {
+          document.removeEventListener('mousedown', handleClickOutside);
+      };
   }, [showLangMenu]);
 
-  // Séquençage temporel (approx 3.5s par slide)
+
   const getActiveSequence = (time) => {
-     const step = 3.5;
-     if (time < step * 1) return 1;
-     if (time < step * 2) return 2;
-     if (time < step * 3) return 3;
-     if (time < step * 4) return 4;
-     if (time < step * 5) return 5; // Texte avant vidéo
-     if (time < step * 6) return 6; // VIDÉO DASHBOARD
-     if (time < step * 7) return 7;
-     if (time < step * 8) return 8;
-     if (time < step * 9) return 9;
-     if (time < step * 10) return 10;
-     if (time < step * 11) return 11;
-     if (time < step * 12) return 12;
-     if (time < step * 13) return 13;
-     if (time < step * 14) return 14;
-     if (time < step * 15) return 15;
-     if (time < step * 16) return 16;
-     return 17; // LOGO FINAL
+     if (time < 3.5) return 1;
+     if (time < 7.0) return 2;
+     if (time < 10.5) return 3;
+     if (time < 14.0) return 4;
+     if (time < 22.0) return 5; 
+     if (time < 25.5) return 6;
+     if (time < 29.0) return 7;
+     if (time < 32.5) return 8;
+     return 9; 
   };
 
   const activeSeq = getActiveSequence(currentTime);
-  
-  // 2. VIDÉO SPÉCIFIQUE (Étape 6 uniquement)
-  const showDashboardVideo = activeSeq === 6;
-  
-  // LOGO FINAL (Étape 17 uniquement)
-  const showFinalLogo = activeSeq === 17;
+  // --- AJOUT : Mapping des vidéos spécifiques ---
+  const specificVideos = {
+      6: "dashboard.mp4" // La vidéo s'affichera pendant l'étape 6
+  };
+  const currentSpecificVideo = specificVideos[activeSeq];
+  const isServicesSlide = activeSeq === 5;
 
   const toggleVideo = (e) => {
     e && e.stopPropagation(); 
@@ -489,52 +562,59 @@ const PromoVideo = ({ videoSrc = "/background.mp4" }) => {
     <div className={`promo-container ${isPaused ? 'is-paused' : ''}`} dir={lang === 'he' ? 'rtl' : 'ltr'}>
       <style>{styles}</style>
 
-      {/* ARRIÈRE-PLAN VIDÉO */}
+      {/* 1. ARRIÈRE-PLAN VIDÉO */}
       <video ref={videoRef} className="bg-video" autoPlay loop muted playsInline>
           <source src={videoSrc} type="video/mp4" />
       </video>
       
-      {/* ANIMATION DE FOND (Toujours visible sauf quand vidéo dashboard ou logo actif) */}
-      <div className={`idle-layer ${!showDashboardVideo && !showFinalLogo ? 'visible' : ''}`}>
+      {/* 2. NOUVELLE ANIMATION "IDLE" */}
+      <div className={`idle-layer ${!isServicesSlide ? 'visible' : ''}`}>
           <div className="tech-grid"></div>
           <div className="pulse-circle pc-1"></div>
           <div className="pulse-circle pc-2"></div>
           <div className="pulse-circle pc-3"></div>
+          
           <div className="geo-shape gs-1"></div>
           <div className="geo-shape gs-2"></div>
           <div className="geo-shape gs-3"></div>
       </div>
 
-      {/* CONTAINER VIDÉO DASHBOARD SPÉCIFIQUE (SANS TEXTE) */}
-      <div className={`overlay-layer ${showDashboardVideo ? 'visible' : ''}`}>
-          <video 
-              src="dashboard.mp4" 
-              className="overlay-video-content" 
-              autoPlay={showDashboardVideo} 
-              loop 
-              muted 
-              playsInline 
-          />
+{/* --- AJOUT : CONTAINER VIDÉO SPÉCIFIQUE --- */}
+      <div className={`overlay-layer ${currentSpecificVideo ? 'visible' : ''}`}>
+          {currentSpecificVideo && (
+              <video 
+                  src={currentSpecificVideo} 
+                  className="overlay-video-content" 
+                  autoPlay loop muted playsInline 
+                  key={currentSpecificVideo} // Force le rechargement si la vidéo change
+              />
+          )}
       </div>
-
-      {/* CONTAINER LOGO FINAL */}
-      <div className={`logo-layer ${showFinalLogo ? 'visible' : ''}`}>
-          {/* Assurez-vous que l'image est dans le dossier public ou importée correctement */}
-          <img src="Logo moderne d'AllSherut avec sphère 3D.png" alt="AllSherut Logo" className="final-logo" />
+      {/* ------------------------------------------ */}
+      
+      {/* 3. MARQUEE MULTI-DIRECTIONNEL */}
+      <div className={`marquee-layer ${isServicesSlide ? 'visible' : ''}`}>
+          <div className="marquee-row scroll-left">
+              {marqueeListTop.map((src, i) => <MarqueeItem key={`top-${i}`} src={src} />)}
+          </div>
+          <div className="marquee-row scroll-right">
+              {marqueeListMiddle.map((src, i) => <MarqueeItem key={`mid-${i}`} src={src} />)}
+          </div>
+          <div className="marquee-row scroll-left">
+              {marqueeListBottom.map((src, i) => <MarqueeItem key={`bot-${i}`} src={src} />)}
+          </div>
       </div>
 
       <audio ref={audioRef} loop src="/musique.mp3"></audio>
 
-      {/* SCÈNE TEXTE (Caché si c'est la vidéo dashboard ou le logo final) */}
+      {/* 4. SCÈNE TEXTE */}
       <div className="scene">
-          {Object.keys(translations[lang]).map((key) => {
-             const id = parseInt(key);
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((id) => {
              const isActive = activeSeq === id;
-             // On ne montre pas de texte pour les étapes 6 (Vidéo) et 17 (Logo)
-             if (id === 6 || id === 17) return null;
-
+             const animClass = isActive ? (id === 5 ? 'active-slide-long' : 'active-slide') : '';
+             
              return (
-              <div key={id} className={`text-card ${isActive ? 'active-slide' : ''}`}>
+              <div key={id} className={`text-card ${animClass}`}>
                   <div className="main-text">{translations[lang][id].main}</div>
                   <span className="sub-text">{translations[lang][id].sub}</span>
               </div>
@@ -552,12 +632,15 @@ const PromoVideo = ({ videoSrc = "/background.mp4" }) => {
              {isMuted ? <IconSoundOff /> : <IconSoundOn />}
           </button>
           
+          {/* Utilisation de div car contient des éléments interactifs, mais stylé comme un bouton */}
           <div className="control-btn" ref={langMenuRef} onClick={(e) => { e.stopPropagation(); setShowLangMenu(!showLangMenu); }} title="Langue">
               <IconLang />
               {showLangMenu && (
                   <div className="lang-menu">
                       <div className="lang-option" onClick={(e) => handleLangChange(e, 'he')}>עברית</div>
                       <div className="lang-option" onClick={(e) => handleLangChange(e, 'fr')}>Français</div>
+                      <div className="lang-option" onClick={(e) => handleLangChange(e, 'en')}>English</div>
+                      <div className="lang-option" onClick={(e) => handleLangChange(e, 'ru')}>Русский</div>
                   </div>
               )}
           </div>
