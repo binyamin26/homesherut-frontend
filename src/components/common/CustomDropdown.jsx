@@ -12,8 +12,7 @@ const CustomDropdown = ({
   placeholder, 
   disabled,
   error,
-  searchable = true,
-  t
+  searchable = true
 }) => {
    const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
